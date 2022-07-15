@@ -1,0 +1,36 @@
+/*
+ 폰트
+*/
+@font-face {
+  font-family: "S-CoreDream-6Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "S-CoreDream-5Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* font */
+:root {
+  --title-font: "S-CoreDream-6Bold";
+  --content-font: "S-CoreDream-5Medium";
+}
+
+/* font-size */
+:root {
+	--large-font: 28px;
+	--middle-font: 18px;
+	--small-font: 15px;
+	--min-font: 8px;
+}
+
+/*
+폰트크기
+*/
