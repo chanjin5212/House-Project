@@ -10,10 +10,10 @@
             style="width: 125px"
             onclick="location.href='/house/brokermain/brokerMain';"
           />
-          <nav>
+          <nav id="broker">
             <ul>
               <li><a href="/house/brokermain/brokerMain">홈</a></li>
-              <li><a href="">후기 게시판</a></li>
+              <li><a href="/house/reviewboard/userReviewBoardView">후기 게시판</a></li>
               <li><a href="">알림</a></li>
             </ul>
           </nav>
@@ -35,7 +35,7 @@
 					<span>${name}님</span> <i class="fa-solid fa-caret-down"></i>
 				</button>
 				<div class="dropdown-content">
-					<a href="#">마이페이지</a> <a href="/house/domain/sign/logout">로그아웃</a>
+					<a href="/house/web/brokermypage/brokerEditInfo">마이페이지</a> <a href="/house/domain/sign/logout">로그아웃</a>
 				</div>
 			</div>
 			</c:if>

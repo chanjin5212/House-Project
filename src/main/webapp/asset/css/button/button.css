@@ -36,6 +36,75 @@
     box-shadow: 0 0 0 2px #8fd0f8;
 }
 
+.button.green {
+	color: var(--color-green);
+	border: 1px solid var(--color-green);
+}
 
+.button.green:hover {
+    background-color: var(--color-green);
+    color: var(--color-white);
+}
+
+.button.green:active {
+	box-shadow: none;
+}
+
+.button.green:focus { 
+    transition: 0.5s;
+    box-shadow: 0 0 0 2px var(--color-green);
+}
+
+.button.gray {
+	color: var(--color-gray);
+	border: 1px solid var(--color-gray);
+}
+
+.button.gray:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+}
+
+.button.gray:active {
+	box-shadow: none;
+}
+
+.button.gray:focus { 
+    transition: 0.5s;
+    box-shadow: 0 0 0 2px var(--color-gray);
+}
+
+
+
+.fill-button {
+   outline: none;
+   border: 1px solid transparent;
+   border-radius: 3px;
+   color: white;
+}
+
+.fill-button:hover {
+   transform: scale(1.03);
+}
+
+.fill-button:hover, .fill-button:active {
+   border: 1px solid transparent;
+}
+
+.fill-button:focus {
+   border: 2px solid rgba(0, 0, 0, 0.9);
+}
+
+.fill-button.blue:active, .fill-button.green:active {
+   box-shadow: none;
+}
+
+.fill-button.blue {
+   background-color: var(--color-blue);
+}
+
+.fill-button.green {
+   background-color: var(--color-green);
+}
 
 

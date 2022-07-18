@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 import com.house.util.DBUtil;
 
-public class BrokerRealEstateAddDAO {
+public class BrokerRealEstateDAO {
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
 	private ResultSet rs;
 	
-	public BrokerRealEstateAddDAO() {
+	public BrokerRealEstateDAO() {
 		conn = DBUtil.open();
 	}
 
-	public ArrayList<BrokerRealEstateAddDTO> cGetList() {
+	public ArrayList<BrokerRealEstateDTO> cGetList() {
 
 		try {
 			
@@ -27,9 +27,9 @@ public class BrokerRealEstateAddDAO {
 			stat = conn.createStatement();
 			
 			rs = stat.executeQuery(sql);
-			ArrayList<BrokerRealEstateAddDTO> list = new ArrayList<BrokerRealEstateAddDTO>();
+			ArrayList<BrokerRealEstateDTO> list = new ArrayList<BrokerRealEstateDTO>();
 			while (rs.next()) {
-				BrokerRealEstateAddDTO dto = new BrokerRealEstateAddDTO();
+				BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
 				dto.setSeq(rs.getString("seq"));
 				dto.setContractName(rs.getString("name"));
 				list.add(dto);
@@ -45,7 +45,7 @@ public class BrokerRealEstateAddDAO {
 		return null;
 	}
 
-	public ArrayList<BrokerRealEstateAddDTO> bGetList() {
+	public ArrayList<BrokerRealEstateDTO> bGetList() {
 			
 		try {
 			
@@ -54,9 +54,9 @@ public class BrokerRealEstateAddDAO {
 			stat = conn.createStatement();
 			
 			rs = stat.executeQuery(sql);
-			ArrayList<BrokerRealEstateAddDTO> list = new ArrayList<BrokerRealEstateAddDTO>();
+			ArrayList<BrokerRealEstateDTO> list = new ArrayList<BrokerRealEstateDTO>();
 			while (rs.next()) {
-				BrokerRealEstateAddDTO dto = new BrokerRealEstateAddDTO();
+				BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
 				dto.setSeq(rs.getString("seq"));
 				dto.setBuildingTypeName(rs.getString("name"));
 				list.add(dto);
@@ -72,7 +72,7 @@ public class BrokerRealEstateAddDAO {
 		return null;
 	}
 
-	public ArrayList<BrokerRealEstateAddDTO> rGetList() {
+	public ArrayList<BrokerRealEstateDTO> rGetList() {
 		
 		try {
 			
@@ -81,9 +81,9 @@ public class BrokerRealEstateAddDAO {
 			stat = conn.createStatement();
 			
 			rs = stat.executeQuery(sql);
-			ArrayList<BrokerRealEstateAddDTO> list = new ArrayList<BrokerRealEstateAddDTO>();
+			ArrayList<BrokerRealEstateDTO> list = new ArrayList<BrokerRealEstateDTO>();
 			while (rs.next()) {
-				BrokerRealEstateAddDTO dto = new BrokerRealEstateAddDTO();
+				BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
 				dto.setSeq(rs.getString("seq"));
 				dto.setRoomTypeName(rs.getString("name"));
 				list.add(dto);
@@ -99,7 +99,7 @@ public class BrokerRealEstateAddDAO {
 		return null;
 	}
 
-	public ArrayList<BrokerRealEstateAddDTO> mGetList() {
+	public ArrayList<BrokerRealEstateDTO> mGetList() {
 
 		try {
 			
@@ -108,9 +108,9 @@ public class BrokerRealEstateAddDAO {
 			stat = conn.createStatement();
 			
 			rs = stat.executeQuery(sql);
-			ArrayList<BrokerRealEstateAddDTO> list = new ArrayList<BrokerRealEstateAddDTO>();
+			ArrayList<BrokerRealEstateDTO> list = new ArrayList<BrokerRealEstateDTO>();
 			while (rs.next()) {
-				BrokerRealEstateAddDTO dto = new BrokerRealEstateAddDTO();
+				BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
 				dto.setSeq(rs.getString("seq"));
 				dto.setMainUseName(rs.getString("name"));
 				list.add(dto);
@@ -126,7 +126,7 @@ public class BrokerRealEstateAddDAO {
 		return null;
 	}
 
-	public void setDeputy(BrokerRealEstateAddDTO dto) {
+	public void setDeputy(BrokerRealEstateDTO dto) {
 
 		try {
 			
@@ -146,7 +146,7 @@ public class BrokerRealEstateAddDAO {
 		
 	}
 
-	public void setOwner(BrokerRealEstateAddDTO dto, String maxSeq) {
+	public void setOwner(BrokerRealEstateDTO dto, String maxSeq) {
 
 		try {
 			
@@ -208,7 +208,7 @@ public class BrokerRealEstateAddDAO {
 		return null;
 	}
 
-	public void setRealEstate(BrokerRealEstateAddDTO dto) {
+	public void setRealEstate(BrokerRealEstateDTO dto) {
 
 		try {
 			
@@ -260,7 +260,7 @@ public class BrokerRealEstateAddDAO {
 		return null;
 	}
 
-	public void setDeposit(BrokerRealEstateAddDTO dto, String maxSeq) {
+	public void setDeposit(BrokerRealEstateDTO dto, String maxSeq) {
 
 		try {
 			
@@ -279,7 +279,7 @@ public class BrokerRealEstateAddDAO {
 		
 	}
 
-	public void setStructure(BrokerRealEstateAddDTO dto, String maxSeq) {
+	public void setStructure(BrokerRealEstateDTO dto, String maxSeq) {
 
 		try {
 			
@@ -311,7 +311,7 @@ public class BrokerRealEstateAddDAO {
 		
 	}
 
-	public void setOption(BrokerRealEstateAddDTO dto, String maxSeq) {
+	public void setOption(BrokerRealEstateDTO dto, String maxSeq) {
 
 		try {
 			
@@ -343,7 +343,7 @@ public class BrokerRealEstateAddDAO {
 		
 	}
 
-	public void setManagementFee(BrokerRealEstateAddDTO dto, String maxSeq) {
+	public void setManagementFee(BrokerRealEstateDTO dto, String maxSeq) {
 
 		
 		try {
@@ -368,7 +368,7 @@ public class BrokerRealEstateAddDAO {
 		
 	}
 
-	public int setParking(BrokerRealEstateAddDTO dto, String maxSeq) {
+	public int setParking(BrokerRealEstateDTO dto, String maxSeq) {
 
 		try {
 			
@@ -406,18 +406,18 @@ public class BrokerRealEstateAddDAO {
 		
 	}
 
-	public ArrayList<BrokerRealEstateAddDTO> getMyList(String id) {
+	public ArrayList<BrokerRealEstateDTO> getMyList(String id) {
 
 		try {
 			
-			String sql = "select re.seq, re.memberid, re.realestateaddr, re.price, cr.brokercheck, cr.state, c.name, d.deposit, (select count(*) from tblWish where seq = re.seq) as wish from tblRealEstate re left outer join tblContractRequest cr on re.seq = cr.realestateseq inner join tblContract c on re.contractseq = c.seq left outer join tblDeposit d on re.seq = d.realestateseq where re.memberid = ?";
+			String sql = "select re.seq, re.memberid, re.realestateaddr, re.price, cr.brokercheck, cr.state, c.name, d.deposit, (select count(*) from tblWish where seq = re.seq) as wish, (select jpg from tblRealEstatepicture where seq = (select min(seq) from tblRealEstatepicture where realestateseq = re.seq) and realestateseq = re.seq) as img from tblRealEstate re left outer join tblContractRequest cr on re.seq = cr.realestateseq inner join tblContract c on re.contractseq = c.seq left outer join tblDeposit d on re.seq = d.realestateseq where re.memberid = ? order by re.seq desc";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
 			
 			rs = pstat.executeQuery();
-			ArrayList<BrokerRealEstateAddDTO> list = new ArrayList<BrokerRealEstateAddDTO>();
+			ArrayList<BrokerRealEstateDTO> list = new ArrayList<BrokerRealEstateDTO>();
 			while(rs.next()) {
-				BrokerRealEstateAddDTO dto = new BrokerRealEstateAddDTO();
+				BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
 				if (rs.getString("state") == null) {
 					dto.setContractCheck("판매중");
 				} else if(rs.getString("state").equals("대기중")) {
@@ -427,11 +427,31 @@ public class BrokerRealEstateAddDAO {
 				}
 				dto.setSeq(rs.getString("seq"));
 				dto.setRealEstateAddr(rs.getString("realestateaddr"));
-				dto.setPrice(rs.getString("price"));
+				
+				String price = rs.getString("price");
+				if (price.length() > 4) {
+					if (price.substring(price.length()-4, price.length()).equals("0000")) {
+						price = price.substring(0, price.length()-4) + "억";
+					} else {
+						price = price.substring(0, price.length()-4) + "억" + price.subSequence(price.length()-4, price.length());
+					}				
+				}
+				dto.setPrice(price);
 				dto.setName(rs.getString("name"));
 				dto.setWish(rs.getString("wish"));
+				if (rs.getString("img") != null) {
+					dto.setFilename(rs.getString("img"));					
+				}
 				if (rs.getString("deposit") != null) {
-					dto.setDeposit(rs.getString("deposit"));
+					String deposit = rs.getString("deposit");
+					if (deposit.length() > 4) {
+						if (deposit.substring(deposit.length()-4, deposit.length()).equals("0000")) {
+							deposit = deposit.substring(0, deposit.length()-4) + "억";
+						} else {
+							deposit = deposit.substring(0, deposit.length()-4) + "억" + deposit.substring(deposit.length()-4, deposit.length());
+						}
+					}
+					dto.setDeposit(deposit);
 				}
 				list.add(dto);
 			}
@@ -465,5 +485,166 @@ public class BrokerRealEstateAddDAO {
 		}
 		
 		return null;
+	}
+
+	public void cancelRefusal(String seq) {
+
+		try {
+			
+			String sql = "delete from tblRefusal where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BrokerRealEstateAddDAO.cancel");
+			e.printStackTrace();
+		}
+		
+
+	}
+
+	public String getSeq(String seq) {
+
+		try {
+			
+			String sql = "select * from tblContractRequest where realestateseq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BrokerRealEstateAddDAO.getSeq");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public int cancelContract(String getSeq) {
+
+		try {
+			
+			
+			String sql = "delete from tblContractRequest where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, getSeq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("BrokerRealEstateAddDAO.cancelContract");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void delAll(String seq) {
+
+		try {
+			
+			String sql = "delete from tblDeposit where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblParking where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblStructure where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblOption where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblManagementFee where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblRealEstatePicture where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblWish where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+			sql = "delete from tblCounsel where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+
+		} catch (Exception e) {
+			System.out.println("BrokerRealEstateAddDAO.delAll");
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public int delRealEstate(String seq) {
+
+		try {
+			
+			String sql = "delete from tblRealEstate where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("BrokerRealEstateAddDAO.delRealEstate");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int report(String seq) {
+
+		try {
+			
+			String sql = "select count(*) as cnt from tblReport where realEstateSeq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return Integer.parseInt(rs.getString("cnt"));
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("BrokerRealEstateAddDAO.report");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 }

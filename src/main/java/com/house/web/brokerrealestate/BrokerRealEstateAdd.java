@@ -43,12 +43,12 @@ public class BrokerRealEstateAdd extends HttpServlet {
             writer.close();
 		}
 		
-		BrokerRealEstateAddDAO dao = new BrokerRealEstateAddDAO();
+		BrokerRealEstateDAO dao = new BrokerRealEstateDAO();
 		
-		ArrayList<BrokerRealEstateAddDTO> cList = dao.cGetList();
-		ArrayList<BrokerRealEstateAddDTO> bList = dao.bGetList();
-		ArrayList<BrokerRealEstateAddDTO> rList = dao.rGetList();
-		ArrayList<BrokerRealEstateAddDTO> mList = dao.mGetList();
+		ArrayList<BrokerRealEstateDTO> cList = dao.cGetList();
+		ArrayList<BrokerRealEstateDTO> bList = dao.bGetList();
+		ArrayList<BrokerRealEstateDTO> rList = dao.rGetList();
+		ArrayList<BrokerRealEstateDTO> mList = dao.mGetList();
 		
 		req.setAttribute("cList", cList);
 		req.setAttribute("bList", bList);
@@ -118,7 +118,6 @@ public class BrokerRealEstateAdd extends HttpServlet {
 		
 		//보증금 월세때만 존재
 		String deposit = multi.getParameter("deposit");
-		
 		//기본 매물 정보
 		String selectContract = multi.getParameter("selectContract");
 		String selectBuilding = multi.getParameter("selectBuilding");
@@ -179,8 +178,7 @@ public class BrokerRealEstateAdd extends HttpServlet {
 		//주차
 		String parkingStatus = multi.getParameter("parkingStatus");
 		String numParkSpace = multi.getParameter("numParkSpace");
-		if (parkingStatus == null) {
-			parkingStatus = "n";
+		if (parkingStatus.equals("n")) {
 			numParkSpace = "0";
 		}
 		
@@ -218,9 +216,9 @@ public class BrokerRealEstateAdd extends HttpServlet {
 		String coordinateX = multi.getParameter("coordinateX");
 		String coordinateY = multi.getParameter("coordinateY");
 		
-		BrokerRealEstateAddDAO dao = new BrokerRealEstateAddDAO();
+		BrokerRealEstateDAO dao = new BrokerRealEstateDAO();
 		
-		BrokerRealEstateAddDTO dto = new BrokerRealEstateAddDTO();
+		BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
 		
 		//집주인 - 대리인
 		dto.setDeputyAddress(deputyAddress);
@@ -263,7 +261,7 @@ public class BrokerRealEstateAdd extends HttpServlet {
 		maxSeq = dao.getRealEstate();
 		
 		//보증금
-		if (deposit != null) {
+		if (deposit != null && !deposit.equals("")) {
 			dto.setDeposit(deposit);
 			dao.setDeposit(dto, maxSeq);
 		}
@@ -326,7 +324,19 @@ public class BrokerRealEstateAdd extends HttpServlet {
 		int result = dao.setParking(dto, maxSeq);
 		
 		if (result == 1) {
-			resp.sendRedirect("/house/brokermain/brokerMain");
+			resp.setContentType("text/html;charset=UTF-8");
+            PrintWriter writer = resp.getWriter();
+
+            writer.println("<html>");
+            writer.println("<body>");
+            writer.println("<script>");
+            writer.println("alert('매물 등록에 성공하셨습니다.');");
+            writer.println("location.href='/house/brokermain/brokerMain'");
+            writer.println("</script>");
+            writer.println("</body>");
+            writer.println("</html>");
+
+            writer.close();
 		} else {
 			resp.setContentType("text/html;charset=UTF-8");
             PrintWriter writer = resp.getWriter();

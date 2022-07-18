@@ -4,13 +4,13 @@
 
 <header>
 	<div>
-		<img src="/house/asset/images/logo.png" alt="" style="width: 125px">
-		<nav>
+		<img src="/house/asset/images/logo.png" alt="" style="width: 125px" onclick="location.href='/house/main';">
+		<nav id="user">
 			<ul>
 				<li><a href="">지도</a></li>
 				<li><a href="">관심 목록</a></li>
 				<li><a href="">알림</a></li>
-				<li><a href="">후기 게시판</a></li>
+				<li><a href="/house/reviewboard/userReviewBoardView">후기 게시판</a></li>
 			</ul>
 		</nav>
 	</div>

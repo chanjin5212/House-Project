@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
 section > div#addedit {
-	width: 500px;
+	width: 600px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -65,6 +65,20 @@ section > div#chart {
 	margin: 0 auto;
 }
 
+section > div {
+	width: 1000px;
+	margin: 0 auto;
+	display: flex;
+}
+
+section > div#check > span > a {
+	text-decoration: none;
+	color: black;
+}
+
+section > div#check > span > a:hover {
+	color: var(--color-blue);
+}
 
 </style>
 </head>
@@ -73,15 +87,13 @@ section > div#chart {
       <%@include file="/WEB-INF/inc/brokerHeader.jsp" %>
       <section>
       		<div id="addedit">
-      			<button id="fir" onclick="location.href='/house/brokerrealestate/brokerRealEstateAdd'"><i class="fa-solid fa-house-circle-check fa-5x"></i><br>매물등록</button>
-      			<button id="sec" onclick="location.href='/house/brokerrealestate/brokerRealEstateManage'"><i class="fa-solid fa-house-circle-exclamation fa-5x"></i><br>매물관리</button>
+      			<button id="fir" onclick="location.href='/house/brokerrealestate/brokerRealEstateAdd'"><i class="fa-solid fa-house-circle-check fa-5x" style="font-size: 150px;"></i><br>매물등록</button>
+      			<button id="sec" onclick="location.href='/house/brokerrealestate/brokerRealEstateManage'"><i class="fa-solid fa-house-circle-exclamation fa-5x" style="font-size: 150px;"></i><br>매물관리</button>
       		</div>
+      		<div><span style="font-size: var(--large-font);">후기 게시판 인기글</span></div>
+      		<div id="check" style="display: flex; justify-content: right;"><span><a href="/house/reviewboard/userReviewBoardView">더보기</a></span></div>
       		<div id="board">
       			<table class="table">
-      				<tr>
-      					<th>후기 게시판 인기글</th>
-      					<th colspan="2">더보기</th>
-      				</tr>
       				<tr>
       					<th>제목</th>
       					<th>작성자</th>
