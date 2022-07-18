@@ -18,9 +18,7 @@
       		<p style="font-size: var(--small-font)">small입니다.</p>
       		<p style="font-size: var(--min-font)">min입니다.</p>
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
         $('.dropbtn').click(function(e) {

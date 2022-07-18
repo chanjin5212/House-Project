@@ -13,6 +13,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- js + jquery -->
 <script src="${pageContext.request.contextPath}/asset/js/jquery/jquery-1.12.4.js"></script>
+<script src="${pageContext.request.contextPath}/asset/js/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/asset/js/bootstrap/bootstrap.js"></script>
 
 

@@ -19,6 +19,7 @@ header {
 
 header>div>img {
 	margin-right: 40px;
+	cursor: pointer;
 }
 
 header>div, header>div>nav>ul {
@@ -81,7 +82,7 @@ header>div:nth-child(2)>button {
 
 /* Links inside the dropdown */
 .dropbtn span {
-	font-size: var(--middle-font);
+	font-size: var(--small-font);
 }
 
 .dropdown-content a {
