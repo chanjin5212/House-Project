@@ -73,8 +73,8 @@ section > div#chart {
       <%@include file="/WEB-INF/inc/brokerHeader.jsp" %>
       <section>
       		<div id="addedit">
-      			<button id="fir"><i class="fa-solid fa-house-circle-check fa-5x"></i><br>매물등록</button>
-      			<button id="sec"><i class="fa-solid fa-house-circle-exclamation fa-5x"></i><br>매물관리</button>
+      			<button id="fir" onclick="location.href='/house/brokerrealestate/brokerRealEstateAdd'"><i class="fa-solid fa-house-circle-check fa-5x"></i><br>매물등록</button>
+      			<button id="sec" onclick="location.href='/house/brokerrealestate/brokerRealEstateManage'"><i class="fa-solid fa-house-circle-exclamation fa-5x"></i><br>매물관리</button>
       		</div>
       		<div id="board">
       			<table class="table">
@@ -120,7 +120,7 @@ var myChart = new Chart(context, {
         ],
         datasets: [
             { //데이터
-                label: '거래량', //차트 제목
+                label: '전체 거래량', //차트 제목
                 fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                 data: [ 
                     ${dto.sales},${dto.jeonse},${dto.monthly},50 //x축 label에 대응되는 데이터 값

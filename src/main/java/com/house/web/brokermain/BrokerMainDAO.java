@@ -24,7 +24,7 @@ public class BrokerMainDAO {
 		
 		try {
 			
-			String sql = "select * from tblStayReview order by views desc";
+			String sql = "select * from tblStayReview where regdate > sysdate - 7 order by views desc";
 			stat = conn.createStatement();
 			
 			rs = stat.executeQuery(sql);

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBUtil {
 	
 	private static Connection conn = null;
-	
+
 	public static Connection open() {
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";

@@ -19,6 +19,7 @@ header {
 
 header>div>img {
 	margin-right: 40px;
+	cursor: pointer;
 }
 
 header>div, header>div>nav>ul {
