@@ -10,4 +10,17 @@ public class UserReviewBoardDTO {
 	private String id;
 	private String regdate;
 	private String views;
+	
+	private String address;
+	
+	private String choice;
+	private String cleanStar;
+	private String priceStar;
+	private String locationStar;
+	private String optionStar;
+	
+	private String jpg;
+	
+	//매물 번호
+	private String realSeq; 
 }

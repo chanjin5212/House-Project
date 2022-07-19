@@ -61,7 +61,6 @@ section > form > div.tableSize > div > div#image_container {
     overflow-x: auto;
     width: 700px;
     height: 205px;
-    border: 1px solid #CCC;
 }
 
 section > form > div.tableSize > div > div#image_container > img {
@@ -107,7 +106,7 @@ section > form > div.tableSize > table {
 				<span style="font-size: var(--middle-font)">매물 사진</span>
 				<div style="margin-bottom: 20px;">
 					<div id="image_container"></div>
-					<div><input type="file" name="attach1" onchange="setThumbnail(event);"></div>
+					<div><input type="file" name="attach1" onchange="setThumbnail(event, 1);"></div>
 					<div id="filelist"></div>
 					<input type="button" value="이미지 추가하기" class="button gray" id="btnfile">
 				</div>
@@ -355,12 +354,15 @@ section > form > div.tableSize > table {
       </footer>
     </main>
     <script>
-	    function setThumbnail(event) {
+	    function setThumbnail(event, num) {
 	        var reader = new FileReader();
-	
+			if (document.getElementById("img"+num)){
+				document.getElementById("img"+num).remove();
+			}
 	        reader.onload = function(event) {
 	          var img = document.createElement("img");
 	          img.setAttribute("src", event.target.result);
+	          img.setAttribute("id", "img" + num);
 	          document.querySelector("div#image_container").appendChild(img);
 	        };
 	
@@ -382,7 +384,7 @@ section > form > div.tableSize > table {
 		
 		$('#btnfile').click(function() {
 			
-			let temp = String.format('<div><input type="file" name="attach{0}" onchange="setThumbnail(event);"><span onclick="del();">&times;</span></div>', no);
+			let temp = String.format('<div><input type="file" name="attach{0}" onchange="setThumbnail(event, {0});"><span onclick="del({0});">&times;</span></div>', no, no, no);
 			
 			$('#filelist').append(temp);
 			
@@ -394,6 +396,7 @@ section > form > div.tableSize > table {
 			//alert(this);
 			//alert(event.target);
 			
+			$('#img'+num).remove();
 			$(event.target).parent().remove();
 		}
 	    
@@ -426,11 +429,11 @@ section > form > div.tableSize > table {
 	    	}); 
 	    
 
-		    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-		    mapOption = {
-		        center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-		        level: 5 // 지도의 확대 레벨
-		    };
+	    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+	    mapOption = {
+	        center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+	        level: 5 // 지도의 확대 레벨
+	    };
 		
 		//지도를 미리 생성
 		var map = new daum.maps.Map(mapContainer, mapOption);

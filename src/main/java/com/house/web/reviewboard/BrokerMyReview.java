@@ -13,14 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
-@WebServlet("/reviewboard/userReviewBoardView")
-public class UserReviewBoardView extends HttpServlet {
+@WebServlet("/reviewboard/brokerMyReview")
+public class BrokerMyReview extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		HttpSession session = req.getSession();
 		
 		String id = (String)session.getAttribute("auth");
@@ -34,6 +32,8 @@ public class UserReviewBoardView extends HttpServlet {
 		if (column != null && word != null) {
 			add = String.format("&column=%s&word=%s", column, word);
 		}
+		
+		
 		
 		
 		map.put("column", column);
@@ -51,6 +51,8 @@ public class UserReviewBoardView extends HttpServlet {
 		}
 		
 		String addRecent = String.format("&recent=%s", recent);
+		
+		
 		
 		//페이징
 		int nowPage = 0; 	//현재 페이지 번호(= page)
@@ -83,13 +85,12 @@ public class UserReviewBoardView extends HttpServlet {
 		
 		map.put("begin", begin + "");
 		map.put("end", end + "");
-		
+		map.put("id", id);
 		
 		
 		map.put("recent", recent);
 		
-		ArrayList<UserReviewBoardDTO> list = dao.getList(map);
-		
+		ArrayList<UserReviewBoardDTO> list = dao.getBrokerList(map);
 		Calendar now = Calendar.getInstance();
 		String strNow = String.format("%tF", now);// "2022-06-29"
 		
@@ -115,7 +116,7 @@ public class UserReviewBoardView extends HttpServlet {
 			
 		}
 		
-		totalCount = dao.getTotalCount(map);
+		totalCount = dao.getbrokerTotalCount(map);
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 
 		
@@ -145,7 +146,7 @@ public class UserReviewBoardView extends HttpServlet {
 					);
 		} else {
 			pagebar += String.format(" <li class=\"page-item\">\r\n"
-					+ "		      <a class=\"page-link\" href=\"/house/reviewboard/userReviewBoardView?page=%d%s%s\" aria-label=\"Previous\">\r\n"
+					+ "		      <a class=\"page-link\" href=\"/house/reviewboard/brokerMyReview?page=%d%s%s\" aria-label=\"Previous\">\r\n"
 					+ "		        <span aria-hidden=\"true\">&laquo;</span>\r\n"
 					+ "		      </a>\r\n"
 					+ "		    </li> "
@@ -163,7 +164,7 @@ public class UserReviewBoardView extends HttpServlet {
 				pagebar += String.format(" <li class=\"page-item active\"><a class=\"page-link\" href=\"#!\">%d</a></li> "
 						, n);
 			} else {
-				pagebar += String.format(" <li class=\"page-item\"><a class=\"page-link\" href=\"/house/reviewboard/userReviewBoardView?page=%d%s%s\">%d</a></li> "
+				pagebar += String.format(" <li class=\"page-item\"><a class=\"page-link\" href=\"/house/reviewboard/brokerMyReview?page=%d%s%s\">%d</a></li> "
 						, n
 						, add
 						, addRecent
@@ -184,7 +185,7 @@ public class UserReviewBoardView extends HttpServlet {
 					);
 		} else {
 			pagebar += String.format(" <li class=\"page-item\">\r\n"
-					+ "		      <a class=\"page-link\" href=\"/house/reviewboard/userReviewBoardView?page=%d%s%s\" aria-label=\"Next\">\r\n"
+					+ "		      <a class=\"page-link\" href=\"/house/reviewboard/brokerMyReview?page=%d%s%s\" aria-label=\"Next\">\r\n"
 					+ "		        <span aria-hidden=\"true\">&raquo;</span>\r\n"
 					+ "		      </a>\r\n"
 					+ "		    </li> "
@@ -205,9 +206,7 @@ public class UserReviewBoardView extends HttpServlet {
 		req.setAttribute("list", list);
 		
 		
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/web/reviewboard/userReviewBoardView.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/web/reviewboard/brokerMyReview.jsp");
 
 		dispatcher.forward(req, resp);
 	}

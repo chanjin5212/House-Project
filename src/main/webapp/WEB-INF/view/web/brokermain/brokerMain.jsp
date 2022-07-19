@@ -80,6 +80,15 @@ section > div#check > span > a:hover {
 	color: var(--color-blue);
 }
 
+section > div#board > table tr > td:nth-child(1) > a {
+	text-decoration: none;
+	color: black;
+}
+
+section > div#board > table tr > td:nth-child(1) > a:hover {
+	color: var(--color-blue);
+}
+
 </style>
 </head>
 <body>	
@@ -99,9 +108,9 @@ section > div#check > span > a:hover {
       					<th>작성자</th>
       					<th>날짜</th>
       				</tr>
-      				<c:forEach items="${list}" var="ldto">
+      				<c:forEach items="${list}" var="ldto" begin="0" end="4">
       				<tr>
-      					<td>${ldto.title}</td>
+      					<td><a href="/house/reviewboard/userReviewBoardDetail?seq=${ldto.seq}">${ldto.title}</a></td>
       					<td>${ldto.id}</td>
       					<td>${ldto.regdate}</td>
       				</tr>

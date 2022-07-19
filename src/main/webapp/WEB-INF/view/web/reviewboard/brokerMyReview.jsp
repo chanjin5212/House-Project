@@ -71,7 +71,7 @@
 		color: var(--color-blue);
 	}
 	
-	section > div#board > nav#broker > ul > li:nth-child(1) > a {
+	section > div#board > nav#broker > ul > li:nth-child(2) > a {
 		color: var(--color-blue);
 	}
 	
@@ -115,18 +115,18 @@
 			</c:if>
 	      	<div id="filter">
 	      		<c:if test="${empty recent}">
-	      		<a style="color: var(--color-blue);" id="recent" href="/house/reviewboard/userReviewBoardView?recent=0">최신 순</a><span>&nbsp|&nbsp</span>
-	      		<a id="popular" href="/house/reviewboard/userReviewBoardView?recent=1">인기 순</a>
+	      		<a style="color: var(--color-blue);" id="recent" href="/house/reviewboard/brokerMyReview?recent=0">최신 순</a><span>&nbsp|&nbsp</span>
+	      		<a id="popular" href="/house/reviewboard/brokerMyReview?recent=1">인기 순</a>
 	      		</c:if>
 	      		
 	      		<c:if test="${recent == 0}">
-	      		<a style="color: var(--color-blue);" id="recent" href="/house/reviewboard/userReviewBoardView?recent=0">최신 순</a><span>&nbsp|&nbsp</span>
-	      		<a id="popular" href="/house/reviewboard/userReviewBoardView?recent=1">인기 순</a>
+	      		<a style="color: var(--color-blue);" id="recent" href="/house/reviewboard/brokerMyReview?recent=0">최신 순</a><span>&nbsp|&nbsp</span>
+	      		<a id="popular" href="/house/reviewboard/brokerMyReview?recent=1">인기 순</a>
 	      		</c:if>
 	      		
 	      		<c:if test="${recent == 1}">
-	      		<a id="recent" href="/house/reviewboard/userReviewBoardView?recent=0">최신 순</a><span>&nbsp|&nbsp</span>
-	      		<a style="color: var(--color-blue);" id="popular" href="/house/reviewboard/userReviewBoardView?recent=1">인기 순</a>
+	      		<a id="recent" href="/house/reviewboard/brokerMyReview?recent=0">최신 순</a><span>&nbsp|&nbsp</span>
+	      		<a style="color: var(--color-blue);" id="popular" href="/house/reviewboard/brokerMyReview?recent=1">인기 순</a>
 	      		</c:if>
 	      	</div>
       			<table class="table">
