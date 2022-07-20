@@ -23,7 +23,7 @@ public class BrokerSecurityOk extends HttpServlet {
 		String pw = req.getParameter("pw");
 		System.out.println(pw);
 		
-		BrokerLoginInfoDAO dao = new BrokerLoginInfoDAO();
+		BrokerMyPageDAO dao = new BrokerMyPageDAO();
 		BrokerLoginInfoDTO dto = dao.getLogInfo((String) session.getAttribute("auth"));
 		
 		//System.out.println(dto.getPw());

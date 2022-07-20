@@ -20,7 +20,6 @@
 	    overflow-x: auto;
 	    width: 1200px;
 	    height: 400px;
-	    margin-bottom: 50px;
 	    margin-top: 50px;
 	}
 	
@@ -88,7 +87,7 @@
 			<%@include file="/WEB-INF/inc/brokerHeader.jsp" %>
 		</c:if>
       <section>
-      		<c:if test="${count < 3}">
+      		<c:if test="${count < 3 && count > 0}">
       			<div id="image_container" style="justify-content: center;">
 	      			<c:forEach items="${list}" var="filename">
 	      				<img src="/house/files/${filename}" />
@@ -103,7 +102,7 @@
 	      			</c:forEach>
 	      		</div>
       		</c:if>
-      		<div>
+      		<div style="margin-top: 50px;">
       			<div><span style="font-size: var(--large-font);">${dto.title}</span></div>
       			<div>${dto.id}</div>
       			<div>${dto.regdate} 조회${dto.views}</div>

@@ -32,7 +32,7 @@
 		</c:if>
 		
 		<c:if test="${empty auth}">
-		alert('failed');
+		alert('로그인 정보를 확인해주세요.');
 		history.back();
 		</c:if>
 	    

@@ -21,7 +21,7 @@ public class BrokerDeactive extends HttpServlet {
 		String id = (String) session.getAttribute("auth");
 		
 		
-		BrokerLoginInfoDAO dao = new BrokerLoginInfoDAO();
+		BrokerMyPageDAO dao = new BrokerMyPageDAO();
 		
 		int result = dao.brokerDeactive(id);
 		

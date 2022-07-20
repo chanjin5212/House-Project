@@ -89,6 +89,7 @@ hr {
 	width: 1050px;
 	padding : 25px;
 	padding-left: 300px;
+	margin-bottom: 100px;
 }
 
 #content h1{
@@ -174,7 +175,7 @@ hr {
 	      				<li><div><a href="/house/web/brokermypage/brokerEditInfo">개인정보</a></div></li>
 	      				<li><div style="background-color: var(--color-gray);"><a href="/house/web/brokermypage/brokerSecurity">보안</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerDealListView">거래 목록</a></div></li>
-	      				<li><div><a href="/house/web/brokermypage/brokerCounselListView">상담 내역</a></div></li>
+	      				<li><div><a href="/house/web/brokermypage/brokerCounselList">상담 내역</a></div></li>
 	      			</ul>
 	      		</div>
 	      		

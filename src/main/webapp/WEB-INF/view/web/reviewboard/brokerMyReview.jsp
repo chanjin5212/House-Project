@@ -159,7 +159,7 @@
 				
 			</div>
       		
-      		<div id="search">
+      		<div id="search" style="margin-bottom: 100px;">
 				<form method="GET" action="/house/reviewboard/userReviewBoardView">
 				<table class="search">
 					<tr>

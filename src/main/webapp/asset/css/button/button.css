@@ -107,4 +107,8 @@
    background-color: var(--color-green);
 }
 
+.fill-button.gray{
+   
+   background-color: var(--color-gray);
+}
 

@@ -19,12 +19,29 @@ section {
 }
 
 
+section > h1 {
+
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-weight: bold;
+
+}
+
+.login-info{
+
+	text-align: center;
+	
+
+}
+
+
 .user-loginbox {
 
 	float: left;
 	width: 400px;
 	height: 400px;
-	margin-top: 200px;
+	margin-top: 100px;
 	margin-left: 250px;
 	
 
@@ -79,6 +96,10 @@ i{
 	<main>
       <%@include file="/WEB-INF/inc/header.jsp" %>
       <section>
+      
+      	
+      		<h1>로그인</h1>
+      		<p class="login-info">일반 회원, 중개사 중 선택하세요.</p>
       		
       		<div class="user-loginbox">
       		
@@ -92,8 +113,17 @@ i{
       			
       			<i class="fa-solid fa-user fa-6x"></i>
       			
+      			<form method="POST" action="/house/domain/sign/login">
+      			
       			<button class="button blue loginbtn" onclick="location.href='/house/domain/sign/login'">일반 회원 로그인</button>
+      			
+      			<input type="hidden" name="check" value="user">
+      			
+      			
+      			</form>
       			</div>
+      			
+      			
       			
       			
       			
@@ -113,13 +143,17 @@ i{
       			
       			<i class="fa-solid fa-building fa-6x"></i>
       			
+      			<form method="POST" action="/house/domain/sign/login">
+      			
       			<button class="button blue loginbtn" onclick="location.href='/house/domain/sign/login'">중개사 회원 로그인</button>
       			
+      			<input type="hidden" name="check" value="broker">
+      			
+      			</form>
       			</div>
       			
       		
       		</div>
-      		
       </section>
       <footer>
       	

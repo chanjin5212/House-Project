@@ -97,10 +97,6 @@ public class UserAdd extends HttpServlet {
 			txt = multi.getParameter("txt");
 			num = multi.getParameter("num");
 			
-			//첨부파일들
-			//<input type="file" name="attach1">
-			//<input type="file" name="attach2">
-			//<input type="file" name="attach3">
 			
 			Enumeration e = multi.getFileNames();
 			

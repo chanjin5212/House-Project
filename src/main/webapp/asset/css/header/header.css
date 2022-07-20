@@ -17,6 +17,11 @@ header {
 	border-bottom: 1px solid #ccc;
 }
 
+header>div>a>img {
+	margin-right: 40px;
+	cursor: pointer;
+}
+
 header>div>img {
 	margin-right: 40px;
 	cursor: pointer;
@@ -53,7 +58,7 @@ header>div:nth-child(2)>button {
 	margin-left: 15px;
 }
 
-
+header { height: 110px }
 
 /* Style The Dropdown Button */
 .dropbtn {

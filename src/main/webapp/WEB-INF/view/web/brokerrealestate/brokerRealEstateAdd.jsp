@@ -354,6 +354,7 @@ section > form > div.tableSize > table {
       </footer>
     </main>
     <script>
+    	//이미지 미리보기, 파일 업로드 삭제하면 사진 미리보기도 같이 삭제시키기
 	    function setThumbnail(event, num) {
 	        var reader = new FileReader();
 			if (document.getElementById("img"+num)){
@@ -382,6 +383,7 @@ section > form > div.tableSize > table {
     
 	    let no = 2;
 		
+	    //버튼 추가
 		$('#btnfile').click(function() {
 			
 			let temp = String.format('<div><input type="file" name="attach{0}" onchange="setThumbnail(event, {0});"><span onclick="del({0});">&times;</span></div>', no, no, no);

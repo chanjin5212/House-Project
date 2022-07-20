@@ -85,14 +85,17 @@ hr {
 	height: inherit;
 	width: 1050px;
 	padding-left: 300px;
+	margin-bottom: 100px;
 }
 
-/* #content table{
+#content table{
 	
-	margin: 0  auto;
-	margin-left: 300px;
-	
-} */
+	/* margin: 0  auto;
+	margin-left: 300px; */
+	/* width: 800px; */
+	/* border: 1px solid black; */
+	/* width: 800px; */
+}
 
 #content table th {
 
@@ -101,13 +104,16 @@ hr {
 }
 
 #content table td{
+	/* border: 1px solid black;	 */
 	font-size: var(--small-font);
+	width: 500px;
 	
 }
 
 #content table input[type=text]{
 	color: var(--color-gray);
 	padding : 5px;
+	width: 300px;
 	/* color : #ccc; */
 }
 
@@ -130,6 +136,12 @@ hr {
 	margin: 10px 0 0 700px;
 }
 
+#searchAddr{
+	
+	margin-left: 0;
+
+}
+
 </style>
 </head>
 <body>	
@@ -149,11 +161,12 @@ hr {
 	      				<li><div style="background-color: var(--color-gray);"><a href="/house/web/brokermypage/brokerEditInfo">개인정보</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerSecurity">보안</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerDealListView">거래 목록</a></div></li>
-	      				<li><div><a href="/house/web/brokermypage/brokerCounselListView">상담 내역</a></div></li>
+	      				<li><div><a href="/house/web/brokermypage/brokerCounselList">상담 내역</a></div></li>
 	      			</ul>
 	      		</div>
 	      		<div id="content">
-	      			<form action="">
+	      			<!-- <form method="POST" action="/house/web/brokermypage/brokerEditInfoOk" id="editInfo"> -->
+	      			<form id="editInfo">
 	      			<table>
 	      				<tr>
 	      					<th>이름</th>
@@ -165,22 +178,27 @@ hr {
 	      				</tr>
 	      				<tr>
 	      					<th>전화번호</th>
-	      					<td><input type="text" value="${dto.tel }" class="form-control" name="tel"/></td>
+	      					<td><input type="text" value="${dto.tel }" class="form-control" name="tel" id="tel"/></td>
 	      				</tr>
 	      				<tr>
 	      					<th>이메일</th>
-	      					<td><input type="text" value="${dto.email }" class="form-control" name="email"/></td>
+	      					<td><input type="text" value="${dto.email }" class="form-control" name="email" id="email"/></td>
 	      				</tr>
 	      				<tr>
 	      					<th>주소</th>
-	      					<td><input type="text" value="${dto.address }" style="width: 300px;" class="form-control" name="address"/></td>
+	      					<td>
+	      					<input type="text" value="${dto.address }" style="width: 300px;" class="form-control" name="address" id="address"/>
+	      					<input type="text" placeholder="상세주소" style="width: 300px;" class="form-control" name="addressDetail" id="addressDetail"/>
+	      					<input type="button" value="주소 찾기" class="button blue" id="searchAddr"/>
+	      					
+	      					</td>
 	      				</tr>
 	      				<tr>
 	      					<th>중개사</th>
 	      					<td><span>조은부동산</span><input type="button" value="중개사 찾기" class="button blue"/></td>
 	      				</tr>
 	      			</table>
-	      			<div id="edit"><input type="submit" value="수정" class="button blue" /></div>
+	      			<div id="edit"><input type="button" value="수정" class="button blue" id="editbtn"/></div>
 	      			</form>
 	      		</div>
 	      			
@@ -190,7 +208,60 @@ hr {
       	
       </footer>
     </main>
+    //주소찾기 api
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
+    
+    	$('#searchAddr').click(function(){
+    		
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	                // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	                
+	                $('#address').val(data.address); //텍스트박스에 주소 넣기
+	                
+	                
+	            }
+	        }).open();
+    		
+    		
+    	});
+    	
+    	
+    //수정된 정보 ajax로 받아오기
+	$('#editbtn').click(function(){
+			
+			$.ajax({
+				type:'POST',
+				url: '/house/web/brokermypage/brokerEditInfoOk',
+				data: $('#editInfo').serialize(),
+				dataType: 'json',
+				success: function(result){
+					
+					//수정된 정보 출력
+					alert('정보가 수정되었습니다.');
+					
+					//alert(result);
+					//console.log(result.tel);
+					
+					$('#tel').val(result.tel);
+					$('#email').val(result.email);
+					$('#address').val(result.address);
+					
+					
+					
+				},
+				error : function(a,b,c){
+					console.log(a,b,c);
+				}
+			});
+		});
+    
+    
+    
+    
+    
     $('.dropbtn').click(function(e) {
         if($('.dropdown-content').css('display') == 'block') {
         	$('.dropbtn > i').remove();
