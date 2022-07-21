@@ -17,6 +17,14 @@ public class ContractViewDTO {
 	private String content;
 	private String tel;
 	private String contractname;
+	private String title;
+	private String regdate;
+	private String counselseq;
+	private String star;
+	private String brokername;
+	
+	private String deposit;
+	private String cnt;
 	
 
 }

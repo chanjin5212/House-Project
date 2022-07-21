@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
@@ -145,9 +145,7 @@ form {
       		
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     

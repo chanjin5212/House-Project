@@ -124,7 +124,7 @@ public class UserReviewBoardDAO {
 
 		try {
 			
-			String sql = "select * from tblContractDoc where id = ?";
+			String sql = "select cd.realestateseq, re.realestateaddr as address from tblContractDoc cd inner join tblrealestate re on cd.realestateseq = re.seq where id = ?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
 			

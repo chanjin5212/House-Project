@@ -302,10 +302,10 @@ form {
 			
 			
 			let html = `<input 
-						type="button" 
+						type="submit" 
 						class="button blue findPw" 
 						value="비밀번호 찾기" 
-						onclick="location.href='/house/domain/sign/editPw'">`;
+						>`;
 						
 						$('.plusform').after(html);
 						toogle_email_auth_form();

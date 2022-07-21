@@ -42,5 +42,6 @@ from tblCounsel c
 	private String name;
 	//후기별점
 	private String star;
+	private String avg;
 	
 }

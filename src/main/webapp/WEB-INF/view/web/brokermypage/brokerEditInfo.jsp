@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 #menu  a {
@@ -21,7 +21,7 @@
 	color: #68c1f8;
 }
 
-ul {
+#menu ul {
 	padding: 0;
 	margin: 0;
 	list-style: none;
@@ -49,7 +49,7 @@ section{
 	
 }
 
-hr {
+#menu hr {
 	margin: 0;
 }
 
@@ -113,7 +113,7 @@ hr {
 #content table input[type=text]{
 	color: var(--color-gray);
 	padding : 5px;
-	width: 300px;
+	width: 250px;
 	/* color : #ccc; */
 }
 
@@ -133,7 +133,7 @@ hr {
 #edit {
 	
 	/* border: 1px solid black; */
-	margin: 10px 0 0 700px;
+	margin: 30px 0 0 500px;
 }
 
 #searchAddr{
@@ -186,12 +186,16 @@ hr {
 	      				</tr>
 	      				<tr>
 	      					<th>주소</th>
-	      					<td>
+	      					<td style="display:flex; flex-wrap:wrap;">
 	      					<input type="text" value="${dto.address }" style="width: 300px;" class="form-control" name="address" id="address"/>
-	      					<input type="text" placeholder="상세주소" style="width: 300px;" class="form-control" name="addressDetail" id="addressDetail"/>
 	      					<input type="button" value="주소 찾기" class="button blue" id="searchAddr"/>
+	      					<!-- <div style="clear:both;float:none;"></div> -->
+	      					<input type="text" placeholder="상세주소" style="width: 300px;" class="form-control" name="addressDetail" id="addressDetail"/>
+	      					
+	      					
 	      					
 	      					</td>
+
 	      				</tr>
 	      				<tr>
 	      					<th>중개사</th>
@@ -204,9 +208,7 @@ hr {
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     //주소찾기 api
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -248,7 +250,7 @@ hr {
 					$('#tel').val(result.tel);
 					$('#email').val(result.email);
 					$('#address').val(result.address);
-					
+					$('#addressDetail').val('');
 					
 					
 				},
@@ -262,17 +264,7 @@ hr {
     
     
     
-    $('.dropbtn').click(function(e) {
-        if($('.dropdown-content').css('display') == 'block') {
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-            $('.dropdown-content').css('display', 'none');
-        } else if($('.dropdown-content').css('display') == 'none') {
-            $('.dropdown-content').css('display', 'block');
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-        }
-    });
+  
     </script>
 </body>
 </html>

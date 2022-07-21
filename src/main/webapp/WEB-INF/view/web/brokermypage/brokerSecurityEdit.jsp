@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -217,9 +217,7 @@ hr {
 			</div>
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     
@@ -250,18 +248,6 @@ hr {
    });
     
     
-    
-    $('.dropbtn').click(function(e) {
-        if($('.dropdown-content').css('display') == 'block') {
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-            $('.dropdown-content').css('display', 'none');
-        } else if($('.dropdown-content').css('display') == 'none') {
-            $('.dropdown-content').css('display', 'block');
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-        }
-    });
     
     </script>
 </body>

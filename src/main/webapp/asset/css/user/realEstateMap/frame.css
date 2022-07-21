@@ -1,0 +1,166 @@
+/* 카카오 지도 맵 크기 */
+body{
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+#map {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+/* header 밑 nav bar */
+#goods_section {
+	font-family: var(--content-font);
+}
+
+#goods_option_navbar {
+	display: flex;
+	padding: 15px 20px;
+	margin: 0px;
+	list-style: none;
+	border-bottom: 1px solid var(--color-lightgray);
+	
+}
+#goods_option_navbar > li {
+	margin-right: 50px;
+}
+
+#map_area {
+	position: relative;
+}
+#map_area > form {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	margin: 20px;
+}
+
+.map_search_input {	
+	background: white;
+	padding: 15px;
+	border: 1px solid var(--color-lightgray);
+}
+
+.map_search_input > div > input {
+	border: 1px solid var(--color-blue);
+	outline: none;
+}
+
+
+.map_search_input > span > button {
+	background: var(--color-blue);
+	border: 1px solid transparent;
+}
+.map_search_input > span > button > i {
+	color: white;
+}
+
+.map_search_input {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.map_search_input > div {
+	position: relative;
+}
+
+.map_search_input > div > i {
+	display: none;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	padding: 7px;
+	cursor: pointer; 
+}
+
+.result_wrap {
+	min-height: 100%;
+	position: relative;
+	top: 0;
+}
+.wrap_items {
+	height: 392px;
+	position: absolute;
+	display: flex;
+	flex-grow: 1;
+	background: white;
+	border: 1px solid var(--color-lightgray);
+}
+.wrap_items > div {
+	height: 100%;
+	min-width: 312px;
+	border-right: 1px solid var(--color-lightgray);
+}
+.wrap_items > div:last-child {
+	border-right: none;
+}
+
+.wrap_items > div > h1 {
+	position: relative;
+	font-size: var(--small-font);
+	font-weight: bold;
+	padding: 25px 25px 12px;
+	height: 55px;
+}
+
+.wrap_items > div > h1:after {
+	position: absolute;
+	left: 0;
+	margin: 9px 0;
+	content: "";
+	display: block;
+	width: 190px;
+	border-bottom: 3px solid var(--color-green);
+}
+
+.wrap_items > div > ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	/* overflow 조작 */
+	overflow-y: auto;
+	height: auto;
+	min-width: 311px;
+	position: absolute;
+	top: 55px;
+	bottom: 0;
+}
+
+.wrap_items > div > ul::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+.wrap_items > div > ul::-webkit-scrollbar-thumb {
+	max-height: 20px;
+    background-color: var(--color-blue);
+    border-radius: 8px;
+}
+
+.wrap_items > div > ul > li {
+	cursor: pointer;
+	padding: 8px 0 8px 30px;
+}
+.wrap_items > div > ul > li:hover {
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.08);
+}
+
+.hidden {
+	display: none;
+}
+
+.no_result {
+	height: 100%;
+	widht: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

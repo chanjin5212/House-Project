@@ -23,8 +23,7 @@ import javax.servlet.http.HttpSession;
 			protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				
 
-		
-			
+				
 				
 				
 				RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/web/usermypage/userSecurity.jsp");

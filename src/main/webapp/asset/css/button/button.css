@@ -112,3 +112,11 @@
    background-color: var(--color-gray);
 }
 
+.fill-button.blue:active, .fill-button.green:active, .fill-button.red:active {
+	box-shadow: none;
+}
+
+.fill-button.red {
+	background-color: tomato;
+}
+

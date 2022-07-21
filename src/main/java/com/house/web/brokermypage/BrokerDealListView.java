@@ -31,6 +31,8 @@ public class BrokerDealListView extends HttpServlet {
 		//System.out.println(list);
 		
 		
+		
+		
 		req.setAttribute("list", list);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/web/brokermypage/brokerDealListView.jsp");

@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.house.web.brokermypage.BrokerLoginInfoDAO;
-import com.house.web.brokermypage.BrokerLoginInfoDTO;
+
 
 
 
@@ -22,6 +21,7 @@ import com.house.web.brokermypage.BrokerLoginInfoDTO;
 			protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 			HttpSession session = req.getSession();		
+		
 			
 			String id = (String) session.getAttribute("auth");
 			

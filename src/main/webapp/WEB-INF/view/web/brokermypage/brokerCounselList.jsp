@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 #menu  a {
@@ -21,7 +21,7 @@
 	color: #68c1f8;
 }
 
-ul {
+#menu ul {
 	padding: 0;
 	margin: 0;
 	list-style: none;
@@ -127,8 +127,9 @@ hr {
 
 #searchDiv{
 	/* margin-top : 100px; */
-	margin-left: 570px;
+	margin-left: 700px;
 	margin-top: 50px;
+	padding-left: 100px;
 }
 
 #search td{
@@ -156,13 +157,16 @@ hr {
 	      				<li><div><a href="/house/web/brokermypage/brokerEditInfo">개인정보</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerSecurity">보안</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerDealListView">거래 목록</a></div></li>
-	      				<li><div style="background-color: var(--color-gray);"><a href="/house/web/brokermypage/brokerCounselListView">상담 내역</a></div></li>
+	      				<li><div style="background-color: var(--color-gray);"><a href="#">상담 내역</a></div></li>
 	      			</ul>
 	      		</div>
 	      		
 	      		<div id="content">
 	      			<%-- ${list } --%>
-	      			<div id="count">총 <span style="color:#8fd0f8;">${list.size() }</span>개의 거래가 존재합니다.</div>
+	      			<c:if test="${not empty list }">
+	      			<div style="margin-left: 350px;">회원님의 상담 후기 평점 : <span style="color: var(--color-green);">${avg }</span></div>
+	      			</c:if>
+	      			<div id="count">총 <span style="color:#8fd0f8;">${list.size() }</span>개의 상담내역이 존재합니다.</div>
 	      			<table class="table table" id="dealList">
 	      				<thead>
 		      				<tr>
@@ -175,28 +179,41 @@ hr {
 			      				<th></th>
 		      				</tr>
 	      				</thead>
-	      				<c:forEach var="list" items ="${list }">
-	      				<tr>
-	      					<td>${list.seq }</td>
-	      					<td>${list.memberId}
-	      					</td>
-	      					<td>${list.writeDate }</td>
-	      					<td>${list.state }</td>
-	      					<td>${list.completedate }</td>
-	      					<td>
-	      					
-				      			<!-- 상담 상세페이지 띄울때 보낼 데이터 -->
-				      			<form name="popForm" method ="POST" action="/house/web/brokermypage/showCounsel" target="popwin" id="popForm">
-								    <input type="hidden" name="seq" id="seq" />
-						
-	      							<input type="button" class="button blue" value="상세보기" id="counselseq" onclick="showCounsel('${list.seq}');"/>
-								</form>
-	      					</td>
-	      					<c:if test = "${not empty list.reviewSeq }">
-	      					<td>별점</td>
-	      					</c:if>
-	      				</tr>
-	      				</c:forEach>
+	      				<c:if test="${empty list }">
+	      					<tr>
+	      						<td colspan="5" style="text-align:center;">
+	      							존재하는 내역이 없습니다.
+	      						</td>
+	      					</tr>
+	      				</c:if>
+	      				
+	      				
+	      				
+		      				<c:forEach var="list" items ="${list }">
+		      				<tr>
+		      					<td>${list.seq }</td>
+		      					<td>${list.memberId}
+		      					</td>
+		      					<td>${list.writeDate }</td>
+		      					<td>${list.state }</td>
+		      					<td>${list.completedate }</td>
+		      					<td>
+		      					
+					      			<!-- 상담 상세페이지 띄울때 보낼 데이터 -->
+					      			<form name="popForm" method ="POST" action="/house/web/brokermypage/showCounsel" target="popwin" id="popForm">
+									    <input type="hidden" name="seq" id="seq" />
+							
+		      							<input type="button" class="button blue" value="상세보기" id="counselseq" onclick="showCounsel('${list.seq}');"/>
+									</form>
+		      					</td>
+		      					<c:if test = "${not empty list.reviewSeq }">
+		      					<td>
+		      						${list.star }
+		      					</td>
+		      					</c:if>
+		      				</tr>
+		      				</c:forEach>
+	      				
 	      			</table>
 	      			
 
@@ -228,9 +245,7 @@ hr {
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+     <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
    
@@ -313,8 +328,8 @@ hr {
     });
     
     
-    
-    $('.dropbtn').click(function(e) {
+    /* 
+     $('.dropbtn').click(function(e) {
         if($('.dropdown-content').css('display') == 'block') {
         	$('.dropbtn > i').remove();
         	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
@@ -324,7 +339,7 @@ hr {
         	$('.dropbtn > i').remove();
         	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
         }
-    });
+    });  */
     </script>
 </body>
 </html>

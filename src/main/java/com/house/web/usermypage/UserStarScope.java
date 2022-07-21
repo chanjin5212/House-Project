@@ -15,12 +15,25 @@ import javax.servlet.http.HttpSession;
 
 
 
+
 		@WebServlet("/web/usermypage/userStarScope")
 		public class UserStarScope  extends HttpServlet {
 
 			@Override
 			protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+				
+				req.setCharacterEncoding("UTF-8");
+				
+				HttpSession session = req.getSession();
+				String id = (String)session.getAttribute("auth");
+				String seq = req.getParameter("seq");
+				
+				String brokername = req.getParameter("brokername");
+				
+				req.setAttribute("id", id);
+				req.setAttribute("seq", seq);
+				req.setAttribute("brokername", brokername);
 				
 				
 				

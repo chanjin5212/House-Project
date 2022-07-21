@@ -21,16 +21,18 @@ public class BrokerWriteContractDoc extends HttpServlet {
 				//계약요청 seq
 				String contractSeq = req.getParameter("contractseq");
 				String category = req.getParameter("category");
+				String realestateSeq = req.getParameter("realestateSeq");
 				
 				System.out.println(contractSeq);
 				System.out.println(category);
+				System.out.println(realestateSeq);
 				
 				
 				//첫번째 테이블 채우기
 				// 소재지(매물주소), 토지
 				BrokerMyPageDAO dao = new BrokerMyPageDAO();
 				
-				ContractDocDto dto = dao.getTbl1(contractSeq);
+				ContractDocDto dto = dao.getContractDoc(contractSeq);
 				
 				System.out.println(dto);
 				System.out.println(dto.getMainUse());
@@ -38,6 +40,7 @@ public class BrokerWriteContractDoc extends HttpServlet {
 				
 				req.setAttribute("contractSeq", contractSeq);
 				req.setAttribute("category", category);
+				req.setAttribute("realestateSeq", realestateSeq);
 				req.setAttribute("dto", dto);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/web/brokeralarm/brokerWriteContractDoc.jsp");

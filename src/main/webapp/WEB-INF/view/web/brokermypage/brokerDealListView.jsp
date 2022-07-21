@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 #menu  a {
@@ -49,7 +49,7 @@ section{
 	
 }
 
-hr {
+#menu hr {
 	margin: 0;
 }
 
@@ -175,9 +175,16 @@ hr {
 			      				<th></th>
 		      				</tr>
 	      				</thead>
+	      				<c:if test="${empty list }">
+	      					<tr>
+	      						<td colspan="5" style="text-align:center;">
+	      							존재하는 내역이 없습니다.
+	      						</td>
+	      					</tr>
+	      				</c:if>
 	      				<c:forEach var="list" items ="${list }">
 	      				<tr>
-	      					<td>${list.contractSeq }</td>
+	      					<td>${list.contractDocSeq }</td>
 	      					<td>${list.contractCategory}  
 	      						<c:if test="${not empty list.deposit }">
 	      						${list.deposit } /
@@ -191,9 +198,9 @@ hr {
 	      					
 				      			<!-- 계약서 창 띄울때 보낼 데이터 -->
 				      			<form name="popForm" method ="POST" action="/house/web/brokermypage/showContractDoc" target="popwin" id="popForm">
-								    <input type="hidden" name="contractseq" id="contractseq" />
+								    <input type="hidden" name="contractDocSeq" id="contractDocSeq" />
 								    <input type="hidden" name="category" id="category" />
-	      							<input type="button" class="button blue" value="계약서" id="showContractBtn" onclick="showContract('${list.contractSeq}','${list.contractCategory }');"/>
+	      							<input type="button" class="button blue" value="계약서" id="showContractBtn" onclick="showContract('${list.contractDocSeq}','${list.contractCategory }');"/>
 								</form>
 	      					</td>
 	      					<c:if test = "${not empty list.reviewSeq }">
@@ -243,19 +250,17 @@ hr {
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+   <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
    
 
     
-   function showContract(contractseq, category){
+   function showContract(contractDocSeq, category){
 	  	
 	   //alert();
 		    window.open('/house/web/brokermypage/showContractDoc','popwin','width=950,height=900');
-		   $('#contractseq').val(contractseq); 
+		   $('#contractDocSeq').val(contractDocSeq); 
 		   $('#category').val(category);
 		   /* $('#category').val('매매');  */
 		   $('#popForm').submit();
@@ -302,7 +307,7 @@ hr {
 			      					
 					      			<!-- 계약서 창 띄울때 보낼 데이터 -->
 					      			<form name="popForm" method ="POST" action="/house/web/brokermypage/showContractDoc" target="popwin" id="popForm">
-									    <input type="hidden" name="contractseq" id="contractseq" />
+									    <input type="hidden" name="contractDocSeq" id="contractDocSeq" />
 									    <input type="hidden" name="category" id="category" />
 		      							<input type="button" class="button blue" value="계약서" id="showContractBtn" onclick="showContract('\${item.seq}','\${item.category}');"/>
 									</form>
@@ -337,17 +342,7 @@ hr {
     
     
     
-    $('.dropbtn').click(function(e) {
-        if($('.dropdown-content').css('display') == 'block') {
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-            $('.dropdown-content').css('display', 'none');
-        } else if($('.dropdown-content').css('display') == 'none') {
-            $('.dropdown-content').css('display', 'block');
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-        }
-    });
+ 
     </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4ca8da1af1b5a90ad610b927d18ab748"></script>
 <style>
@@ -25,6 +25,7 @@ section > h1 {
 	margin-top: 50px;
 	margin-bottom: 20px;
 	font-weight: bold;
+	color: var(--color-blue);
 
 }
 
@@ -36,14 +37,30 @@ section > h1 {
 }
 
 
+.select-box{
+
+	
+	height: 600px;
+	
+}
+
+
 .user-loginbox {
+
 
 	float: left;
 	width: 400px;
 	height: 400px;
 	margin-top: 100px;
-	margin-left: 250px;
 	
+	
+
+}
+
+.broker{
+	
+	
+	margin-left: 300px;
 
 }
 
@@ -68,7 +85,7 @@ section > h1 {
 
 
 
-i{
+.loginbtn-box > i{
 	margin-top: 30px;
 	
 }
@@ -101,63 +118,68 @@ i{
       		<h1>로그인</h1>
       		<p class="login-info">일반 회원, 중개사 중 선택하세요.</p>
       		
-      		<div class="user-loginbox">
+      		<hr>
+      		<div class="select-box">
       		
-      			<div class="user-box">
-      			
-      				일반회원
-      			
+      			<div class="container">
+	      		<div class="user-loginbox">
+	      		
+	      			<div class="user-box">
+	      			
+	      				일반회원
+	      			
+	      			</div>
+	      			
+	      			<div class="loginbtn-box">
+	      			
+	      			<i class="fa-solid fa-user fa-6x"></i>
+	      			
+	      			<form method="POST" action="/house/domain/sign/login">
+	      			
+	      			<button class="button blue loginbtn" onclick="location.href='/house/domain/sign/login'">일반 회원 로그인</button>
+	      			
+	      			<input type="hidden" name="check" value="user">
+	      			
+	      			
+	      			</form>
+	      			</div>
+	      			
+	      			
+	      			
+	      			
+	      			
+	      		
+	      		
+	      		</div>
+	      		
+	      		<div class="user-loginbox broker">
+	      		
+	      			<div class="broker-box">
+	      			
+	      				중개사회원
+	      			
+	      			</div>
+	      			
+	      			<div class="loginbtn-box">
+	      			
+	      			<i class="fa-solid fa-building fa-6x"></i>
+	      			
+	      			<form method="POST" action="/house/domain/sign/login">
+	      			
+	      			<button class="button blue loginbtn" onclick="location.href='/house/domain/sign/login'">중개사 회원 로그인</button>
+	      			
+	      			<input type="hidden" name="check" value="broker">
+	      			
+	      			</form>
+	      			</div>
+	      			
+	      		
+	      		</div>
+      		
       			</div>
-      			
-      			<div class="loginbtn-box">
-      			
-      			<i class="fa-solid fa-user fa-6x"></i>
-      			
-      			<form method="POST" action="/house/domain/sign/login">
-      			
-      			<button class="button blue loginbtn" onclick="location.href='/house/domain/sign/login'">일반 회원 로그인</button>
-      			
-      			<input type="hidden" name="check" value="user">
-      			
-      			
-      			</form>
-      			</div>
-      			
-      			
-      			
-      			
-      			
-      		
-      		
-      		</div>
-      		
-      		<div class="user-loginbox">
-      		
-      			<div class="broker-box">
-      			
-      				중개사회원
-      			
-      			</div>
-      			
-      			<div class="loginbtn-box">
-      			
-      			<i class="fa-solid fa-building fa-6x"></i>
-      			
-      			<form method="POST" action="/house/domain/sign/login">
-      			
-      			<button class="button blue loginbtn" onclick="location.href='/house/domain/sign/login'">중개사 회원 로그인</button>
-      			
-      			<input type="hidden" name="check" value="broker">
-      			
-      			</form>
-      			</div>
-      			
-      		
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
         $('.dropbtn').click(function(e) {

@@ -8,8 +8,8 @@
 		<nav id="user">
 			<ul>
 				<li><a href="/house/web/userRealEstateMap">지도</a></li>
-				<li><a href="">관심 목록</a></li>
-				<li><a href="">알림</a></li>
+				<li><a href="/house/userZzim/userZzimList">관심 목록</a></li>
+				<li><a href="/house/useralarm/userContractRequest">알림</a></li>
 				<li><a href="/house/reviewboard/userReviewBoardView">후기 게시판</a></li>
 			</ul>
 		</nav>
@@ -36,6 +36,20 @@
 		</c:if>
 
 </header>
+
+<script>
+$('.dropbtn').click(function(e) {
+    if($('.dropdown-content').css('display') == 'block') {
+    	$('.dropbtn > i').remove();
+    	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
+        $('.dropdown-content').css('display', 'none');
+    } else if($('.dropdown-content').css('display') == 'none') {
+        $('.dropdown-content').css('display', 'block');
+    	$('.dropbtn > i').remove();
+    	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
+    }
+});
+</script>
 
 
 

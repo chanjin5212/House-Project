@@ -349,9 +349,7 @@ section > form > div.tableSize > table {
 			
 		</form>
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     	//이미지 미리보기, 파일 업로드 삭제하면 사진 미리보기도 같이 삭제시키기

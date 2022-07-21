@@ -26,20 +26,24 @@ font-size: var(--small-font);
 	<main>
       <%@include file="/WEB-INF/inc/header.jsp" %>
       <section>
-        <c:forEach items="${list}" var="dto">
+      
         <h2>매물</h2>
-        <h3>${dto.contractname}/${dto.price}
-        ${dto.realestateaddr}</h3>		
+        <c:if test="${dto.deposit == null}">
+      	<h3>${dto.contractname}/${dto.price}/${dto.realestateaddr}</h3>  
+      </c:if>
+      <c:if test="${dto.deposit != null}">
+      	<h3>${dto.contractname}/${dto.deposit}/${dto.price}/${dto.realestateaddr}</h3>
+      </c:if>	
       	<h2>상담상세내용</h2>	
       	        <h3>${dto.content}</h3>
       		<h2>회원</h2>
       		        <h3>${dto.name}</h3>
       		<h2>전화번호</h2>
       		        <h3>${dto.tel}</h3>
-      		          </c:forEach>
+      		      
  
       		        <input type="button" value="돌아 가기" class="button blue loginbtn" onclick="location.href='/house/web/usermypage/userCounsel'">
-      		        <input type="button" value="별점 등록" class="button blue loginbtn" onclick="location.href='/house/web/usermypage/userStarScope'">
+      		        <input type="button" value="별점 등록" class="button blue loginbtn" onclick="location.href='/house/web/usermypage/userStarScope?seq=${seq}&brokername=${dto.brokername}'">
       </section>
       <footer>
       	

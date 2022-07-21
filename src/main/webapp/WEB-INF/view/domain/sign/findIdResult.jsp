@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 </head>
 <style>
@@ -142,9 +142,7 @@ section{
       	</c:if>
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
         $('.dropbtn').click(function(e) {

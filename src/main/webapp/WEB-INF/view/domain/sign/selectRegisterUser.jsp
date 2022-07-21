@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>빠른 방 찾기 빠방</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
@@ -23,6 +23,7 @@ section > h1 {
 	margin-top: 50px;
 	margin-bottom: 20px;
 	font-weight: bold;
+	color: var(--color-blue);
 
 }
 
@@ -33,8 +34,29 @@ section > h1 {
 
 }
 
+.select-register{
 
+	
+	height: 600px;
+	
+}
 
+.user-registerbox{
+
+	float: left;
+	width: 400px;
+	height: 400px;
+	margin-top: 100px;
+	
+
+}
+
+.broker{
+	
+	
+	margin-left: 300px;
+
+}
 
 .user-registerbox {
 
@@ -42,7 +64,7 @@ section > h1 {
 	width: 400px;
 	height: 400px;
 	margin-top: 60px;
-	margin-left: 250px;
+	
 	
 
 }
@@ -68,7 +90,7 @@ section > h1 {
 
 
 
-i{
+.loginbtn-box > i{
 	margin-top: 30px;
 	
 }
@@ -101,54 +123,59 @@ i{
       	<p class="register-info">회원가입을 하시면 빠방의 서비스를 이용하실 수 있습니다!</p>
       	<p class="register-info">일반 회원, 중개사 중 선택하세요.</p>
 
+      		<hr>
       
-      		<div class="user-registerbox">
+      		<div class="select-register">	
       		
-      			<div class="user-box">
+      			<div class="container">
+      			<div class="user-registerbox">
       			
-      				일반회원
+	      			<div class="user-box">
+	      			
+	      				일반회원
+	      			
+	      			</div>
+	      			
+	      			<div class="loginbtn-box">
+	      			
+	      			<i class="fa-solid fa-user fa-6x"></i>
+	      			
+	      			<!-- <form method="POST" action="/house/domain/sign/login"> -->
+	      			
+	      			<button class="button blue loginbtn" onclick="location.href='/house/domain/user/userRegister'">일반 회원 회원가입</button>
+	      			
+	      			
+	      			
+	      			<!-- </form> -->
+	      			</div>
+	      			
+	      			
+	      		
+	      		</div>
+	      		
+	      		<div class="user-registerbox broker">
+	      		
+	      			<div class="broker-box">
+	      			
+	      				중개사회원
+	      			
+	      			</div>
+	      			
+	      			<div class="loginbtn-box">
+	      			
+	      			<i class="fa-solid fa-building fa-6x"></i>
+	      			
+	      			
+	      			
+	      			<button class="button blue loginbtn" onclick="location.href='/house/domain/broker/brokerRegister'">중개사 회원 회원가입</button>
+	      			
+	      			<input type="hidden" name="check" value="broker">
+	      			
+	      			
+	      			</div>
       			
       			</div>
-      			
-      			<div class="loginbtn-box">
-      			
-      			<i class="fa-solid fa-user fa-6x"></i>
-      			
-      			<!-- <form method="POST" action="/house/domain/sign/login"> -->
-      			
-      			<button class="button blue loginbtn" onclick="location.href='/house/domain/user/userRegister'">일반 회원 회원가입</button>
-      			
-      			
-      			
-      			<!-- </form> -->
-      			</div>
-      			
-      			
-      		
       		</div>
-      		
-      		<div class="user-registerbox">
-      		
-      			<div class="broker-box">
-      			
-      				중개사회원
-      			
-      			</div>
-      			
-      			<div class="loginbtn-box">
-      			
-      			<i class="fa-solid fa-building fa-6x"></i>
-      			
-      			
-      			
-      			<button class="button blue loginbtn" onclick="location.href='/house/domain/broker/brokerRegister'">중개사 회원 회원가입</button>
-      			
-      			<input type="hidden" name="check" value="broker">
-      			
-      			
-      			</div>
-      			
-      		
       		</div>
       		
       		

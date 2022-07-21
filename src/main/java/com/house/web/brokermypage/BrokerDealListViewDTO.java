@@ -21,6 +21,7 @@ public class BrokerDealListViewDTO {
 	private String state;
 	private String brokerCheck;
 	
+	private String contractDocSeq;
 
 }
 

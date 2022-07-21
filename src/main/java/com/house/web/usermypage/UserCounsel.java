@@ -1,6 +1,7 @@
 package com.house.web.usermypage;
 
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.house.web.brokermypage.BrokerLoginInfoDAO;
-import com.house.web.brokermypage.BrokerLoginInfoDTO;
+
 
 
 

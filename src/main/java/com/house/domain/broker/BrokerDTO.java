@@ -18,13 +18,14 @@ public class BrokerDTO {
 	private String y;
 
 	private String seq;
-	private String firmName;
-	private String firmNum;
-	private String corporateNum;
-	private String firmAddress;
-	private String representName;
-	private String firmTel;
-	private String profileImg;
+	private String firmName;  //중개업소명
+	private String firmNum;   //중개등록번호
+	private String corporateNum;  //사업자등록번호
+	private String firmAddress; //중개업소주소
+	private String representName; //사업자 대표명
+	private String firmTel; //유선전화번호
+	private String filename;
+	private String orgfilename;
 
 }
 

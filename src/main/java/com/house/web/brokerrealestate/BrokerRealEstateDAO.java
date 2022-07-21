@@ -410,7 +410,7 @@ public class BrokerRealEstateDAO {
 
 		try {
 			
-			String sql = "select re.seq, re.memberid, re.realestateaddr, re.price, cr.brokercheck, cr.state, c.name, d.deposit, (select count(*) from tblWish where seq = re.seq) as wish, (select jpg from tblRealEstatepicture where seq = (select min(seq) from tblRealEstatepicture where realestateseq = re.seq) and realestateseq = re.seq) as img from tblRealEstate re left outer join tblContractRequest cr on re.seq = cr.realestateseq inner join tblContract c on re.contractseq = c.seq left outer join tblDeposit d on re.seq = d.realestateseq where re.memberid = ? order by re.seq desc";
+			String sql = "select re.seq, re.memberid, re.realestateaddr, re.price, c.name,(select state from tblContractRequest where seq = (select max(seq) from tblContractRequest where realestateseq = re.seq)) as state, d.deposit, (select count(*) from tblWish where realestateseq = re.seq) as wish, (select jpg from tblRealEstatepicture where seq = (select min(seq) from tblRealEstatepicture where realestateseq = re.seq) and realestateseq = re.seq) as img from tblRealEstate re inner join tblContract c on re.contractseq = c.seq left outer join tblDeposit d on re.seq = d.realestateseq where re.memberid = ? order by re.seq desc";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
 			
@@ -418,7 +418,7 @@ public class BrokerRealEstateDAO {
 			ArrayList<BrokerRealEstateDTO> list = new ArrayList<BrokerRealEstateDTO>();
 			while(rs.next()) {
 				BrokerRealEstateDTO dto = new BrokerRealEstateDTO();
-				if (rs.getString("state") == null) {
+				if (rs.getString("state") == null || rs.getString("state").equals("거절")) {
 					dto.setContractCheck("판매중");
 				} else if(rs.getString("state").equals("대기중")) {
 					dto.setContractCheck("계약중");

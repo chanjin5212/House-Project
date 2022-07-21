@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>빠른 방찾기 빠방</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp"%>
 
 <style>
 section{
 
-	height: 1500px;
+	height: 2000px;
 
 }
 
@@ -20,13 +20,14 @@ section > h1{
 	text-align: center;
 	font-weight: bold;
 	margin-top: 100px;
+	color: var(--color-blue);
 
 }
 
 .register-container {
 
 	width: 900px;
-	height: 1200px;
+	height: 1500px;
 	margin: 50px auto;
 	border: 1px solid rgb(245, 245, 245);
 	text-align: center;
@@ -211,10 +212,10 @@ section > h1{
 
 				<form name="form" action="/house/domain/user/userRegisterOk" method="POST"
 				
-					id="sign_up_form" onsubmit="return before_submit_check()">
-					<!-- form안의 모든 hidden타입의 input value가 true가 되어야 userRegisterOk로 넘어가야합니다. -->
+					id="sign_up_form" onsubmit="return before_submit_check()" >
+					<!-- form안의 모든 hidden타입의 input value가 true가 되어야 userRegisterOk로 넘어감. -->
 					<input type="hidden" id="email_auth_pass" value="false" />
-
+					<input type="hidden" id="id_auth_pass" value="false"/>
 
 						<p class="register-title">회원정보 입력</p>
 							<div class="label-area" id="id_check">	
@@ -370,6 +371,8 @@ section > h1{
 		const email_input = $('#email_check_tr input[name=email]');
 		const email_auth_msg = $('#email_auth_msg');
 		const email_flag = $('#email_auth_pass');
+		
+		const id_flag = $('#id_auth_pass');
 
 		//input태그에서 엔터칠시 submit 막기
 		email_input.keydown(function(event) {
@@ -405,7 +408,7 @@ section > h1{
 						
 						form.id.value="";
 						form.id.focus();
-						
+						id_flag.val('false');
 						
 					}else if((result == 1) && (idRegExp.test(id))) {
 						$("#checkId").html('사용할 수 있는 아이디입니다.');
@@ -414,7 +417,7 @@ section > h1{
 						$("#idbtn").attr('disabled', true);
 						$("#idbtn").css('background-color', 'var(--color-lightgray)');
 						$("#id").attr('readonly', true);
-						
+						id_flag.val('true');
 					}
 					
 				},
@@ -570,13 +573,31 @@ section > h1{
 		function before_submit_check() {
 			
 			
+			
+			
 			//전송시 로그인 폼 flag true시 submit됨
+			
+			if(id_flag.val()!='true'){
+				$("#checkId").html('아이디 중복확인을 완료해주세요.');
+				$("#checkId").attr('color', 'red');
+				return false;
+			}
+			
+			if(!checkPassword()){
+				return false;
+			}else if(!checkName()){
+				return false;
+			}else if(!checkSsn()){
+				return false;
+			}
+			
 			//이메일 확인
 			let check_flag = false;
 		
 			//이메일 인증이 완료되지 않았을경우
 			if (email_flag.val() != 'true') {
 				email_auth_msg.css('color', 'tomato').text('이메일 인증을 완료해주세요.');
+				return false;
 				//check_flag가 true라면 이전 인증 및 입력은 완료된 상태므로 해당 태그에 focus
 				if (check_flag == true) {
 					if($('#email_check').length == 0) {
@@ -590,13 +611,6 @@ section > h1{
 				check_flag = true;
 			}
 			
-			if(!checkPassword()){
-				return false;
-			}else if(!checkName()){
-				return false;
-			}else if(!checkSsn()){
-				return false;
-			}
 			
 			check_flag = true;
 			
@@ -621,26 +635,28 @@ section > h1{
 			let pwRegExp = /^[a-z0-9]{8,12}$/;
 			let pw = pw_input.val();
 			let pwCheck = pwCheck_input.val();
+			let id = id_input.val();
+			
 			
 			//비밀번호 유효성 검사
 			if(!pwRegExp.test(pw)){
 				
 				$("#checkPw").html('숫자 8~12자리로 입력하세요.');
 				$("#checkPw").attr('color', 'red');
-				form.pw.value="";
-				form.pw.focus();
+				
 				return false;
 			}
 			
+			
+			
 			//비밀번호와 비밀번호 확인이 다르다면
 			if(pw != pwCheck) {
-				
+			
 				$("#checkPwCheck").html('비밀번호가 일치하지 않습니다. ');
 				$("#checkPwCheck").attr('color', 'red');
-				form.pwCheck.value = "";
-				form.pwCheck.foucus();
-				return false;
 				
+				
+				return false;
 			}
 			
 			//아이디와 비밀번호가 같을 때 
@@ -648,13 +664,16 @@ section > h1{
 				
 				$("#checkPw").html('아이디와 비밀번호는 같을 수 없습니다.');
 				$("#checkPw").attr('color', 'red');
-				form.pw.value="";
-				form.pw.focus();
+				
 				return false;
 				
 			}
 			
 			//모든 유효성 검사 확인 완료되었을 때 
+			
+			
+			$("#checkPw").html('');
+			$("#checkPwCheck").html('');
 			return true;
 			
 		}
@@ -669,10 +688,13 @@ section > h1{
 			if(!nameRegExp.test(name)) {
 				$("#checkName").html('이름이 올바르지 않습니다.');
 				$("#checkName").attr('color', 'red');
-				form.name.focus();
+				
 				return false;
 			}
 			
+			
+			
+			$("#checkName").html('');
 			return true;
 			
 		}
@@ -687,7 +709,7 @@ section > h1{
 				
 				$("#checkSsn").html("잘못된 주민번호입니다.");
 				$("#checkSsn").attr('color', 'red');
-				form.ssn.focus();
+				
 				
 				
 				let indexOf = ssn.indexOf('-');
@@ -695,12 +717,14 @@ section > h1{
 					
 					$("#checkSsn").html("-(하이픈) 를 올바른 위치에 포함하여 작성하여야 합니다.");
 					$("#checkSsn").attr('color', 'red');
-					form.ssn.focus();
+					
 					return false;
 					
 				}
 				
 			}
+		 	
+		 	$("#checkSsn").html("");
 		 	return true;
 			
 			
@@ -728,62 +752,62 @@ section > h1{
 		}
 		
 			//전화번호 '-' 자동입력
-			function autoHypenTel(str) {
-			  str = str.replace(/[^0-9]/g, '');
-			  var tmp = '';
+		function autoHypenTel(str) {
+		  str = str.replace(/[^0-9]/g, '');
+		  var tmp = '';
 
-			  if (str.substring(0, 2) == 02) {
-			    // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
-			    if (str.length < 3) {
-			      return str;
-			    } else if (str.length < 6) {
-			      tmp += str.substr(0, 2);
-			      tmp += '-';
-			      tmp += str.substr(2);
-			      return tmp;
-			    } else if (str.length < 10) {
-			      tmp += str.substr(0, 2);
-			      tmp += '-';
-			      tmp += str.substr(2, 3);
-			      tmp += '-';
-			      tmp += str.substr(5);
-			      return tmp;
-			    } else {
-			      tmp += str.substr(0, 2);
-			      tmp += '-';
-			      tmp += str.substr(2, 4);
-			      tmp += '-';
-			      tmp += str.substr(6, 4);
-			      return tmp;
-			    }
-			  } else {
-			    // 핸드폰 및 다른 지역 전화번호 일 경우
-			    if (str.length < 4) {
-			      return str;
-			    } else if (str.length < 7) {
-			      tmp += str.substr(0, 3);
-			      tmp += '-';
-			      tmp += str.substr(3);
-			      return tmp;
-			    } else if (str.length < 11) {
-			      tmp += str.substr(0, 3);
-			      tmp += '-';
-			      tmp += str.substr(3, 3);
-			      tmp += '-';
-			      tmp += str.substr(6);
-			      return tmp;
-			    } else {
-			      tmp += str.substr(0, 3);
-			      tmp += '-';
-			      tmp += str.substr(3, 4);
-			      tmp += '-';
-			      tmp += str.substr(7);
-			      return tmp;
-			    }
-			  }
+		  if (str.substring(0, 2) == 02) {
+		    // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
+		    if (str.length < 3) {
+		      return str;
+		    } else if (str.length < 6) {
+		      tmp += str.substr(0, 2);
+		      tmp += '-';
+		      tmp += str.substr(2);
+		      return tmp;
+		    } else if (str.length < 10) {
+		      tmp += str.substr(0, 2);
+		      tmp += '-';
+		      tmp += str.substr(2, 3);
+		      tmp += '-';
+		      tmp += str.substr(5);
+		      return tmp;
+		    } else {
+		      tmp += str.substr(0, 2);
+		      tmp += '-';
+		      tmp += str.substr(2, 4);
+		      tmp += '-';
+		      tmp += str.substr(6, 4);
+		      return tmp;
+		    }
+		  } else {
+		    // 핸드폰 및 다른 지역 전화번호 일 경우
+		    if (str.length < 4) {
+		      return str;
+		    } else if (str.length < 7) {
+		      tmp += str.substr(0, 3);
+		      tmp += '-';
+		      tmp += str.substr(3);
+		      return tmp;
+		    } else if (str.length < 11) {
+		      tmp += str.substr(0, 3);
+		      tmp += '-';
+		      tmp += str.substr(3, 3);
+		      tmp += '-';
+		      tmp += str.substr(6);
+		      return tmp;
+		    } else {
+		      tmp += str.substr(0, 3);
+		      tmp += '-';
+		      tmp += str.substr(3, 4);
+		      tmp += '-';
+		      tmp += str.substr(7);
+		      return tmp;
+		    }
+		  }
 
-			  return str;
-			}
+		  return str;
+		}
 		
 			
 			

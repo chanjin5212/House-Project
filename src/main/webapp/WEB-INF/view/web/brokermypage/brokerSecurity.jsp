@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 #menu  a {
@@ -92,6 +92,7 @@ hr {
 #content h1{
 	/* border: 1px solid black; */
 	font-size: var(--large-font); 
+	margin-left: 100px;
 	
 }
 
@@ -149,27 +150,11 @@ hr {
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+     <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     
-    
-    
-    
-    
-    $('.dropbtn').click(function(e) {
-        if($('.dropdown-content').css('display') == 'block') {
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-            $('.dropdown-content').css('display', 'none');
-        } else if($('.dropdown-content').css('display') == 'none') {
-            $('.dropdown-content').css('display', 'block');
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-        }
-    });
+   
     </script>
 </body>
 </html>

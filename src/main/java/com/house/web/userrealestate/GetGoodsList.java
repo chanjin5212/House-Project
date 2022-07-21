@@ -2,6 +2,7 @@ package com.house.web.userrealestate;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.MulticastSocket;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -23,7 +24,7 @@ public class GetGoodsList extends HttpServlet {
 		locationDTO.setLng1(req.getParameter("lng1"));
 		locationDTO.setLat2(req.getParameter("lat2"));
 		locationDTO.setLng2(req.getParameter("lng2"));
-		//TODO 가져온 level값으로 출력되는 데이터 수 조절하려고 했으나, 더미데이터가 그리 많지 나중에 추가해보려고함
+		//TODO 가져온 level값으로 출력되는 데이터 수 조절하려고 했으나, 더미데이터가 그리 많지 나중에 추가해보려고함 사실 where절 조건만 추가하면 끝
 		locationDTO.setLevel(req.getParameter("level"));
 		
 		UserGoodsDAO dao = new UserGoodsDAO();
@@ -37,18 +38,16 @@ public class GetGoodsList extends HttpServlet {
 		if(goodsList != null) {
 			
 			String temp = "";
-			
-			/*
-			 "seq": "%s",
-			 "coordinatex": "%s",
-			 "coordinatey": "%s",
-			 */
-			
+
 			temp += "[";
 			
 			for(UserGoodsDTO dto : goodsList) {
 				temp += "{";
 				temp += String.format("\"seq\": \"%s\",", dto.getSeq());
+				temp += String.format("\"price\": %d,", dto.getPrice());
+				temp += String.format("\"deposit\": %d,", dto.getDeposit());
+				temp += String.format("\"category\": \"%s\",", dto.getCategory());
+				temp += String.format("\"type\": \"%s\",", dto.getType());
 				temp += String.format("\"coordinateX\": \"%s\",", dto.getCoordinateX());
 				temp += String.format("\"coordinateY\": \"%s\"", dto.getCoordinateY());
 				temp += "},";

@@ -35,6 +35,7 @@ section{
 	/* height: 1000px; */
 }
 
+
 #title{
 	/* border: 1px solid red; */
 	padding: 10px;
@@ -65,6 +66,11 @@ hr {
 	/* margin-top: 30px; */
 	
 }
+div#content{
+padding-top: 0px;
+
+
+}
 
 /* 메뉴 탭 디자인 */
 #menu li > div{
@@ -84,54 +90,57 @@ hr {
 	/* display: flex; */
 	height: inherit;
 	width: 1050px;
-	/*padding-left: 300px;*/
+	padding : 25px;
+	margin-bottom: 100px;
+	/* padding-left: 300px; */
 }
 
- #content table{
-	
-	margin: 0  auto;
-	margin-left: 300px;
-	
-} 
-
-#content table th {
-
-	/*padding : 25px;*/
-	padding-right: 70px;
-
-#content table td{
-	font-size: var(--small-font);
-	
-}
-
-#content table input[type=text]{
-	color: var(--color-gray);
-	padding : 5px;
-	/* color : #ccc; */
-}
-
-#content table .button.blue{
-
-	margin-left : 10px;
-	text-align: center;
-}
-
-#content::after {
-
-	content: '';
-	display: block;
-	clear: both;
-
-}
-
-#edit {
-	
+#content h1{
 	/* border: 1px solid black; */
-	margin: 10px 0 0 700px;
+	font-size: var(--large-font); 
 	
 }
 
-p.explain {
+
+
+#submitpw{
+	text-align: center;
+	width: 400px;
+	height: 56px;
+	margin-top: 30px;
+	border-radius: 0.25rem;
+	
+}
+
+#pw input {
+	width: 400px;
+	height: 56px;
+	margin-top: 30px;
+	border-radius: 0.25rem;
+}
+
+#dealList th{
+	
+	text-align: center;
+
+}
+
+#dealList td{
+	
+	text-align: center;
+
+}
+
+#searchDiv{
+	/* margin-top : 100px; */
+	margin-left: 570px;
+	margin-top: 50px;
+}
+
+#search td{
+
+}
+.explain {
 	
 	font-size: var(--small-font);
 	text-align: center;
@@ -141,30 +150,7 @@ p.explain {
 	
 
 }
-.explain {
-	
-	font-size: var(--small-font);
-	text-align: center;
-	margin-top: 100px;
-    padding: 30px;
-	height: 40px;
-	
 
-}
-form{
-
-text-align: left;
-border: 1px solid red;
-}
-.table{
-
-text-align: left;
-border: 1px solid red;
-
-}
-form.table{
-border: 1px solid red;
-}
 
 </style>
 </head>
@@ -180,7 +166,7 @@ border: 1px solid red;
       		<div id="title">요청한 계약</div>
       		
       		<p class="explain">회원님께서 요청한 계약 목록입니다.</p>
-      		<hr />
+      	
       		<div id="main">
 	      		<div id="menu">
 	      			<ul>

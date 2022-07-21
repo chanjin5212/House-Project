@@ -99,7 +99,7 @@ section > div#board > table tr > td:nth-child(1) > a:hover {
       			<button id="fir" onclick="location.href='/house/brokerrealestate/brokerRealEstateAdd'"><i class="fa-solid fa-house-circle-check fa-5x" style="font-size: 150px;"></i><br>매물등록</button>
       			<button id="sec" onclick="location.href='/house/brokerrealestate/brokerRealEstateManage'"><i class="fa-solid fa-house-circle-exclamation fa-5x" style="font-size: 150px;"></i><br>매물관리</button>
       		</div>
-      		<div><span style="font-size: var(--large-font);">후기 게시판 인기글</span></div>
+      		<div><span style="font-size: var(--large-font);">후기 게시판 인기글&nbsp&nbsp<span style="font-size: var(--min-font);">일주일 단위</span></span></div>
       		<div id="check" style="display: flex; justify-content: right;"><span><a href="/house/reviewboard/userReviewBoardView">더보기</a></span></div>
       		<div id="board">
       			<table class="table">
@@ -123,16 +123,14 @@ section > div#board > table tr > td:nth-child(1) > a:hover {
 			</div>
 
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     
     var context = document
     .getElementById('myChart')
     .getContext('2d');
-var myChart = new Chart(context, {
+	var myChart = new Chart(context, {
     type: 'bar', // 차트의 형태
     data: { // 차트에 들어갈 데이터
         labels: [

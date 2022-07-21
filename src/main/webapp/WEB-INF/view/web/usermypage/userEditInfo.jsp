@@ -172,7 +172,13 @@ text-align: center;
       		
       		<div id="title">내 정보</div>
       			
-      		<p class="explain">회원님께서 가입하신 정보입니다.</p>
+      		<p class="explain">
+      		회원님께서 가입하신 정보입니다.
+      		<br>
+      		수정하시려면 수정 후 완료 버튼을 눌러주세요.
+      		
+      		
+      		</p>
       		<hr />
       		<div id="main">
 	      		<div id="menu">

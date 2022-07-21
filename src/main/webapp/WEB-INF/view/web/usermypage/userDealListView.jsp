@@ -35,6 +35,7 @@ section{
 	/* height: 1000px; */
 }
 
+
 #title{
 	/* border: 1px solid red; */
 	padding: 10px;
@@ -55,7 +56,7 @@ hr {
 
 #main{
 	display : flex;
-	/*margin-top : 30px;*/
+	margin-top : 30px;
 
 }
 
@@ -84,59 +85,65 @@ hr {
 	/* display: flex; */
 	height: inherit;
 	width: 1050px;
-	padding-left: 300px;
-}
-
-/* #content table{
-	
-	margin: 0  auto;
-	margin-left: 300px;
-	
-} */
-
-#content table th {
-
 	padding : 25px;
-	padding-right: 70px;
+	margin-bottom: 100px;
+	/* padding-left: 300px; */
 }
 
-#content table td{
-	font-size: var(--small-font);
-	
-}
-
-#content table input[type=text]{
-	color: var(--color-gray);
-	padding : 5px;
-	/* color : #ccc; */
-}
-
-#content table .button.blue{
-
-	margin-left : 10px;
-	text-align: center;
-}
-
-#content::after {
-
-	content: '';
-	display: block;
-	clear: both;
-
-}
-
-#edit {
-	
+#content h1{
 	/* border: 1px solid black; */
-	margin: 10px 0 0 700px;
+	font-size: var(--large-font); 
+	
+}
+div#content{
+padding-top: 0px;
+
+
+}
+
+
+#submitpw{
+	text-align: center;
+	width: 400px;
+	height: 56px;
+	margin-top: 30px;
+	border-radius: 0.25rem;
 	
 }
 
+#pw input {
+	width: 400px;
+	height: 56px;
+	margin-top: 30px;
+	border-radius: 0.25rem;
+}
+
+#dealList th{
+	
+	text-align: center;
+
+}
+
+#dealList td{
+	
+	text-align: center;
+
+}
+
+#searchDiv{
+	/* margin-top : 100px; */
+	margin-left: 570px;
+	margin-top: 50px;
+}
+
+#search td{
+
+}
 .explain {
 	
 	font-size: var(--small-font);
 	text-align: center;
-	margin-top: 100px;
+	/*margin-top: 100px;*/
     padding: 30px;
 	height: 40px;
 	
@@ -158,7 +165,7 @@ hr {
       		<div id="title">거래 목록</div>
       		
       		<p class="explain">회원님께서 거래한 매물 목록입니다.</p>
-      		<hr />
+      		
       		<div id="main">
 	      		<div id="menu">
 	      			<ul>
@@ -185,19 +192,27 @@ hr {
   </thead>
   <tbody>
   
-
+ <c:forEach items="${list}" var="dto">
     <tr>
       <th scope="row">${dto.seq}</th>
       <td>
       ${dto.name}/${dto.price}
+      <!-- 매물상세보기 -->
      <!--  <a href="/house/web/usermypage/userDealListView?id=${dto.id}">${dto.name}/${dto.price}</a> 경로다시설정 -->
       </td>
       <td>${dto.realestateaddr}</td>
       <td>${dto.contractdate}</td>
       <td><input type="submit" value="계약서 보기" class="button blue loginbtn"></td>
-      <td><input type="submit" value="후기 작성" class="button blue loginbtn"></td>
+       <td><input type="button" value="후기 작성" class="button blue loginbtn" onclick="location.href='/house/reviewboard/userAdd'"></td>
+     
+
     </tr>
- <!-- foreach list만 가능 이때 사용해야하나? -->
+      </c:forEach>
+      
+      <c:if test="${dto.id==auth}">
+       <td><input type="button" value="후기 작성" class="button blue loginbtn" onclick="location.href='/house/reviewboard/userAdd'"></td>
+      </c:if>
+ <!-- 작성했다는것을 어떻게 증명? -->
     <!--  
         <tr>
       <th scope="row">1</th>

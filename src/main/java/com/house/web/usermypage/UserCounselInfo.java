@@ -37,18 +37,22 @@ import javax.servlet.http.HttpSession;
 						
 						req.setAttribute("list", list);
 
-
+	//매물번호랑 아이디 외래키
+	//realestateseq랑 memberid
+			
+			//부동산이름 출력 dto에 추가
 */
 						HttpSession session = req.getSession();		
 						
-						String id = (String) session.getAttribute("auth");
+						String seq = req.getParameter("seq");
 						
 						UserMyPageDAO dao = new UserMyPageDAO();
-						ArrayList<ContractViewDTO> list = dao.getCounselinfo(id);
+						ContractViewDTO dto = dao.getCounselinfo(seq);
 							
-					System.out.println(id);//hong2
+				//	System.out.println(id);//hong2
 						
-						req.setAttribute("list", list);
+						req.setAttribute("seq", seq);
+						req.setAttribute("dto", dto);
 				
 		
 

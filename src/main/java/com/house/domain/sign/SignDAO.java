@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import javax.servlet.http.HttpSession;
 
+import com.house.domain.broker.BrokerDTO;
 import com.house.util.DBUtil;
 
 
@@ -336,20 +337,107 @@ public class SignDAO {
 
 
 	//비밀번호 찾기 기능 > 비밀번호 변경
-	/*
-	 * public int editPw(String id, String email) {
-	 * 
-	 * try {
-	 * 
-	 * String sql = "update tblMember set pw = ? where "
-	 * 
-	 * 
-	 * } catch (Exception e) { System.out.println("SignDAO.editPw");
-	 * e.printStackTrace(); }
-	 * 
-	 * 
-	 * return 0; }
-	 */
+	public int editPw(SignDTO dto) {
+		
+		try {
+			
+			
+			String sql = "update tblMember set pw = ? where id =?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getPw());
+			pstat.setString(2, dto.getId());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("SignDAO.editPw");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return 0;
+	}
+
+
+	//중개사 > 회원가입
+	public int brokerBasicAdd(BrokerDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblMember(id, name, email, ssn, tel, address, pw, active, lv, x, y) values (?, ?, ?, ?, ?, ?, ?, '활동중', '2', ?, ?)";
+			
+			
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getId());
+			pstat.setString(2, dto.getName());
+			pstat.setString(3, dto.getEmail());
+			pstat.setString(4, dto.getSsn());
+			pstat.setString(5, dto.getTel());
+			pstat.setString(6, dto.getAddress());
+			pstat.setString(7, dto.getPw());
+			pstat.setString(8, dto.getX());
+			pstat.setString(9, dto.getY());
+			
+			
+			
+			System.out.println("기본 정보 넣음");
+			
+			return pstat.executeUpdate();
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("SignDAO.brokerAdd");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return 0;
+	}
+
+
+
+	public int brokerInfoAdd(BrokerDTO dto) {
+		
+		
+		try {
+			
+			String sql = "insert into tblBroker(seq, id, firmName, firmNum, corporateNum, firmAddress, representName, firmTel, profileImg) values (seqBroker.nextVal, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getId());
+			pstat.setString(2, dto.getFirmName());
+			pstat.setString(3, dto.getFirmNum());
+			pstat.setString(4, dto.getCorporateNum());
+			pstat.setString(5, dto.getFirmAddress());
+			pstat.setString(6, dto.getRepresentName());
+			pstat.setString(7, dto.getFirmTel());
+			pstat.setString(8, dto.getFilename());
+			
+			System.out.println("디테일 정보 넣음");
+			
+			return pstat.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			System.out.println("SignDAO.brokerInfoAdd");
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
+
 
 		
 }

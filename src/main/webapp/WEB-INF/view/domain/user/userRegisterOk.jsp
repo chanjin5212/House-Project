@@ -21,7 +21,7 @@
     
     	
 	    <c:if test="${result == 1}">
-	    
+	    alert('회원가입이 완료되었습니다.');
 		location.href = '/house/main';
 		</c:if>
 		
@@ -32,17 +32,7 @@
     
     
     
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+        
     </script>
 </body>
 </html>

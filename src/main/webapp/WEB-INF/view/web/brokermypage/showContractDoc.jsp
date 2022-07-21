@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
@@ -61,6 +61,10 @@
 		background-color: #ccc;
 	}
 	
+	.sign{
+		font-style:oblique;
+		color : blue;
+	}
 	
 </style>
 </head>
@@ -68,8 +72,18 @@
 	<main>
      <%--  <%@include file="/WEB-INF/inc/brokerHeader.jsp" %> --%>
       <section>
-      		
-      		<!-- 월세, 전세일 경우 -->
+      		<h1 style="text-align:center;">계약서 작성</h1>
+      		<hr />
+      		<%-- 계약요청 번호 : ${contractSeq }
+      		카테고리 : ${category }
+      		매물번호 : ${realestateSeq } --%>
+      		<form id="submit">
+      			<input type="hidden" name="category" value="${category }" />
+      			<input type="hidden" name="contractSeq" value="${contractSeq }" />
+      			<input type="hidden" name="realestateSeq" value="${realestateSeq }" />
+      			<input type="hidden" name="userId" value="${dto.userId }" />
+      			<input type="hidden" name="brokerId" value="${dto.brokerId }" />
+      		<!-- 매매일 경우 -->
       		<c:if test="${category == '매매' }">
       		<h2>부동산 매매 계약서</h2>
       		
@@ -82,21 +96,30 @@
       			</tr>
       			<tr>
       				<th>소재지</th>
-      				<td colspan="10">내용</td>
+      				<td colspan="10">
+      					${dto.realestateAddr }
+      				</td>
       			</tr>
       			<tr>
       				<th>토지</th>
       				<th>지목</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					${dto.toji }
+      				</td>
       				<th>면적</th>
-      				<td colspan="3" style = "text-align:justify;">내용<span >㎡</span></td>
+      				<td colspan="3" style = "text-align:justify;">429.2<span >㎡</span></td>
       			</tr>
       			<tr>
       				<th>건물</th>
       				<th>구조 용도</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					<input type="hidden" name="mainUse" value="${dto.mainUse }"/> 
+      					${dto.mainUse }
+      				</td>
       				<th>면적</th>
-      				<td colspan="3">내용 <span>㎡</span></td>
+      				<td colspan="3">
+      					${dto.gywidth }
+      				 <span>㎡</span></td>
       			</tr>
       			<tr>
       				<td colspan="10" class="gray">
@@ -106,22 +129,32 @@
       			</tr>
       			<tr>
       				<th>매매대금</th>
-      				<td colspan="10"></td>
+      				<td colspan="10">
+      					금 ${dto.price }	만원정
+      				</td>
       			</tr>
       			<tr>
       				<th>계약금</th>
-      				<td colspan="10"></td>
+      				<td colspan="10">
+      					금 ${dto.downpayment } 만원은 계약시 지불하고 영수함.
+      				</td>
       			</tr>
       			<tr>
       				<th>융자금</th>
-      				<td colspan="3"></td>
+      				<td colspan="3">
+      					금 &nbsp;${dto.loanAmount }&nbsp;만원을 승계키로 한다.
+      				</td>
       				<th>임대보증금</th>
-      				<td colspan="4"></td>
+      				<td colspan="4">
+      					총 &nbsp;${dto.rentalDeposit }&nbsp;만원을 승계키로 한다.
+      				</td>
       				
       			</tr>
       			<tr>
       				<th>잔금</th>
-      				<td colspan="10">잔금날짜</td>
+      				<td colspan="10">
+      					금 &nbsp;${dto.balance }&nbsp;만원은 &nbsp;${dto.balanceDate }&nbsp;에 지불한다.
+      				</td>
       			</tr>
       			<tr>
       				<td colspan="10" style="font-size:11px;">
@@ -150,12 +183,15 @@
       			<tr>
       				<td colspan="10" style="font-size:11px;">
       				<span class="bold">특약사항 : </span><br>
-      				 - 현 상태의 임대차 계약임.
+      				 - 현 상태의 매매 계약임.
       				</td>
       			</tr>
       			<tr>
       				<td colspan="10" style="font-size:11px;">
-      					본 계약을 증명하기 위하여 계약 당사자가 이의 없음을 확인하고 각각 서명․날인 후 임대인, 임차인 및 개업공인중개사는 각각 1통씩 보관한다.<br>                                                                                                   <span style =" display : inline-block;text-align:right; width: 95%;">2020년   05월  01일</span> 
+      					본 계약을 증명하기 위하여 계약 당사자가 이의 없음을 확인하고 각각 서명․날인 후 임대인, 임차인 및 개업공인중개사는 각각 1통씩 보관한다.<br>                                                                                                   <span style =" display : inline-block;text-align:right; width: 95%;">
+      					<!-- 계약날짜 -->
+      						계약 날짜 : &nbsp;${dto.contractDate }&nbsp;
+      					</span> 
       				</td>
       			</tr>
       			<tr>
@@ -163,74 +199,108 @@
       			</tr>
       			<tr>
       				<th>주소</th>
-      				<td colspan="6"></td>
-      				<td rowspan="4"></td>
+      				<td colspan="6">
+      					${dto.ownerAddr }
+      				</td>
+      				<td rowspan="4" class="sign">${dto.ownerName }</td>
       			</tr>
       			<tr>
       				<th>주민등록번호</th>
-      				<td  colspan="2">내용</td>
+      				<td  colspan="2">
+      					${dto.ownerSsn }
+      				</td>
       				<th>전화</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerTel }
+      				</td>
       				<th>성명</th>
-      				<td></td>
+      				<td>
+      					${dto.ownerName }
+      				</td>
       			</tr>
       			<tr>
       				<th>대리인</th>
       				<th style="width: 50px;">주소</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerDeputyAddr }
+      				</td>
       				<th>주민등록번호</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerDeputySsn }
+      				</td>
       				<th>성명</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerDeputyName }
+      				</td>
       			</tr>
       			<tr>
       				<th rowspan="4" >매수인</th>
       			</tr>
       			<tr>
       				<th>주소</th>
-      				<td colspan="6"></td>
-      				<td rowspan="4"></td>
+      				<td colspan="6">
+      					${dto.userAddr }
+      				</td>
+      				<td rowspan="4" class="sign">${dto.userName }</td>
       			</tr>
       			<tr>
       				<th>주민등록번호</th>
-      				<td  colspan="2">내용</td>
+      				<td  colspan="2">
+      					${dto.userSsn }
+      				</td>
       				<th>전화</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.userTel }
+      				</td>
       				<th>성명</th>
-      				<td></td>
+      				<td>
+      					${dto.userName }
+      				</td>
       			</tr>
       			<tr>
       				<th>대리인</th>
       				<th style="width: 50px;">주소</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.userDeputyAddr }
+      				</td>
       				<th>주민등록번호</th>
-      				<td>내용</td>
+      				<td>${dto.userDeputySsn }</td>
       				<th>성명</th>
-      				<td>내용</td>
+      				<td>${dto.userDeputyName }</td>
       			</tr>
       			<tr>
       				<th rowspan="5" >개인공인중개사</th>
       			</tr>
       			<tr>
       				<th>사무소 소재지</th>
-      				<td colspan="7"></td>
+      				<td colspan="7">
+      					${dto.brokerAddr }
+      				</td>
       			</tr>
       			<tr>
       				<th>사무소 명칭</th>
-      				<td colspan="7"></td>
+      				<td colspan="7">
+      					${dto.brokerName }
+      				</td>
       				
       			</tr>
       			<tr>
       				<th>대표</th>
-      				<td  colspan="3">내용</td>
+      				<td  colspan="3">
+      					${dto.brokerRepresentName }
+      				</td>
       				<th>서명및날인</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3" class="sign">${dto.brokerRepresentName }</td>
       			</tr>
       			<tr>
       				<th>등록번호</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					${dto.firmNum }
+      				</td>
       				<th>전화</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					${dto.brokerTel }
+      				</td>
       			</tr>
       		
       		</table>
@@ -240,6 +310,7 @@
       		</c:if> <!-- 매매계약서  -->
       		
       		
+      		<!-- 전월세 계약서 -->
       		<c:if test="${category == '전세' || category == '월세'}">
       		<h2>부동산 임대차 계약서</h2>
       		
@@ -273,29 +344,37 @@
  					<span style="font-weight: bold;">1.부동산의 표시</span>
       				</td>
       			</tr>
+      		
       			<tr>
       				<th>소재지</th>
-      				<td colspan="10">내용</td>
+      				<td colspan="10">${dto.realestateAddr }</td>
       			</tr>
       			<tr>
       				<th>토지</th>
       				<th>지목</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					${dto.toji }
+      				</td>
       				<th>면적</th>
-      				<td colspan="3" style = "text-align:justify;">내용<span >㎡</span></td>
+      				<td colspan="3" style = "text-align:justify;">429.2<span >㎡</span></td>
       			</tr>
       			<tr>
       				<th>건물</th>
       				<th>구조 용도</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					<input type="hidden" name="mainUse" value="${dto.mainUse }"/> 
+      					${dto.mainUse }
+      				</td>
       				<th>면적</th>
-      				<td colspan="3">내용 <span>㎡</span></td>
+      				<td colspan="3">
+      					${dto.gywidth }
+      				 <span>㎡</span></td>
       			</tr>
       			<tr>
       				<th>임대할부분</th>
-      				<td colspan="4">내용</td>
+      				<td colspan="4">202호 전 부분</td>
       				<th>면적</th>
-      				<td colspan="3"><span >㎡</span></td>
+      				<td colspan="3">${dto.gywidth }<span >㎡</span></td>
       			</tr>
       			<tr>
       				<td colspan="10" class="gray">
@@ -305,24 +384,41 @@
       			</tr>
       			<tr>
       				<th>보증금</th>
-      				<td colspan="10"></td>
+      				<td colspan="10">
+      					금 &nbsp;${dto.deposit }&nbsp;만원
+      				</td>
       			</tr>
       			<tr>
       				<th>계약금</th>
-      				<td colspan="10"></td>
+      				<td colspan="10">
+      					금 &nbsp;${dto.downpayment }&nbsp; 만원은 계약시 지불하고 영수함.
+      				</td>
       			</tr>
       			<tr>
       				<th>잔금</th>
-      				<td colspan="10"></td>
+      				<td colspan="10">
+      					금 &nbsp;${dto.balance }&nbsp;만원은 &nbsp;${dto.balanceDate }&nbsp;에 지불한다.
+      				</td>
       			</tr>
+      			<c:if test="${category == '월세'}">
       			<tr>
       				<th>차임</th>
-      				<td colspan="10"></td>
+      				<td colspan="10">
+      					금 &nbsp;${dto.price }&nbsp;만원 은 매월 &nbsp;${dto.borrowedMoney }&nbsp;에 입금한다.
+      				</td>
       			</tr>
+      			</c:if>
       			<tr>
       				<td colspan="10" style="font-size:11px;">
-      				제 2조 (<span class="bold">존속기간</span>) 임대인은 위 부동산을 임대차 목적대로 사용․수익할 수 있는 상태로         년       월       일까지 임차인
-   에게 인도하며, 임대차 기간은 인도일로부터         년         월        일까지(       개월)로 한다.<br>
+      				제 2조 (<span class="bold">존속기간</span>) 임대인은 위 부동산을 임대차 목적대로 사용․수익할 수 있는 상태로    ${dto.checkInDate }까지 임차인
+   에게 인도하며, 임대차 기간은 인도일로부터 '
+   <c:if test="${category == '전세'}">
+    &nbsp;${dto.charterEndDate }&nbsp; 
+   </c:if>
+   <c:if test="${category == '월세'}">
+    &nbsp;${dto.monthEndDate }&nbsp; 
+   </c:if>
+  ' 까지로 한다.<br>
 제 3조 (<span class="bold">용도변경 및 전대 등</span>) 임차인은 임대인의 동의없이 위 부동산의 용도나 구조를 변경하거나 전대․임차권 양도 또는 담보제공을
    하지 못하며 임대차 목적 이외의 용도로 사용할 수 없다.<br>
 제 4조 (<span class="bold">계약의 해지</span>) 임차인의 차임연체액이 2기의 차임액에 달하거나 제3조를 위반하였을 때 임대인은 즉시 본 계약을 해지 할 수 있다.<br>
@@ -349,7 +445,9 @@
       			</tr>
       			<tr>
       				<td colspan="10" style="font-size:11px;">
-      					본 계약을 증명하기 위하여 계약 당사자가 이의 없음을 확인하고 각각 서명․날인 후 임대인, 임차인 및 개업공인중개사는 각각 1통씩 보관한다.<br>                                                                                                   <span style =" display : inline-block;text-align:right; width: 95%;">2020년   05월  01일</span> 
+      				<!-- 계약날짜 -->
+      					본 계약을 증명하기 위하여 계약 당사자가 이의 없음을 확인하고 각각 서명․날인 후 임대인, 임차인 및 개업공인중개사는 각각 1통씩 보관한다.<br>                                                                                                   <span style =" display : inline-block;text-align:right; width: 95%;">
+      					계약 날짜 : &nbsp;${dto.contractDate }&nbsp;</span> 
       				</td>
       			</tr>
       			<tr>
@@ -357,85 +455,167 @@
       			</tr>
       			<tr>
       				<th>주소</th>
-      				<td colspan="6"></td>
-      				<td rowspan="4"></td>
+      				<td colspan="6">
+      					${dto.ownerAddr }
+      				</td>
+      				<td rowspan="4"class="sign">${dto.ownerName }</td>
       			</tr>
       			<tr>
       				<th>주민등록번호</th>
-      				<td  colspan="2">내용</td>
+      				<td  colspan="2">
+      					${dto.ownerSsn }
+      				</td>
       				<th>전화</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerTel }
+      				</td>
       				<th>성명</th>
-      				<td></td>
+      				<td>
+      					${dto.ownerName }
+      				</td>
       			</tr>
       			<tr>
       				<th>대리인</th>
       				<th style="width: 50px;">주소</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerDeputyAddr }
+      				</td>
       				<th>주민등록번호</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerDeputySsn }
+      				</td>
       				<th>성명</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.ownerDeputyName }
+      				</td>
       			</tr>
       			<tr>
       				<th rowspan="4" >임차인</th>
       			</tr>
       			<tr>
       				<th>주소</th>
-      				<td colspan="6"></td>
-      				<td rowspan="4"></td>
+      				<td colspan="6">
+      					${dto.userAddr }
+      				</td>
+      				<td rowspan="4" class="sign">${dto.userName }</td>
       			</tr>
       			<tr>
       				<th>주민등록번호</th>
-      				<td  colspan="2">내용</td>
+      				<td  colspan="2">
+      					${dto.userSsn }
+      				</td>
       				<th>전화</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.userTel }
+      				</td>
       				<th>성명</th>
-      				<td></td>
+      				<td>
+      					${dto.userName }
+      				</td>
       			</tr>
       			<tr>
       				<th>대리인</th>
       				<th style="width: 50px;">주소</th>
-      				<td>내용</td>
+      				<td>
+      					${dto.userDeputyAddr }
+      				</td>
       				<th>주민등록번호</th>
-      				<td>내용</td>
+      				<td>${dto.userDeputySsn }</td>
       				<th>성명</th>
-      				<td>내용</td>
+      				<td>${dto.userDeputyName }</td>
       			</tr>
       			<tr>
       				<th rowspan="5" >개인공인중개사</th>
       			</tr>
       			<tr>
       				<th>사무소 소재지</th>
-      				<td colspan="7"></td>
+      				<td colspan="7">
+      					${dto.brokerAddr }
+      				</td>
       			</tr>
       			<tr>
       				<th>사무소 명칭</th>
-      				<td colspan="7"></td>
+      				<td colspan="7">
+      					${dto.brokerName }
+      				</td>
       				
       			</tr>
       			<tr>
       				<th>대표</th>
-      				<td  colspan="3">내용</td>
+      				<td  colspan="3">
+      					${dto.brokerRepresentName }
+      				</td>
       				<th>서명및날인</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3" class="sign"> ${dto.brokerRepresentName } </td>
       			</tr>
       			<tr>
       				<th>등록번호</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					${dto.firmNum }
+      				</td>
       				<th>전화</th>
-      				<td colspan="3">내용</td>
+      				<td colspan="3">
+      					${dto.brokerTel }
+      				</td>
       			</tr>
       		
       		</table>
       		</c:if>
+      		</form>
+      		
+      		<table>
+      			<tr>
+      				<td id="button">
+      					<input type="button" value="닫기" class="button blue" id="closeBtn" onclick="closeBtn();" />
+      				</td>
+      			</tr>
+      		</table>
       		
       </section>
     
     </main>
     <script>
-   
-	  
+    
+    	function closeBtn(){
+    		
+    		
+    		opener.location.reload(); //부모창 새로고침
+			window.close();
+    		
+    	}
+    
+    
+   		//작성한 부분 tblContractDoc에 insert
+		    $('#write').click(function(){
+				
+		    	alert($('#submit').serialize());
+		    	
+				$.ajax({
+					type:'POST',
+					url: '/house/web/brokeralarm/brokweWriteContractOk',
+					data: $('#submit').serialize(),
+					dataType: 'json',
+					success: function(result){
+						
+						alert();
+						
+						if(result.result1 && result.result2 && result.result3){
+							$('#write').remove();
+							$('#write').html()
+							
+						}else {
+							alert('계약서 작성에 실패하였습니다. 누락된 항목이 있는지 확인하십시오.');
+						}
+						
+						
+					},
+					error : function(a,b,c){
+						console.log(a,b,c);
+						
+						alert('계약서 작성에 실패하였습니다. 누락된 항목이 있는지 확인하십시오.');
+					}
+				});
+			});
     </script>
 </body>
 </html>

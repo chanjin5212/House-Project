@@ -13,23 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 public class EditPw extends HttpServlet {
 	@Override
 	
-	//TODO POST로 받아야함... 분명 POST로 보냈는데 GET으로 인식돼서 온다. 
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
 		req.setCharacterEncoding("UTF-8");
 		
 		String id = req.getParameter("id");
-		String email = req.getParameter("email");
 		
-		
-		
+		//입력한 id값 넘어오는지 테스트용 
 		System.out.println(id);
-		System.out.println(email);
-		
 		
 		req.setAttribute("id", id);
-		req.setAttribute("email", email);
+		
 		
 		
 		RequestDispatcher dispather = req.getRequestDispatcher("/WEB-INF/view/domain/sign/editPw.jsp");

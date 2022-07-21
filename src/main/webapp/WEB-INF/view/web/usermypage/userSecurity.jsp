@@ -65,6 +65,12 @@ hr {
 	/* margin-top: 30px; */
 	
 }
+div#content{
+padding-left: 300px;
+padding-right:300px;
+
+}
+
 
 /* 메뉴 탭 디자인 */
 #menu li > div{
@@ -91,7 +97,7 @@ hr {
 #content h1{
 	/* border: 1px solid black; */
 	font-size: var(--large-font); 
-	
+	text-align: center;
 }
 
 
@@ -167,8 +173,7 @@ p.explain {
     </main>
     <script>
     
-    
-		
+
 		
     
     

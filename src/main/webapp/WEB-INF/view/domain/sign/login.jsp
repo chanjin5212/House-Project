@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
@@ -21,7 +21,7 @@ section > h1{
 	text-align: center;
 	font-weight: bold;
 	margin-top: 100px;
-
+	color: var(--color-blue);
 }
 
 
@@ -146,6 +146,7 @@ form {
 			
 			<c:if test="${lv=='2'}">
 				<h1>중개사 회원</h1>
+				<p style="text-align: center; margin-top: 20px;">중개사 계정으로 로그인하시면, 빠방 중개사 페이지로 이동합니다!</p>
 			</c:if>
 			
       		<div class="login">
@@ -204,9 +205,7 @@ form {
       		
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
         $('.dropbtn').click(function(e) {

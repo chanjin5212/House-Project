@@ -115,9 +115,7 @@ section > div.list > div {
       		
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     
