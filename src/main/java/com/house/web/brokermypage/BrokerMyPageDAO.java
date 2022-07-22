@@ -130,7 +130,7 @@ public class BrokerMyPageDAO {
 	}
 
 	//거래목록 가져오기
-	public ArrayList<BrokerDealListViewDTO> getDealList(String id) {
+	public ArrayList<BrokerDealListViewDTO> getDealList(HashMap<String, String> map) {
 		
 		try {
 			
@@ -141,11 +141,13 @@ public class BrokerMyPageDAO {
 			
 			
 			//검색어 없을 때(기본값)
-			sql = "select * from vwBrokerContractDoneList where brokerid=? and state='완료' order by contractdate desc";
+			sql = "select * from (select a.*, rownum as rnum from (select * from vwBrokerContractDoneList where brokerid = ? and state='완료' order by contractDate desc) a) where rnum between ? and ?";
 			
 			pstat = conn.prepareStatement(sql);
 			
-			pstat.setString(1, id);
+			pstat.setString(1, map.get("id"));
+			pstat.setString(2, map.get("begin"));
+			pstat.setString(3, map.get("end"));
 			
 			
 			
@@ -181,7 +183,7 @@ public class BrokerMyPageDAO {
 				dto.setRealestateAddr(rs.getString("realestateAddr"));
 				dto.setDeposit(rs.getString("deposit"));
 				dto.setPrice(rs.getString("price"));
-				dto.setBrokerId(id);
+				dto.setBrokerId(map.get("id"));
 				dto.setReviewSeq(rs.getString("reviewSeq"));
 				
 				list.add(dto);
@@ -264,7 +266,7 @@ public class BrokerMyPageDAO {
 				//왜인지 모르겠지만 갑자기 2022-07-13 00:00:00 이렇게 나와서 날짜만 나오게substring..
 				//System.out.println(rs.getString("contractDate").substring(0,10));
 				
-				dto.setContractSeq(rs.getString("contractSeq"));
+				dto.setContractDocSeq(rs.getString("contractDocSeq"));
 				dto.setRealEstateSeq(rs.getString("realEstateSeq"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setContractCategory(rs.getString("contractCategory"));
@@ -290,15 +292,18 @@ public class BrokerMyPageDAO {
 		return null;
 	}
 
-	public ArrayList<BrokerCounselDTO> getCousel(String id) {
+	public ArrayList<BrokerCounselDTO> getCousel(HashMap<String, String> map) {
 		
 		try {
 			
-			String sql = "select * from vwcousellist where brokerid=? order by writedate desc";
+			String sql = "select * from (select a.*, rownum as rnum from vwcousellist a where brokerid=?) where rnum between ? and ? order by writedate desc";
+			//String sql = "select * from vwcousellist where brokerid=? order by writedate desc";
 			
 			pstat = conn.prepareStatement(sql);
 			
-			pstat.setString(1, id);
+			pstat.setString(1, map.get("id"));
+			pstat.setString(2, map.get("begin"));
+			pstat.setString(3, map.get("end"));
 			
 			
 			rs = pstat.executeQuery();
@@ -437,13 +442,13 @@ public class BrokerMyPageDAO {
 //		
 		
 		
-		sql = "select * from (select a.*, rownum as rnum from vwBrokerContractList a) where rnum between ? and ? and brokerid=? order by contractseq desc";
+		sql = "select * from (select a.*, rownum as rnum from (select * from vwBrokerContractList where brokerid = ? order by contractSeq desc) a) where rnum between ? and ?";
 		
 		pstat = conn.prepareStatement(sql);
 		
-		pstat.setString(1, map.get("begin"));
-		pstat.setString(2, map.get("end"));
-		pstat.setString(3, map.get("id"));
+		pstat.setString(1, map.get("id"));
+		pstat.setString(2, map.get("begin"));
+		pstat.setString(3, map.get("end"));
 		
 		
 		
@@ -1028,6 +1033,54 @@ public class BrokerMyPageDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public int getDealListCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from vwBrokerContractDoneList where brokerid = ? and state='완료'";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, map.get("id"));
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BrokerMyPageDAO.getDealListCount");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int getCountCounsel(HashMap<String, String> map) {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from vwcousellist where brokerid= ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, map.get("id"));
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BrokerMyPageDAO.getDealListCount");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 
 }

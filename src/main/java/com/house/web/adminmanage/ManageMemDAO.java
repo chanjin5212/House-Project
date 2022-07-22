@@ -25,8 +25,7 @@ public class ManageMemDAO {
 
 		try {
 
-			String sql = "SELECT * FROM (SELECT ROWNUM RN, a.* FROM (SELECT * FROM tblmember ORDER BY seq desc) A)\r\n"
-					+ "WHERE RN > ? AND RN <= ?;";
+			String sql = "SELECT * FROM (SELECT ROWNUM RN, a.* FROM (SELECT * FROM tblmember) A) WHERE RN > ? AND RN <= ?";
 
 			pstat = conn.prepareStatement(sql);
 			int amount=0;

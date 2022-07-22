@@ -68,7 +68,7 @@ public class SendEmailAuth extends HttpServlet {
 			//받는 사람
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 			//메일 제목
-			msg.setSubject("회원가입 메일인증", "UTF-8");
+			msg.setSubject("빠방 메일인증 서비스입니다.", "UTF-8");
 			//메일 내용
 			msg.setText("인증 번호 : " + key);
 			//메시지 전송

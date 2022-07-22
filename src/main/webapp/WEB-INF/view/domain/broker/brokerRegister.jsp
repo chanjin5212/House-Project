@@ -154,6 +154,11 @@ section>h1 {
 	margin-left : 15px;
 	margin-right : 15px;
 }
+
+#image_container > img {
+	width: 100px;
+	height: 100px;
+}
 </style>
 
 
@@ -206,6 +211,7 @@ section>h1 {
 						type="hidden" id="id_auth_pass" value="false" />
 					
 					<p class="register-title">중개사무소 정보 입력</p>
+					<div>국가공간정보포털의 부동산중개업 정보에 등록된 대표 공인중개사만 회원가입이 가능합니다.</div>
 					
 					<div class="label-area">
 
@@ -214,17 +220,19 @@ section>h1 {
 
 						<div class="line id-line">
 							<input type="text" name="firmName" id="firmName" class="form-control id"
-								placeholder="중개업소명 입력" required> <input type="button"
+								placeholder="중개업소명 입력" value="${dto.firmName}" required> <input type="button"
 								id="brokerbtn" value="중개업소명 조회" class="fill-button gray idcheck">
 							
 
 						</div>
 						<p class="explanation"></p>
-
+						
+						
+						<p id="result"></p>
 
 					</div>
 					
-					
+				
 					<div class="label-area">
 
 
@@ -232,7 +240,7 @@ section>h1 {
 
 						<div class="line id-line">
 							<input type="text" name="firmNum" id="firmNum" class="form-control id"
-								placeholder="중개등록번호 입력" required> 
+								placeholder="중개등록번호 입력" value="${dto.firmNum}" required> 
 							
 						</div>
 						<p class="explanation"></p>
@@ -243,11 +251,11 @@ section>h1 {
 					<div class="label-area">
 
 
-						<span class="label-text">중개업소주소</span>
+						<span class="label-text">중개업소 주소</span>
 
 						<div class="line id-line">
 							<input type="text" name="firmAddress" id="firmAddress" class="form-control id"
-								placeholder="중개업소주소 입력" required> 
+								placeholder="중개업소주소 입력" value="${dto.firmAddress}" required> 
 							
 						</div>
 						<p class="explanation"></p>
@@ -262,7 +270,7 @@ section>h1 {
 
 						<div class="line id-line">
 							<input type="text" name="representName" id="representName" class="form-control id"
-								placeholder="사업자 대표명 입력" required> 
+								placeholder="사업자 대표명 입력" value="${dto.representName}" required> 
 							
 						</div>
 						<p class="explanation"></p>
@@ -278,7 +286,7 @@ section>h1 {
 						<div class="line id-line">
 							<input type="text" name="firmTel" id="firmTel" class="form-control id"
 								pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}"
-								maxlength="13"
+								maxlength="12"
 								placeholder="유선전화번호 입력" required> 
 							
 						</div>
@@ -1030,9 +1038,26 @@ section>h1 {
 	       }
 	    
 	       let no = 2;
+	       
+	       
+	       $(document).ready(function() {
+	    	   
+	    	   
+	    	   $("#brokerbtn").click(function(){
+	    		   
+			    	  window.open("/house/domain/broker/brokerSearch", "중개사무소 조회",  "location=no, scrollbars=yes, top=400px, left=100px, width= 500px, height= 600px");
+			    	   
+			    	   
+			       })
+	    	   })
+	    	   
+	    	   
+	    	   
+	      
+	       
+	       
+	       
 
-		
-		
 	</script>
 
 </body>

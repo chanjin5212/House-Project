@@ -21,7 +21,7 @@
     	
     	
 	    <c:if test="${not empty adminAuth}">
-		location.href = '#'; 
+		location.href = '/house/adminmain/adminMain'; 
 		</c:if>
     	
 		<c:if test="${empty adminAuth}">

@@ -176,7 +176,7 @@ li {
 
 .broker_info_list > div > p.re_title {
 	margin-bottom: 8px;
-	width: 84px;
+	width: 100%;
 	font-weight: 700;
 }
 

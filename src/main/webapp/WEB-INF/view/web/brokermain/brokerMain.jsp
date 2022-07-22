@@ -142,7 +142,7 @@ section > div#board > table tr > td:nth-child(1) > a:hover {
                 label: '전체 거래량', //차트 제목
                 fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                 data: [ 
-                    ${dto.sales},${dto.jeonse},${dto.monthly},50 //x축 label에 대응되는 데이터 값
+                	102, 150, 170,50 //x축 label에 대응되는 데이터 값
                 ],
                 backgroundColor: [
                     //색상
@@ -188,19 +188,7 @@ section > div#board > table tr > td:nth-child(1) > a:hover {
     }
 });
    
-    
-    
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+
     </script>
 </body>
 </html>

@@ -180,7 +180,6 @@ padding-top: 0px;
 
 	      		
 	      		<div id="content">
-	      			<form action="">
 	      			<table class="table">
   <thead>
     <tr>
@@ -194,16 +193,18 @@ padding-top: 0px;
   
  <c:forEach items="${list}" var="dto">
     <tr>
-      <th scope="row">${dto.seq}</th>
-      <td>
-      ${dto.name}/${dto.price}
-      <!-- 매물상세보기 -->
-     <!--  <a href="/house/web/usermypage/userDealListView?id=${dto.id}">${dto.name}/${dto.price}</a> 경로다시설정 -->
-      </td>
-      <td>${dto.realestateaddr}</td>
-      <td>${dto.contractdate}</td>
+
+      <td>${dto.contractSeq }</td>
+	      					<td>${dto.contractCategory}  
+	      						<c:if test="${not empty dto.deposit }">
+	      						${dto.deposit } /
+	      						</c:if>
+	      						${dto.price}
+	      					</td>
+	      					<td>${dto.contractCategory }</td>
+	      					<td>${dto.realestateAddr }</td>
+	      					<td>${dto.contractDate }</td>
       <td><input type="submit" value="계약서 보기" class="button blue loginbtn"></td>
-       <td><input type="button" value="후기 작성" class="button blue loginbtn" onclick="location.href='/house/reviewboard/userAdd'"></td>
      
 
     </tr>
@@ -212,29 +213,15 @@ padding-top: 0px;
       <c:if test="${dto.id==auth}">
        <td><input type="button" value="후기 작성" class="button blue loginbtn" onclick="location.href='/house/reviewboard/userAdd'"></td>
       </c:if>
- <!-- 작성했다는것을 어떻게 증명? -->
-    <!--  
-        <tr>
-      <th scope="row">1</th>
-      <td>월세 500/40  </td>
-      <td>서울시 강남구 역삼동 ~~ </td>
-      <td> 2022-07- 13 </td>
-      <td><input type="submit" value="계약서 보기" class="button blue loginbtn"></td>
-      <td><input type="submit" value="후기 작성" class="button blue loginbtn"></td>
-    </tr>
-    -->
   </tbody>
 </table>
                      
 	      	
-	      			</form>
 	      		</div>
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+ <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     $('.dropbtn').click(function(e) {

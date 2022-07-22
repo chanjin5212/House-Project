@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <link rel="stylesheet" href="/house/asset/css/user/submitform/frame.css" />
 <style>
@@ -14,7 +14,8 @@
 	#form {
 		height: 100%;
 		width: 100%;
-	}
+	}	
+	
 	.counsle_table {
 		padding: 50px;
 	}

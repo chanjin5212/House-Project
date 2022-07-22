@@ -200,9 +200,10 @@ padding-top: 0px;
       <th scope="row">${dto.seq}</th>
       <td>${dto.name}/${dto.price}</td>
       <td>${dto.realestateaddr}</td>
-      <td>${dto.moveindate}</td>
+      <td>${dto.checkinddate}</td>
         <td>${dto.state}</td>
-          <td>${dto.state}</td>
+          <td>${dto.brokercheck}</td>
+       
     </tr>
      </c:forEach>
   <!-- 
@@ -229,9 +230,7 @@ padding-top: 0px;
 			
 		
       </section>
-      <footer>
-      	
-      </footer>
+<%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     $('.dropbtn').click(function(e) {
@@ -246,5 +245,7 @@ padding-top: 0px;
         }
     });
     </script>
+    
+
 </body>
 </html>

@@ -214,22 +214,10 @@ padding-top: 0px;
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+<%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
-    $('.dropbtn').click(function(e) {
-        if($('.dropdown-content').css('display') == 'block') {
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-            $('.dropdown-content').css('display', 'none');
-        } else if($('.dropdown-content').css('display') == 'none') {
-            $('.dropdown-content').css('display', 'block');
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-        }
-    });
+
     </script>
 </body>
 </html>

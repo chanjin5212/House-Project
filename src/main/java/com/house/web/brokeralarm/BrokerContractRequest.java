@@ -167,10 +167,14 @@ public class BrokerContractRequest extends HttpServlet {
 		
 		req.setAttribute("couselCount", couselCount);
 		req.setAttribute("list", list);
+		
 		req.setAttribute("countNew", countNew);
+		
+		req.setAttribute("map", map);
 		req.setAttribute("totalPage", totalPage);
 		req.setAttribute("pagebar", pagebar);
-		req.setAttribute("map", map);
+		
+		
 		
 		
 		

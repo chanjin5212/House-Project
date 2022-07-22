@@ -38,10 +38,7 @@ div#info {
 	text-decoration-color: #e2e2e2;
 }
 
-.tn {
-	text-decoration: none;
-	color: black;
-}
+
 </style>
 </head>
 <body
@@ -49,6 +46,7 @@ div#info {
 	<img src="/house/asset/images/adminlogo.png"
 		style="width: 190px; height: 90px; margin: 14px; padding: 10px;"
 		onclick="location.href='/house/adminmain/adminMain';" />
+		<button class="button blue" style="float: right; margin-top: 20px;" onclick="location.href='/house/domain/admin/adminLogout'">로그아웃</button>
 	<div id="content">
 		<div id="admin-box-wrapper">
 			<div class="admin-box">
@@ -71,7 +69,7 @@ div#info {
                     </svg>회원 관리
 				</a> <br> <br>
 				<div>
-					<a class="tn" href="../adminmanage/manage">일반회원&nbsp;&nbsp;<svg
+					<a class="tn" style = "color:black;" href="../adminmanage/manage">일반회원&nbsp;&nbsp;<svg
 							style="width: 20px; height: 20px;"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path
@@ -80,7 +78,7 @@ div#info {
 				</div>
 				<br>
 				<div>
-					<a class="tn" href="../adminmanage/manageBroker">중개사&nbsp;&nbsp;<svg
+					<a class="tn" style = "color:black;" href="../adminmanage/manageBroker">중개사&nbsp;&nbsp;<svg
 							style="width: 20px; height: 20px;"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path
@@ -90,10 +88,10 @@ div#info {
 				</div>
 			</div>
 		</div>
-		<div id="info">오늘 방문자 : &nbsp;&nbsp;100명
+		<div id="info">오늘 방문자 : &nbsp;&nbsp;5명
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘
 			가입자:
-			&nbsp;&nbsp;30명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;1명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			총 회원수 :&nbsp;&nbsp; ${cnt} 명</div>
 	</div>
 

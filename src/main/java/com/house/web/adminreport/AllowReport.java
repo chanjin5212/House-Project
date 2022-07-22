@@ -1,5 +1,4 @@
 package com.house.web.adminreport;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +18,15 @@ public class AllowReport extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		
-
+		ReportDAO reportDAO = new ReportDAO();
+		ReportDTO report = new ReportDTO();
+		
+		int num = Integer.parseInt(req.getParameter("num"));
+		report = reportDAO.getDetail(num);
+		
+		req.setAttribute("report",report);
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/web/adminreport/allowReport.jsp");
 		dispatcher.forward(req, resp);
 	}

@@ -23,7 +23,7 @@ public class UserAlarmDAO {
 
 		try {
 			
-			String sql = "select cr.seq, cr.id, cr.state, cr.brokercheck, re.seq as reseq, re.realestateaddr, re.price, d.deposit, c.name from tblContractRequest cr inner join tblrealestate re on cr.realestateseq = re.seq inner join tblContract c on re.contractseq = c.seq left outer join tblDeposit d on d.realestateseq = re.seq where cr.id = ? order by seq desc";
+			String sql = "select cr.seq, cr.id, cr.state, cr.brokercheck ,re.seq as reseq, re.realestateaddr, re.price, d.deposit, c.name from tblContractRequest cr inner join tblrealestate re on cr.realestateseq = re.seq inner join tblContract c on re.contractseq = c.seq left outer join tblDeposit d on d.realestateseq = re.seq where cr.id = ? order by seq desc";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
 			rs = pstat.executeQuery();
@@ -34,7 +34,8 @@ public class UserAlarmDAO {
 				UserAlarmDTO dto = new UserAlarmDTO();
 				dto.setSeq(rs.getString("seq"));
 				dto.setId(rs.getString("id"));
-				if (rs.getString("state").equals("완료") || rs.getString("brokercheck").equals("대기중")) continue;
+				if (rs.getString("state").equals("완료")) continue;
+				if (rs.getString("brokercheck").equals("대기중")) continue;
 				dto.setState(rs.getString("state"));
 				dto.setAddress(rs.getString("realestateaddr"));
 				dto.setReseq(rs.getString("reseq"));

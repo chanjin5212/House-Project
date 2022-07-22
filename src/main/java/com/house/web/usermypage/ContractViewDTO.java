@@ -22,9 +22,16 @@ public class ContractViewDTO {
 	private String counselseq;
 	private String star;
 	private String brokername;
+	private String reseq;
+	
+	private String checkinddate;
+	private String brokercheck;
 	
 	private String deposit;
 	private String cnt;
+	
+
+
 	
 
 }

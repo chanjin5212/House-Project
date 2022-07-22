@@ -23,7 +23,7 @@ public class UserZzimListDAO {
 
 		try {
 			
-			String sql = "select w.seq, w.id, re.realestateaddr, re.coordinatex, re.coordinatey, re.seq as reseq, re.price, d.deposit, c.name, (select jpg from tblRealEstatepicture where seq = (select min(seq) from tblRealEstatepicture where realestateseq = re.seq) and realestateseq = re.seq) as img from tblWish w inner join tblRealEstate re on w.realestateseq = re.seq inner join tblContract c on c.seq = re.contractseq left outer join tblDeposit d on re.seq = d.realestateseq where w.id = ? order by seq desc";
+			String sql = "select w.seq, w.id, re.dealstate, re.realestateaddr, re.coordinatex, re.coordinatey, re.seq as reseq, re.price, d.deposit, c.name, (select jpg from tblRealEstatepicture where seq = (select min(seq) from tblRealEstatepicture where realestateseq = re.seq) and realestateseq = re.seq) as img from tblWish w inner join tblRealEstate re on w.realestateseq = re.seq inner join tblContract c on c.seq = re.contractseq left outer join tblDeposit d on re.seq = d.realestateseq where w.id = ? order by seq desc";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
 			
@@ -31,6 +31,7 @@ public class UserZzimListDAO {
 			ArrayList<UserZzimListDTO> list = new ArrayList<UserZzimListDTO>();
 			while(rs.next()) {
 				UserZzimListDTO dto = new UserZzimListDTO();
+				if(rs.getString("dealstate").equals("거래완료")) continue;
 				dto.setReSeq(rs.getString("reseq"));
 				dto.setSeq(rs.getString("seq"));
 				dto.setRealEstateAddr(rs.getString("realestateaddr"));

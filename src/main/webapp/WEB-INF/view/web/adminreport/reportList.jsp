@@ -146,7 +146,7 @@ div.table {
 	</div>
 	<div class="top">허위 매물 관리</div>
 	<div class="g-wrapper">
-		<a href="ReportListNew" style="text-decoration: none; color: black">
+		<a href="reportListNew" style="text-decoration: none; color: black">
 			<div class="ngen">신규</div>
 		</a>
 		<div class="gen">전체 신고내역</div>
@@ -163,11 +163,11 @@ div.table {
 		</tr>
 		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td>&{dto.seq}</td>
-				<td>&{dto.name}</td>
-				<td>&{dto.id}</td>
-				<td>&{dto.ssn}</td>
-				<td>&{dto.email}</td>
+				<td>${dto.seq}</td>
+				<td>${dto.buildingtype}</td>
+				<td><a href="allowReport?seq=${dto.getSeq}">${dto.addr}</a>></td>
+				<td>${dto.id}</td>
+				<td>${dto.state}</td>
 
 			</tr>
 		</c:forEach>

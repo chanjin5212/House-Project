@@ -120,7 +120,7 @@ padding-right:300px;
 p.explain {
 	
 	font-size: var(--small-font);
-	/*text-align: center;*/
+/*text-align: center;*/
 	/*margin-top: 100px;*/
     padding: 30px;
 	height: 40px;
@@ -128,7 +128,12 @@ p.explain {
 
 }
 
-
+h1{
+text-align: center;
+}
+#content h1{
+padding-right:100px;
+}
 
 </style>
 </head>
@@ -158,7 +163,7 @@ p.explain {
 	      		
 	      		<div id="content">
 	      		<form method="POST" action="/house/web/usermypage/userSecurityOk">
-	      			<div><h1>비밀번호 입력</h1></div>
+	      			    <div><h1>비밀번호 입력</h1></div>
 	      				<p class="explain">비밀번호를 입력해주세요.</p>
 	      			<div id="pw"><input type="password" class="form-control" name="pw" placeholder="비밀번호"/></div>
 	      			<div ><input type="submit" value="완료" class="button blue" id="submitpw" /></div>
@@ -167,9 +172,7 @@ p.explain {
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+<%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     

@@ -161,10 +161,11 @@ hr {
 	      			</ul>
 	      		</div>
 	      		
+	      		<%-- ${avg } --%>
 	      		<div id="content">
 	      			<%-- ${list } --%>
-	      			<c:if test="${not empty list }">
-	      			<div style="margin-left: 350px;">회원님의 상담 후기 평점 : <span style="color: var(--color-green);">${avg }</span></div>
+	      			<c:if test="${not empty list and avg != 'NaN'}">
+	      			<div style="margin-left: 350px; font-size: 20px;">회원님의 상담 후기 평점  <span style="color: var(--color-green);">★ ${avg }</span></div>
 	      			</c:if>
 	      			<div id="count">총 <span style="color:#8fd0f8;">${list.size() }</span>개의 상담내역이 존재합니다.</div>
 	      			<table class="table table" id="dealList">
@@ -195,15 +196,24 @@ hr {
 		      					<td>${list.memberId}
 		      					</td>
 		      					<td>${list.writeDate }</td>
+		      					<c:if test="${list.state == '처리중' }">
+		      					<td style="color:var(--color-green)">처리전</td>
+		      					</c:if>
+		      					<c:if test="${list.state == '처리완료' }">
 		      					<td>${list.state }</td>
+		      					</c:if>
 		      					<td>${list.completedate }</td>
 		      					<td>
 		      					
 					      			<!-- 상담 상세페이지 띄울때 보낼 데이터 -->
 					      			<form name="popForm" method ="POST" action="/house/web/brokermypage/showCounsel" target="popwin" id="popForm">
 									    <input type="hidden" name="seq" id="seq" />
-							
+										<c:if test="${list.state == '처리중' }">
+		      							<input type="button" class="button blue" value="처리하기" id="counselseq" onclick="showCounsel('${list.seq}');"/>
+										</c:if>
+										<c:if test="${list.state == '처리완료' }">
 		      							<input type="button" class="button blue" value="상세보기" id="counselseq" onclick="showCounsel('${list.seq}');"/>
+										</c:if>
 									</form>
 		      					</td>
 		      					<c:if test = "${not empty list.reviewSeq }">
@@ -215,7 +225,7 @@ hr {
 		      				</c:forEach>
 	      				
 	      			</table>
-	      			
+	      			<div style="margin-left:450px; margin-top: 60px; ">${pagebar }</div>
 
 
 	      			
@@ -254,7 +264,7 @@ hr {
    function showCounsel(seq){
 	  	
 	   //alert();
-		    window.open('/house/web/brokermypage/showConusel','popwin','width=700,height=550');
+		    window.open('/house/web/brokermypage/showConusel','popwin','width=600,height=550');
 		   $('#seq').val(seq); 
 		   /* $('#category').val(category); */ 
 		  

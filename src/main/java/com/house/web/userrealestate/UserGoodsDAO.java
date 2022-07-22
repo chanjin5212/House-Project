@@ -251,6 +251,65 @@ public class UserGoodsDAO {
 		
 		return null;
 	}
+
+
+	public SidebarGoodsDTO getGoodsList(SidebarGoodsDTO sidebarGoodsDTO) {
+		
+		try {
+			//이미지 먼저 얻어오기
+			String sql = "select jpg as img from tblrealestatepicture where realestateseq = ? and rownum=1";
+			conn = DBUtil.open();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sidebarGoodsDTO.getRealEstateSeq());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sidebarGoodsDTO.setImg(rs.getString("img"));
+				pstmt.close();
+				//TODO view로 만들기
+				String sql2 = "select rs.coordinatex as coordinatex,"
+						+ " rs.coordinatey as coordinatey, rs.introduce as introduce,"
+						+ " rs.price as price, rs.realestateaddr as realestateaddr,"
+						+ " ct.name as contractType, bt.name as buildingType,"
+						+ " st.thefloor as thefloor, st.buildingfloor as buildingfloor,"
+						+ " st.supplyarea, dp.deposit as deposit"
+						+ " from tblrealestate rs"
+						+ " inner join tblcontract ct on ct.seq = rs.contractseq"
+						+ " left join tbldeposit dp on dp.realestateseq = rs.seq"
+						+ " inner join tblbuildingtype bt on bt.seq = rs.buildingtypeseq"
+						+ " inner join tblstructure st on st.realestateseq = rs.seq"
+						+ " where rs.seq = ?";
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, sidebarGoodsDTO.getRealEstateSeq());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					sidebarGoodsDTO.setCoordinateX(rs.getString("coordinatex"));
+					sidebarGoodsDTO.setCoordinateY(rs.getString("coordinatey"));
+					sidebarGoodsDTO.setIntroduce(rs.getString("introduce"));
+					sidebarGoodsDTO.setPrice(rs.getString("price"));
+					sidebarGoodsDTO.setAddress(rs.getString("realestateaddr"));
+					sidebarGoodsDTO.setContractType(rs.getString("contractType"));
+					sidebarGoodsDTO.setBuildingType(rs.getString("buildingType"));
+					sidebarGoodsDTO.setTheFloor(rs.getString("thefloor"));
+					sidebarGoodsDTO.setBuldingFloor(rs.getString("buildingfloor"));
+					sidebarGoodsDTO.setSupplyArea(rs.getString("supplyarea"));
+					sidebarGoodsDTO.setDeposit(rs.getString("deposit"));
+					
+					return sidebarGoodsDTO;
+				}
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {if(conn != null) conn.close();} catch (Exception e) {e.printStackTrace();}
+			try {if(pstmt != null) pstmt.close();} catch (Exception e) {e.printStackTrace();}
+			try {if(stmt != null) stmt.close();} catch (Exception e) {e.printStackTrace();}
+			try {if(rs != null) rs.close();} catch (Exception e) {e.printStackTrace();}
+		}
+		
+		return null;
+	}
 	
 	
 	

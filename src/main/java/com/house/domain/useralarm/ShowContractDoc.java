@@ -44,7 +44,6 @@ public class ShowContractDoc extends HttpServlet {
 		String deputyAddress = req.getParameter("deputyAddress");
 		String deputySsn = req.getParameter("deputySsn");
 		String deputyName = req.getParameter("deputyName");
-		String reseq = req.getParameter("reseq");
 		
 		UserAlarmDAO dao = new UserAlarmDAO();
 		UserAlarmDTO dto = new UserAlarmDTO();
@@ -53,8 +52,6 @@ public class ShowContractDoc extends HttpServlet {
 		dto.setDeputyAddress(deputyAddress);
 		dto.setDeputySsn(deputySsn);
 		dto.setDeputyName(deputyName);
-		dto.setReseq(reseq);
-		
 		
 		ArrayList<String> getInfo = dao.getSeq();
 		

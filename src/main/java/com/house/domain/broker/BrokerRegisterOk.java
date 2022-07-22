@@ -1,8 +1,8 @@
 package com.house.domain.broker;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +20,7 @@ public class BrokerRegisterOk extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		
-		String path = req.getRealPath("/files/broker");
+		String path = req.getRealPath("/files");
 		int size = 1024 * 1024 * 100;
 		
 		System.out.println(path);
@@ -109,28 +109,10 @@ public class BrokerRegisterOk extends HttpServlet {
 		req.setAttribute("result", result);
 		
 		
-		PrintWriter out = resp.getWriter(); 
 		
-		if (result == 1) {
+		RequestDispatcher dispather = req.getRequestDispatcher("/WEB-INF/view/domain/broker/brokerRegisterOk.jsp");
 
-			resp.setContentType("out/html; charset=UTF-8"); 
-			out.println("<script>alert('회원가입에 성공하였습니다.'); location.href='/house/main';</script>"); 
-			out.flush(); 
-		} else {
-  
-  
-			resp.setContentType("out/html; charset=UTF-8"); 
-			out.println("<script>alert('회원가입에 실패하였습니다.'); location.href='history.back()';</script>"); 
-			out.flush();
-  
-		}
-		 
-		
-		
-		
-//		RequestDispatcher dispather = req.getRequestDispatcher("/WEB-INF/view/domain/broker/brokerRegisterOk.jsp");
-//
-//		dispather.forward(req, resp);
+		dispather.forward(req, resp);
 
 	}
 }

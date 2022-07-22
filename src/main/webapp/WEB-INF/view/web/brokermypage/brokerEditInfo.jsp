@@ -197,10 +197,10 @@ section{
 	      					</td>
 
 	      				</tr>
-	      				<tr>
+	      				<!-- <tr>
 	      					<th>중개사</th>
 	      					<td><span>조은부동산</span><input type="button" value="중개사 찾기" class="button blue"/></td>
-	      				</tr>
+	      				</tr> -->
 	      			</table>
 	      			<div id="edit"><input type="button" value="수정" class="button blue" id="editbtn"/></div>
 	      			</form>

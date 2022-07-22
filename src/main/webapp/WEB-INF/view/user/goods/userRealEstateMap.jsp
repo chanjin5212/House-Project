@@ -9,19 +9,26 @@
 <%@include file="/WEB-INF/inc/asset.jsp"%>
 <link rel="stylesheet" href="/house/asset/css/user/realEstateMap/frame.css" />
 <link rel="stylesheet" href="/house/asset/css/user/realEstateMap/overlay.css" />
+<link rel="stylesheet" href="/house/asset/css/jquery/jquery-ui.css" />
+<link rel="stylesheet" href="/house/asset/js/jquery/jquery-ui.js" />
 <style>
 	.info {
-		display: block;
+		display: block;	
 	    background: #50627F;
 	    color: #fff;
 	    text-align: center;
 	    border-radius:4px;
 	    padding:0px 10px;
+	    
+	    position: absolute;
+	    top: 0;
+	    left: 50%;
+	    transform: translateX(-50%);
 	}
 </style>
 </head>
 <body>
-	<main>
+	<main class="map_main">
 		<%@include file="/WEB-INF/inc/header.jsp"%>
 		<section id="goods_section">
 			<!-- 맵 -->
@@ -56,6 +63,83 @@
 					</div>
 				</form>
 			</div>
+			<div id="map_area_goods">
+				<div>	
+					<button type="button" id="map_tap_toggle_btn">X</button>
+					<div class="map_option_select_box">
+						<div class="map_option_taps">
+							<div class="map_area_goods_tab map_tabs">매물</div>
+							<div class="map_area_filter_tab map_tabs">필터</div>
+						</div>
+						<div id="map_area_goods_all_item">
+							<div class="map_area_goods_list"></div>
+							<!-- 기능 추가 안했고, 그냥 틀잡는 용도, 나중에 태그들도 동적추가 필터기능 추가해보고싶음 -->
+							<div class="map_area_filter_option">
+								<div class="filter_room_type">
+									<h3>방종류</h3>
+									<div>
+										<div>
+											<input type="checkbox" id="one"/>
+											<label for="one">원룸</label>
+										</div>
+										<div>
+											<input type="checkbox" id="one_more"/>
+											<label for="one_more">투·쓰리룸</label>
+										</div>
+										<div>
+											<input type="checkbox" id="office_etc"/>		
+											<label for="office_etc">오피스텔·도시형생활주택</label>
+										</div>
+										<div>
+											<input type="checkbox" id="apartment"/>
+											<label for="apartment">아파트</label>
+										</div>
+										<div>
+											<input type="checkbox" id="house"/>
+											<label for="house">공공주택</label>
+										</div>
+									</div>
+								</div>
+								<div>
+									<h3>거래유형</h3>
+									<div class="filter_charge_type">
+										<div>
+											<input type="checkbox" id="monthly" />									
+											<label for="monthly">월세</label>
+										</div>
+										<div>
+											<input type="checkbox" id="rental" />
+											<label for="rental">전세</label>
+										</div>
+										<div>
+											<input type="checkbox" id="sales" />
+											<label for="sales">매매</label>
+										</div>
+									</div>
+								</div>
+								<div>
+									<h3>가격</h3>
+									<div>
+										<input type="range" />
+									</div>
+								</div>
+								<div>
+									<h3>월세</h3>
+									<div>
+										<input type="range" />
+									</div>
+								</div>
+								<div>
+									<h3>관리비</h3>
+									<div>
+										<input type="range" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</main>
 	<!-- 페이지기능 js -->
@@ -75,6 +159,51 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fa556584214d59e3cc2cb84e32bb504&libraries=services,clusterer"></script>
 	<!-- 검색조작 script -->
 	<script>
+	  
+		/* ---------------- 사이드바 조작기능 -------------------*/
+		$('.map_tabs').click(function (event) {
+			if($(event.target).text() == '필터') {
+				//필터 클릭시
+				$('.map_area_filter_tab').css({
+					backgroundColor: "white",
+					borderBottom: "none"
+				});
+				$('.map_area_goods_tab').css({
+					backgroundColor: "rgba(0,0,0,0.1)",
+					borderBottom: "1px solid var(--color-lightgray);"
+				});
+				
+				$('.map_area_filter_option').css('display', 'block');
+				$('.map_area_goods_list').css('display', 'none');
+				
+			} else {
+				//매물 클릭시
+				$('.map_area_goods_tab').css({
+					backgroundColor: "white",
+					borderBottom: "none"
+				});
+				$('.map_area_filter_tab').css({
+					backgroundColor: "rgba(0,0,0,0.1)",
+					borderBottom: "1px solid var(--color-lightgray);"
+				});
+				
+				$('.map_area_filter_option').css('display', 'none');
+				$('.map_area_goods_list').css('display', 'block');
+			}
+		});
+		
+		$('#map_tap_toggle_btn').click(function(event) {
+			if($(event.target).text() == 'X') {
+				$(event.target).text('<');
+				$('.map_option_select_box').css("left", "0px");
+			} else if($(event.target).text() == '<') {
+				$(event.target).text('X');
+				$('.map_option_select_box').css("left", "-400px");
+			}
+		});
+	
+		
+		
 		/* ---------------- 카카오맵 기능 --------------------- */
 		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 		
@@ -98,11 +227,14 @@
 		//지도 생성 및 객체 리턴
 		var map = new kakao.maps.Map(container, options);
 		
+		
+		var clustererLv = 7;
 	    //마커클러스터러 생성
 	    var clusterer = new kakao.maps.MarkerClusterer({
 	        map: map,
+	        gridSize: 450,
 	        averageCenter: true,
-	        minLevel: 5
+	        minLevel: clustererLv
 	    });
 	    
 	    //마커들 담을 배열
@@ -211,7 +343,6 @@
 		    content.appendChild(content_footer);
 	    }
 	    
-	    
 	    function makeInfo(goodsList, overlay) {		   
             
             //오버레이 골격생성
@@ -250,7 +381,7 @@
             overlays.push(overlay);
 	    }
 		//유효성검사시 두개가 다르면 안넘어가게
-	    
+		
 	    //마커 만들기
 		function viewMarker() {
 	    	//보여지는 위치의 데이터만 가져오기
@@ -272,21 +403,75 @@
 				url : '/house/web/getGoodsList',
 				data: "lat1="+lat1+"&lng1="+lng1+"&lat2="+lat2+"&lng2="+lng2,
 				dataType : 'json',
-				success : function(goodsList) {	
-
+				success : function(goodsList) {					
 					//마커 추가
 					$(goodsList).map(function(i, goodsList) {
+						//마커 이미지 추가	
+						var imageSrc = "/house/asset/images/marker/"
+						if(goodsList.type == '원룸') {
+							imageSrc += 'one.png';
+						} else if(goodsList.type == '투룸') {
+							imageSrc += 'two.png';					
+						} else if(goodsList.type == '쓰리룸') {
+							imageSrc += 'three.png';					
+						} else if(goodsList.type == '오피스텔') {
+							imageSrc += 'office.png';						
+						} else if(goodsList.type == '아파트') {
+							imageSrc += 'apartment.png';							
+						} else {
+							imageSrc += 'default.png';				
+						}
+						
+						var imageX;
+						var imageY;
+						//info창 크기조절
+						var fontSize;
+						if(1 <= map.getLevel() && map.getLevel() <= 3) {
+							imageX = 44;
+							imageY = 49;
+							fontSize = 13;
+						} else if(4 <= map.getLevel() && map.getLevel() <= 6) {
+							imageX = 34;
+							imageY = 39;
+							fontSize = 11;
+						} else if(7 <= map.getLevel() && map.getLevel() <= 8) {
+							imageX = 26;
+							imageY = 29;
+							fontSize = 9;
+						} else {
+							imageX = 19;
+							imageY = 24;
+							fontSize = 8;
+						}
+						
+						var imageSize = new kakao.maps.Size(imageX, imageY);
+						var imageOption = {offset: new kakao.maps.Point(imageX/2, imageY)};
+						
+						// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+						var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+						    markerPosition = new kakao.maps.LatLng(goodsList.coordinateX, goodsList.coordinateY); // 마커가 표시될 위치입니다
+						
 			            var marker = new kakao.maps.Marker({
-			                position : new kakao.maps.LatLng(goodsList.coordinateX, goodsList.coordinateY)
-			            });			            
+			                position : markerPosition,
+			                image: markerImage
+			            });		
+						    
 			            //마커 추가
-			            markers.push(marker);
+			            markers.push(marker);		            
+			            
 			            
 			          	//마커 클릭 이벤트 추가
 			            kakao.maps.event.addListener(marker, 'click', function(mouseEvent) {
-			            	map.panTo(marker.getPosition());			            	
-			            	makeInfo(goodsList, overlay);
+			            	
+							if(map.getLevel() <= 7) {
+				            	makeInfo(goodsList, overlay);			
+							} 
+							
+			            	resetSidebar();
+							map.panTo(marker.getPosition());	
+			            	checkArea();            	
 			            });
+			          	
 			          	
 			          	//오버레이 생성
 			            var overlay = new kakao.maps.CustomOverlay({
@@ -304,23 +489,25 @@
 				            clickedOverlay = overlay;
 			            });
 			            
-			            //인포윈도우용 오버레이생성    
-			            var info = '<div class="info">';
-			            info += goodsList.category+ '<br>';
-			            if(goodsList.deposit != 0) info += goodsList.deposit+'/';
-			            info += goodsList.price+'만원';
-			            info += "</div>";
-			            console.log(goodsList.deposit);
-			            console.log(goodsList.price);
-			            
-			            var infowindow = new kakao.maps.CustomOverlay({
-			                position: marker.getPosition(),
-			                xAnchor: 0.5,
-			                yAnchor: -0.3,
-			                content: info
-			            });
-			            infowindows.push(infowindow);
-			            infowindow.setMap(map);		            
+			          	if(map.getLevel() < clustererLv) {
+				            //인포윈도우용 오버레이생성    
+				            var info = '<div class="info" style="font-size:'+fontSize+'px;">';
+				            info += goodsList.category+ '<br>';
+				            if(goodsList.deposit != 0) info += goodsList.deposit+'/';
+				            info += goodsList.price+'만원';
+				            info += "</div>";
+				            
+				            var infowindow = new kakao.maps.CustomOverlay({
+				                position: marker.getPosition(),
+				                content: info
+				            });
+				            infowindows.push(infowindow);
+				            infowindow.setMap(map);		            	
+			          	}
+			          	
+			          	/*사이드바 리스트 추가작업*/
+			          	getSidebarItemList(goodsList.seq);
+			          	
 			        });					
 					//클러스터러 추가
 					clusterer.addMarkers(markers);	
@@ -330,6 +517,7 @@
 				},
 				beforeSend: function() {	
 					//비동기 실행전 초기화작업
+					resetSidebar();
 					removeMarker();
 					removeInfowindow();
 					removeOverlay();
@@ -337,7 +525,7 @@
 				}
 			});						
 		}
-	    
+		
 		//시작시 마커표시
 		$(document).ready(function() {
 			viewMarker();
@@ -352,9 +540,94 @@
 		});
 		
 		function checkArea() {
-			viewMarker();	
+			viewMarker();
 		}
 		
+
+		
+		/* ------------------------------- 사이드바 데이터 추가기능 --------------------------------------- */
+		/*
+			.map_area_goods_list 아래에 해당태그 추가
+			<div class="map_area_goods_wrap">
+				<div class="area_goods_img">
+					<img src="/house/files/1.jpg"/>
+				</div>
+				<div class="area_goods_status">
+					<div>
+						<h1>월세 500/35</h1>
+						<p>서울 특별시 동작구 상도1동</p>
+						<p>원룸, 13.45m2, 1층/5층</p>
+						<p>살기좋은 집입니다.</p>
+					</div>
+				</div>
+			</div>
+		*/
+
+		
+		function getSidebarItemList(seq) {
+			//지도 크기 7부터 사이드바 데이터 표시할것임
+			if(map.getLevel() < 8) {		
+				//지도 크기가 7이하인경우 사이드바에 매물표시
+				$.ajax({
+					type : 'GET',
+					url : '/house/web/getSidebarGoodsList',
+					data: "seq="+seq,
+					dataType : 'json',
+					success : function(goodsList) {
+						//리스트 가져와 추가
+						let goods = '';
+						goods += '<div class="map_area_goods_wrap" onclick="moveToGoods('+goodsList.coordinateX+','+goodsList.coordinateY+')">';
+						goods += '<div class="area_goods_img">'
+						goods += '<img src="/house/files/'+goodsList.img+'"/>';
+						goods += '</div>';
+						goods += '<div class="area_goods_status">';
+						goods += '<div>';
+						goods += '<h1>';
+						goods += goodsList.contractType + ' ';
+						if(goodsList.deposit != 'null') {
+							goods += goodsList.deposit + '/';
+						}
+						goods += goodsList.price;
+						goods += ' 만원';
+						goods += '</h1>';
+						goods += '<p>'+goodsList.address+'</p>';
+						goods += '<p>'+goodsList.buildingType+', '+goodsList.supplyArea+', '+goodsList.buldingFloor+'건물 중'+goodsList.theFloor+'</p>';
+						goods += '<p>'+goodsList.introduce+'</p>';
+						goods += '<p><button onclick="showListView('+goodsList.coordinateX+','+goodsList.coordinateY+','+goodsList.realEstateSeq+')">상세보기</button></p>'
+						goods += '</div>';
+						goods += '</div>';
+						goods += '</div>';
+						
+						$('.map_area_goods_list').append(goods);
+					},
+					error: function(a,b,c) {
+						console.log(a,b,c);
+					}
+				});
+			} else {
+				resetSidebar();
+				let tooLargeLevel = '<div id="alert_large_size" style="width:100%; height:100%; display:flex;'
+				+' justify-content:center; align-items:center; margin-top: -35px; padding-top: 35px;">화면을 확대해주세요.</div>';
+				$('.map_option_select_box').append(tooLargeLevel);		
+			}
+		}
+		
+		function resetSidebar(){
+			$('.map_area_goods_list').children().remove();
+			$('#alert_large_size').remove();
+		}
+		
+		
+		function moveToGoods(coordinateX, coordinateY, seq) {
+			var moveLatLon = new kakao.maps.LatLng(coordinateX, coordinateY);
+			resetSidebar();
+			map.panTo(moveLatLon);
+			checkArea();
+		}
+		
+		function showListView(coordinateX, coordinateY, seq) {
+			location.href='/house/web/userRealEstateView?seq='+seq+'&coordinateX='+coordinateX+'&coordinateY='+coordinateY;
+		}
 		
 		/* --------------------------------- 검색기능 ------------------------------------------- */
 		//키워드 장소 검색 객체를 생성합니다
@@ -371,6 +644,7 @@
 		//데이터 입력
 		const search = $('.map_search_input > div > input');
 		let data_list = [];
+		let goods_list = [];
 		
 		
 		//한글 입력기(IME) 조합기로인해 문제발생중
@@ -396,6 +670,7 @@
 			if(value.length > 0) {
 				$('.map_search_input > div > i').css("display", "block");
 				getAreaData(value);
+				getGoodsData(value);
 				places.keywordSearch(value, geyKeywordData, { category_group_code : 'SW8' });
 				places.keywordSearch(value, geyKeywordData, { category_group_code : 'SC4' });
 				result();
@@ -430,6 +705,30 @@
 		});
 		
 		//지역명 데이터 가져오기
+		function getAreaData (value) {
+			//공백문자 포함검색
+			value += ' ';
+			//비동기 통신시 한글 완성문제 아직 해결하지 못했음
+			$.ajax({			
+				url: 'https://dapi.kakao.com/v2/local/search/address.json?query='+encodeURIComponent(value),
+				type: 'GET',
+				headers: {'Authorization' : 'KakaoAK 61d5f0b4fa7b9fbffc15115b839cc2b2'},
+				success: function(data) {			
+					//가져온 데이터가 있다면 리스트 초기화 후 실행
+					data_list = [];
+					if(data.meta.pageable_count > 0) {
+						for(let i=0; i<data.meta.pageable_count; i++) {	
+							data_list.push(data.documents[i]);
+						}
+					}
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+			});
+		}
+		
+		//DB에 등록된 매물 가져오기
 		function getAreaData (value) {
 			//공백문자 포함검색
 			value += ' ';

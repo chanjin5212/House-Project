@@ -72,7 +72,7 @@
 	<main>
      <%--  <%@include file="/WEB-INF/inc/brokerHeader.jsp" %> --%>
       <section>
-      		<h1 style="text-align:center;">계약서 작성</h1>
+      		<!-- <h1 style="text-align:center;">계약서 작성</h1> -->
       		<hr />
       		<%-- 계약요청 번호 : ${contractSeq }
       		카테고리 : ${category }

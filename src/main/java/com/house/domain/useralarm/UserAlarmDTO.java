@@ -47,8 +47,6 @@ public class UserAlarmDTO {
 	private String dedicatedArea;
 	private String supplyArea;
 	
-	private String brokercheck;
-	
 
 
 }

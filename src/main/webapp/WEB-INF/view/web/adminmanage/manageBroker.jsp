@@ -8,6 +8,133 @@
 <meta charset="UTF-8">
 <%@include file="/WEB-INF/inc/asset.jsp"%>
 <style>
+body {
+	font-family: "S-CoreDream-5Medium";
+	font-size: 18px;
+}
+
+.logo {
+	width: 240px;
+	height: 100px;
+	padding: 20px;
+	margin: 20px;
+}
+
+div#content {
+	display: grid;
+	place-items: center;
+	/* min-height: 100vh; */
+}
+
+#admin-box-wrapper {
+	display: flex;
+}
+
+.admin-box {
+	text-align: center;
+	width: 240px;
+	height: 200px;
+	background-color: #e2e2e2;
+	border: 1px solid #e2e2e2;
+	margin: 70px;
+}
+
+#info {
+	text-decoration: underline;
+	text-decoration-color: #e2e2e2;
+}
+
+div.tn {
+	text-decoration: none;
+	color: black;
+}
+
+div.top {
+	background-color: #68c1f8;
+	font-family: "S-CoreDream-6Bold";
+	font-size: 28px;
+	height: 70px;
+	padding-bottom: 10px;
+	border-radius: 8px;
+}
+
+div.g-wrapper {
+	position: absolute;
+	right: 50px;
+	top: 150px;
+	display: flex;
+}
+
+div.gen {
+	text-align: center;
+	width: 150px;
+	border: 1px solid black;
+	border-radius: 8px;
+	color: white;
+	background-color: black;
+}
+
+div.ngen {
+	text-align: center;
+	width: 150px;
+}
+
+div.gen2 {
+	text-align: center;
+	width: 150px;
+}
+
+div.ngen2 {
+	text-align: center;
+	width: 150px;
+	border: 1px solid black;
+	border-radius: 8px;
+	color: white;
+	background-color: black;
+}
+
+div.glass-svg {
+	position: absolute;
+	top: 220px;
+	left: 210px;
+}
+
+.input-wrapper {
+	display: flex;
+	margin-top: 3px;
+}
+
+#s-wrapper {
+	display: grid;
+	place-items: center;
+}
+
+#s {
+	margin-top: 10px;
+	width: 50%;
+	background-color: #e2e2e2;
+	height: 73vh;
+}
+
+div#section1 {
+	margin: 20px;
+	background-color: white;
+}
+
+div#section2 {
+	margin: 20px;
+	background-color: white;
+}
+
+div#btn-wrapper {
+	margin: 10px;
+	display: flex;
+	place-items: center;
+}
+
+#btn-wrapper {
+	float: right;
+}
 </style>
 </head>
 

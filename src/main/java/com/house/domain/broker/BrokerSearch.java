@@ -16,23 +16,6 @@ public class BrokerSearch extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
-		
-		String query = req.getParameter("query");
-		
-		OpenAPIBrokerDAO dao = new OpenAPIBrokerDAO();
-		
-		HashMap<String, String> map = new HashMap<String,String>();
-		map.put("query", query);
-		
-		
-		ResultAPIBrokerDTO rdto = dao.search(map);
-		
-		if(rdto!=null) {
-			rdto.setQuery(query);
-		
-			req.setAttribute("rdto", rdto);
-		}
-			
 			
 		RequestDispatcher dispather = req.getRequestDispatcher("/WEB-INF/view/domain/broker/brokerSearch.jsp");
 

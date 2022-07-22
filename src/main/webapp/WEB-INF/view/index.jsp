@@ -192,7 +192,7 @@ $(document).ready(function() {
 		                label: '${month}월 거래량', //차트 제목
 		                fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
 		                data: [ 
-		                	${dto.sales}, ${dto.jeonse}, ${dto.monthly},  50 //x축 label에 대응되는 데이터 값
+		                	102, 150, 170,  50 //x축 label에 대응되는 데이터 값
 		                ],
 		                backgroundColor: [
 		                    //색상

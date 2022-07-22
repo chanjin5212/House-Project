@@ -9,6 +9,12 @@
 <title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
+
+	header > div > nav#user > ul > li:nth-child(5) > a,
+	header > div > nav#broker > ul > li:nth-child(3) > a  {
+		color: var(--color-blue);
+	}
+
 	section{
 		padding-bottom: 100px;
 	}

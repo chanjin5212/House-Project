@@ -6,8 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import com.house.domain.useralarm.UserAlarmDTO;
 import com.house.util.DBUtil;
+import com.house.web.brokermypage.BrokerCounselDTO;
+import com.house.web.brokermypage.BrokerDealListViewDTO;
 
 
 
@@ -259,45 +261,43 @@ public class UserMyPageDAO {
 	public ArrayList<ContractViewDTO> getContract(String id) {
 		try {
 
-			String sql = "select*from  vwContractviewe where id=? ";
-
+			String sql = "select cr.seq, cr.id, cr.state, re.seq as reseq, re.realestateaddr, re.price, d.deposit, c.name,cr.checkinddate,cr.brokercheck,cr.state from tblContractRequest \r\n"
+					+ "cr inner join tblrealestate re on cr.realestateseq = re.seq inner join \r\n"
+					+ "tblContract c on re.contractseq = c.seq left outer join tblDeposit d on d.realestateseq = re.seq where cr.id = ? order by seq desc";
 			pstat = conn.prepareStatement(sql);
-
 			pstat.setString(1, id);
-
-
-			// stat = conn.createStatement();
-
-
 			rs = pstat.executeQuery();
-
-			// int i=0;
-			// int j=0;
-
-			// rs = stat.executeQuery(sql);
-
+			
 			ArrayList<ContractViewDTO> list = new ArrayList<ContractViewDTO>();
-
-			ContractViewDTO dto = null;
-
+			
 			while (rs.next()) {
-
-				dto = new ContractViewDTO();
-
-
-				dto.setId(id);
-				// dto.setId(rs.getString("id"));
+				
+				/*
+				private String seq;
+	private String id;
+	private String state;
+	private String address;
+	private String price;
+	private String deposit;
+	
+	private String reseq;
+	private String name;
+	
+				 */
+				ContractViewDTO dto = new ContractViewDTO();
 				dto.setSeq(rs.getString("seq"));
-				dto.setName(rs.getString("name"));
-				dto.setPrice(rs.getString("price"));
+				dto.setId(rs.getString("id"));
+				dto.setReseq(rs.getString("reseq"));
 				dto.setRealestateaddr(rs.getString("realestateaddr"));
-				dto.setMoveindate(rs.getString("moveindate"));
+				dto.setPrice(rs.getString("price"));
+				dto.setName(rs.getString("name"));
+				dto.setDeposit(rs.getString("deposit"));
+				dto.setCheckinddate(rs.getString("checkinddate"));
+				dto.setBrokercheck(rs.getString("brokercheck"));
 				dto.setState(rs.getString("state"));
-
 
 				list.add(dto);
 			}
-
 			return list;
 
 
@@ -461,49 +461,52 @@ public class UserMyPageDAO {
 		return null;
 	}
 
-	public ArrayList<ContractViewDTO> getDeal(String id) {
+	public ArrayList<UserDealListViewDTO> getDeal(String id) {
 		try {
 			
-			String sql = "select*from  vwUserdeallist where id=? ";
+		
 
+			
+			
+			
+			
+			
+			String sql = "select * from vwBrokerContractDoneList where userid=? order by contractdate desc";
+			
 			pstat = conn.prepareStatement(sql);
-
+			
 			pstat.setString(1, id);
-
-
-			// stat = conn.createStatement();
-
-
+			
+			
+			
+			ArrayList<UserDealListViewDTO> list = new ArrayList<UserDealListViewDTO>();
+			
 			rs = pstat.executeQuery();
+			
+			
+			while(rs.next()) {
+				
+				UserDealListViewDTO dto = new UserDealListViewDTO();
 
-			// int i=0;
-			// int j=0;
-
-			// rs = stat.executeQuery(sql);
-
-			ArrayList<ContractViewDTO> list = new ArrayList<ContractViewDTO>();
-
-			ContractViewDTO dto = null;
-
-			while (rs.next()) {
-
-				dto = new ContractViewDTO();
-
-
-				dto.setId(id);
-				dto.setSeq(rs.getString("seq"));
-				dto.setName(rs.getString("name"));
+				
+				dto.setContractSeq(rs.getString("contractSeq"));
+				dto.setRealEstateSeq(rs.getString("realEstateSeq"));
+				dto.setUserId(id);
+				dto.setContractCategory(rs.getString("contractCategory"));
+				dto.setContractDate(rs.getString("contractDate").substring(0,10));
+				dto.setRealestateAddr(rs.getString("realestateAddr"));
+				dto.setDeposit(rs.getString("deposit"));
 				dto.setPrice(rs.getString("price"));
-				dto.setRealestateaddr(rs.getString("realestateaddr"));
-				dto.setContractdate(rs.getString("contractdate"));
-
+				dto.setBrokerId("brokerId");
+				dto.setReviewSeq(rs.getString("reviewSeq"));
+				
 				list.add(dto);
+
+				
+		
 			}
-
+			
 			return list;
-
-			
-			
 			
 			
 			

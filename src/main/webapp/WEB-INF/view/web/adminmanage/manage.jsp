@@ -20,7 +20,7 @@ body {
 	margin: 20px;
 }
 
-#content {
+div#content {
 	display: grid;
 	place-items: center;
 	/* min-height: 100vh; */
@@ -44,12 +44,12 @@ body {
 	text-decoration-color: #e2e2e2;
 }
 
-.tn {
+div.tn {
 	text-decoration: none;
 	color: black;
 }
 
-.top {
+div.top {
 	background-color: #68c1f8;
 	font-family: "S-CoreDream-6Bold";
 	font-size: 28px;
@@ -58,14 +58,14 @@ body {
 	border-radius: 8px;
 }
 
-.g-wrapper {
+div.g-wrapper {
 	position: absolute;
 	right: 50px;
 	top: 150px;
 	display: flex;
 }
 
-.gen {
+div.gen {
 	text-align: center;
 	width: 150px;
 	border: 1px solid black;
@@ -74,17 +74,17 @@ body {
 	background-color: black;
 }
 
-.ngen {
+div.ngen {
 	text-align: center;
 	width: 150px;
 }
 
-.gen2 {
+div.gen2 {
 	text-align: center;
 	width: 150px;
 }
 
-.ngen2 {
+div.ngen2 {
 	text-align: center;
 	width: 150px;
 	border: 1px solid black;
@@ -93,7 +93,7 @@ body {
 	background-color: black;
 }
 
-.glass-svg {
+div.glass-svg {
 	position: absolute;
 	top: 220px;
 	left: 210px;
@@ -116,17 +116,17 @@ body {
 	height: 73vh;
 }
 
-#section1 {
+div#section1 {
 	margin: 20px;
 	background-color: white;
 }
 
-#section2 {
+div#section2 {
 	margin: 20px;
 	background-color: white;
 }
 
-#btn-wrapper {
+div#btn-wrapper {
 	margin: 10px;
 	display: flex;
 	place-items: center;

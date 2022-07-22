@@ -23,12 +23,12 @@
 	}
 	
 	#container{
-		width: 700px;
+		width: 600px;
 	}
 	
 	#view {
 		/* border : 1px solid black; */
-		width: 700px;
+		width: 600px;
 		maring: 0 auto;
 	}
 </style>
@@ -68,11 +68,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan = "2" style="padding-left:500px;">
-				<input type="button" value="닫기"  class="button blue" onclick="closeBtn();"/>
+				<td colspan = "2" style="padding-left:400px; text-align: center;">
 				<c:if test ="${dto.state != '처리완료' }">
 				<input type="button" value="처리완료"  class="button blue" onclick="complete(${dto.seq})" id="comBtn"/>
 				</c:if>
+				<input type="button" value="닫기"  class="button blue" onclick="closeBtn();"/>
 				
 				</td>
 			</tr>
@@ -105,7 +105,10 @@
 					alert('처리완료 되었습니다.');
 					$('#state').html('처리완료');
 					
-					$('#comBtn').remove();
+					//$('#comBtn').remove();
+					
+					opener.location.reload(); //부모창 새로고침
+					window.close();
 						
 				},
 				error : function(a,b,c){

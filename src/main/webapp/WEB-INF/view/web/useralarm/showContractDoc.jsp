@@ -313,23 +313,23 @@
       			<tr>
       				<th>보증금</th>
       				<c:if test="${dto.deposit != null}">
-      				<td colspan="10">${dto.deposit}만</td>
+      				<td colspan="10">금 ${dto.deposit}만원</td>
       				</c:if>
       				<c:if test="${dto.deposit == null}">
-      				<td colspan="10"></td>
+      				<td colspan="10">금 만원</td>
       				</c:if>
       			</tr>
       			<tr>
       				<th>계약금</th>
-      				<td colspan="10">${dto.downPayment}</td>
+      				<td colspan="10">금 ${dto.downPayment/10000}만원</td>
       			</tr>
       			<tr>
       				<th>잔금</th>
-      				<td colspan="10">100만</td>
+      				<td colspan="10">금 100만원</td>
       			</tr>
       			<tr>
       				<th>차임</th>
-      				<td colspan="10">100만</td>
+      				<td colspan="10">금 100만원</td>
       			</tr>
       			<tr>
       				<td colspan="10" style="font-size:11px;">
@@ -370,7 +370,7 @@
       			<tr>
       				<th>주소</th>
       				<td colspan="6">${dto.ownerAddress}</td>
-      				<td rowspan="4"></td>
+      				<td rowspan="4"><span style="color: blue;">${dto.ownerName}</span></td>
       			</tr>
       			<tr>
       				<th>주민등록번호</th>

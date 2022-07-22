@@ -1,13 +1,32 @@
 /* 카카오 지도 맵 크기 */
 body{
 	overflow-x: scroll;
-	overflow-y: hidden;
+}
+
+.map_main {
+	padding: 0;
+	margin: 0;
+}
+
+#goods_section {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	margin-top: -110px;
+	padding-top: 110px;
+	overflow: hidden;
+}
+
+.map_main,
+#map_area {
+	height: 100%;
+	width: 100%;
 }
 
 #map {
 	position: relative;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 }
 /* header 밑 nav bar */
 #goods_section {
@@ -158,9 +177,168 @@ body{
 
 .no_result {
 	height: 100%;
-	widht: 100%;
+	width: 100%;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+
+/* 사이드바 css */
+
+#map_area_goods {
+	position: relative;
+	display: flex;
+	height: 100%;
+}
+
+#map_area_goods > div {
+	position: relative;
+	display: flex;
+	height: 100%;
+}
+
+.map_option_select_box {
+	position: absolute;
+	width: 400px;
+	height: 100%;
+	left: -400px;
+	z-index: 6;
+	background-color: white; 
+	transition: 0.2s;
+	overflow-y: scroll;
+	overflow-x: hidden;  
+}
+
+.map_option_select_box > .map_option_taps {
+	display: flex;
+	width: 100%;
+	height: 35px;
+	cursor: pointer;
+}
+.map_option_select_box > .map_option_taps > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.map_area_goods_tab {
+	border-right: 1px solid var(--color-lightgray);
+}
+.map_area_filter_tab {
+	background-color: rgba(0,0,0,0.1);
+	border-bottom: 1px solid var(--color-lightgray);
+}
+
+#map_area_goods > div > button {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: -35px;
+	width: 35px;
+	height: 35px;
+	border: 1px solid var(--color-lightgray);
+	border-top: none;
+	border-radius: 5px 0 0 5px;
+}
+
+#map_area_goods > div > button:hover{
+	background-color: var(--color-lightgray);
+}
+
+.map_area_filter_option {
+	display: none;
+}
+
+.map_area_filter_option {
+	padding: 15px 7.5px;
+	
+}
+
+.filter_room_type {
+	margin-bottom: 20px;
+}
+.filter_charge_type {
+	margin-bottom: 20px;	
+}
+
+.area_goods {
+	display: flex;
+}
+
+.map_area_goods_list {
+	display: block;
+}
+
+.map_area_goods_wrap {
+	cursor: pointer;
+	-webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 16px 15px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid var(--color-lightgray);
+    user-select: none;
+}
+.area_goods_img {
+	flex: 0 0 auto;
+    width: 140px;
+    height: 168px;
+    min-height: 140px;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.area_goods_img > img {
+	width: 100%;
+	height: auto;
+}
+.area_goods_status {
+	-webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 0px;
+    height: 100%;
+    padding-left: 20px;
+}
+.area_goods_status > div {
+	width: 212px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+.area_goods_status > div > h1 {
+	color: rgb(34, 34, 34);
+	width: 212px;
+    font-size: 18px;
+    font-weight: 700;
+    height: 27px;
+    margin-bottom: 4px;
+    line-height: 27px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.area_goods_status > div > p {
+    width: 212px;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(34, 34, 34);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+

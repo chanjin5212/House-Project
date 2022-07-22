@@ -153,6 +153,8 @@ section > h1 {
 	      		
 	      		</div>
 	      		
+	      		
+	      		<form method="post" action="/house/domain/broker/brokerRegister">
 	      		<div class="user-registerbox broker">
 	      		
 	      			<div class="broker-box">
@@ -167,7 +169,7 @@ section > h1 {
 	      			
 	      			
 	      			
-	      			<button class="button blue loginbtn" onclick="location.href='/house/domain/broker/brokerRegister'">중개사 회원 회원가입</button>
+	      			<input type="submit" class="button blue loginbtn" value="중개사 회원 회원가입">
 	      			
 	      			<input type="hidden" name="check" value="broker">
 	      			
@@ -175,6 +177,7 @@ section > h1 {
 	      			</div>
       			
       			</div>
+      			</form>
       		</div>
       		</div>
       		
@@ -185,17 +188,7 @@ section > h1 {
       <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+      
     </script>
 </body>
 </html>

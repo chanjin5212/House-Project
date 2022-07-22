@@ -28,7 +28,7 @@ public class BrokerDealListViewSearch extends HttpServlet {
 		String word = req.getParameter("word");
 		
 		//System.out.println("date:"  + date);
-		//System.out.println(category);
+		System.out.println(category);
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -59,6 +59,7 @@ public class BrokerDealListViewSearch extends HttpServlet {
 		for (BrokerDealListViewDTO dto : list) {
 			temp += "{";
 			temp += String.format("\"seq\": %s,", dto.getContractSeq());
+			temp += String.format("\"contractDocSeq\": %s,", dto.getContractDocSeq());
 			temp += String.format("\"deposit\": \"%s\",", dto.getDeposit());
 			temp += String.format("\"price\": %s,", dto.getPrice());
 			temp += String.format("\"category\": \"%s\",", dto.getContractCategory());

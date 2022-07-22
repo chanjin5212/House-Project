@@ -155,14 +155,14 @@ section{
 	      			<ul>
 	      				<li><div><a href="/house/web/brokermypage/brokerEditInfo">개인정보</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerSecurity">보안</a></div></li>
-	      				<li><div style="background-color: var(--color-gray);"><a href="/house/web/brokermypage/brokerDealListView">거래 목록</a></div></li>
+	      				<li><div style="background-color: var(--color-gray);"><a href="#">거래 목록</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerCounselList">상담 내역</a></div></li>
 	      			</ul>
 	      		</div>
 	      		
 	      		<div id="content">
 	      			<%-- ${list } --%>
-	      			<div id="count">총 <span style="color:#8fd0f8;">${list.size() }</span>개의 거래가 존재합니다.</div>
+	      			<div id="count">총 <span style="color:#8fd0f8;">${list.size() }</span>개의 거래내역이 존재합니다.</div>
 	      			<table class="table table" id="dealList">
 	      				<thead>
 		      				<tr>
@@ -209,7 +209,7 @@ section{
 	      				</tr>
 	      				</c:forEach>
 	      			</table>
-	      			
+	      			<div style="margin-left:450px; margin-top: 60px; ">${pagebar }</div>
 
 
 	      			
@@ -293,7 +293,7 @@ section{
 						     let temp = '';
 						     
 						     temp += `<tr>
-									<td>\${item.seq}</td>
+									<td>\${item.contractDocSeq}</td>
 									<td>\${item.category}  `;
 						     if(item.deposit != "null"){ /* null이 문자 그대로 null이기 때문에 "null"로 적어줘야함 */
 									temp += `\${item.deposit } /`;
@@ -309,7 +309,7 @@ section{
 					      			<form name="popForm" method ="POST" action="/house/web/brokermypage/showContractDoc" target="popwin" id="popForm">
 									    <input type="hidden" name="contractDocSeq" id="contractDocSeq" />
 									    <input type="hidden" name="category" id="category" />
-		      							<input type="button" class="button blue" value="계약서" id="showContractBtn" onclick="showContract('\${item.seq}','\${item.category}');"/>
+		      							<input type="button" class="button blue" value="계약서" id="showContractBtn" onclick="showContract('\${item.contractDocSeq}','\${item.category}');"/>
 									</form>
 									
 									
