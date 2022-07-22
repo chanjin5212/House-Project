@@ -1,0 +1,104 @@
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+main {
+	width: 100%;
+	min-width: 1400px;
+	font-family: var(--content-font);
+}
+
+header {
+	font-family: var(--title-font);
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 50px;
+	border-bottom: 1px solid #ccc;
+}
+
+header>div>a>img {
+	margin-right: 40px;
+	cursor: pointer;
+}
+
+header>div>img {
+	margin-right: 40px;
+	cursor: pointer;
+}
+
+header>div, header>div>nav>ul {
+	display: flex;
+	align-items: center;
+}
+
+header>div>nav>ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+header>div>nav>ul>li {
+	display: inline-block;
+	margin-right: 40px;
+}
+
+header>div>nav>ul>li>a {
+	text-decoration: none;
+	font-size: var(--large-font);
+	color: var(--color-gray);
+}
+
+header>div>nav>ul>li>a:hover {
+	text-decoration: none;
+	color: #68c1f8;
+}
+
+header>div:nth-child(2)>button {
+	margin-left: 15px;
+}
+
+header { height: 110px }
+
+/* Style The Dropdown Button */
+.dropbtn {
+	background-color: transparent;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 99;
+}
+
+/* Links inside the dropdown */
+.dropbtn span {
+	font-size: var(--small-font);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	font-size: var(--small-font);
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}

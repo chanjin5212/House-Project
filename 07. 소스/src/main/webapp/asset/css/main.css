@@ -1,0 +1,25 @@
+/*bootstrap*/
+@import url("bootstrap/bootstrap.css");
+
+/* jquery */
+@import url("jquery/jquery-ui.css");
+@import url("jquery/rateit.css");
+
+/* font */
+@import url("font/font.css");
+
+/* button */
+@import url("button/button.css");
+
+/* color */
+@import url("color/color.css");
+
+/* header */
+@import url("header/header.css");
+
+/* footer */
+@import url("footer/footer.css");
+
+html, body {
+   height: 100%;
+}

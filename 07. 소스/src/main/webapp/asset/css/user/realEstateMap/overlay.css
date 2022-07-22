@@ -1,0 +1,71 @@
+.overlay>* {
+	box-sizing: border-box;
+}
+
+.overlay {
+	background-color: white;
+	width: 300px;
+	height: 300px;
+	border: 1px solid var(--color-lightgray);
+	border-radius: 2%;
+	box-shadow: 1px 3px 5px 3px rgba(0, 0, 0, 0.25);
+}
+
+.overlay_header {
+	display: flex;
+	height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid var(--color-lightgray);
+	padding: 10px;
+}
+
+.overlay_header>button {
+	width: 28px;
+	height: 28px;
+	border: 1px solid transparent;
+}
+
+.overlay_header>div {
+	display: flex;
+	align-items: center;
+}
+
+.overlay_body, .overlay_footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.overlay_body > .body_frame {
+	position: relative;
+	height: 190px;
+	border-bottom: 1px solid var(--color-lightgray);
+}
+
+.overlay_body > .body_frame > .category {
+	position: absolute;
+	color: black;
+	background-color: var(--color-green);
+	padding: 2px 5px;
+	border-radius: 5px;
+	margin: 7px;
+	top: 0;
+	left: 0;
+}
+
+.overlay_body > .body_frame > img {
+	padding: 7.5px;
+	max-width: 300px;
+	max-height: 190px;
+}
+
+.overlay_footer {
+	justify-content: space-evenly;
+	height: 60px;
+}
+
+.overlay_footer>button {
+	width: 130px;
+	height: 40px;
+}

@@ -1,0 +1,122 @@
+.button {
+ padding: 5px 10px;
+ border: 1px solid var(--color-gray);
+ outline: none;
+ background-color: transparent;
+ border-radius: 8%;
+ color: var(--color-gray);
+ 
+}
+
+.button:hover,
+.button:active {
+    border: 1px solid transparent;
+}
+
+.button:focus {
+	border: 1px solid rgba(120, 120, 120, 0.7);
+}
+
+.button.blue {
+	color: var(--color-blue);
+	border: 1px solid var(--color-blue);
+}
+
+.button.blue:hover {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+}
+
+.button.blue:active {
+	box-shadow: none;
+}
+
+.button.blue:focus { 
+    transition: 0.5s;
+    box-shadow: 0 0 0 2px #8fd0f8;
+}
+
+.button.green {
+	color: var(--color-green);
+	border: 1px solid var(--color-green);
+}
+
+.button.green:hover {
+    background-color: var(--color-green);
+    color: var(--color-white);
+}
+
+.button.green:active {
+	box-shadow: none;
+}
+
+.button.green:focus { 
+    transition: 0.5s;
+    box-shadow: 0 0 0 2px var(--color-green);
+}
+
+.button.gray {
+	color: var(--color-gray);
+	border: 1px solid var(--color-gray);
+}
+
+.button.gray:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+}
+
+.button.gray:active {
+	box-shadow: none;
+}
+
+.button.gray:focus { 
+    transition: 0.5s;
+    box-shadow: 0 0 0 2px var(--color-gray);
+}
+
+
+
+.fill-button {
+   outline: none;
+   border: 1px solid transparent;
+   border-radius: 3px;
+   color: white;
+}
+
+.fill-button:hover {
+   transform: scale(1.03);
+}
+
+.fill-button:hover, .fill-button:active {
+   border: 1px solid transparent;
+}
+
+.fill-button:focus {
+   border: 2px solid rgba(0, 0, 0, 0.9);
+}
+
+.fill-button.blue:active, .fill-button.green:active {
+   box-shadow: none;
+}
+
+.fill-button.blue {
+   background-color: var(--color-blue);
+}
+
+.fill-button.green {
+   background-color: var(--color-green);
+}
+
+.fill-button.gray{
+   
+   background-color: var(--color-gray);
+}
+
+.fill-button.blue:active, .fill-button.green:active, .fill-button.red:active {
+	box-shadow: none;
+}
+
+.fill-button.red {
+	background-color: tomato;
+}
+

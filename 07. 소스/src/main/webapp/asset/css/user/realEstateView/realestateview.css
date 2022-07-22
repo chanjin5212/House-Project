@@ -1,0 +1,404 @@
+p {
+	margin: 0;
+}
+li {
+	list-style: none;
+}
+
+.goods_view_section {
+	position: relative;
+}
+
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShow {
+	/*전체 컨테이너*/
+	width: 700px;
+	height: 400px;
+	position: relative;
+	margin: 50px auto;
+	/*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+.slides {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: 0.5s ease-out;
+	list-style: none;
+}
+
+.slides > li {
+	margin-right: 100px;
+}
+
+.slides > li > div {
+	text-align: center;
+	height: 400px;
+	width: 600px;
+}
+.slides > li > div > img {
+	height: 400px;
+	width: auto;
+	max-width: 600px;
+}
+
+.controller span {
+	position: absolute;
+	background-color: rgba(128, 128, 128, 0.41);
+	color: black;
+	text-align: center;
+	border-radius: 50%;
+	padding: 8px 18px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.3em;
+	cursor: pointer;
+}
+
+.controller span:hover {
+	background-color: rgba(128, 128, 128, 0.81);
+}
+
+.slides li:first-child{
+  margin-left: 750px;
+}
+
+.prev {
+	left: 0px;
+}
+
+
+.next {
+	right: 0px;
+}
+
+#slideShow input[type=radio] {
+	display: none;
+}
+
+.slide_list {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 5px;
+	z-index: 2;
+}
+.slide_list > label {
+	display: inline-block;
+	background-color: rgba(0,0,0,0.55);
+	width: 35px;
+	height: 5px;
+	cursor: pointer;
+	margin-right: 2.5px;
+}
+.real_estate_view {
+	padding-top: 40px;
+}
+
+.real_estate_article {
+	position: relative;
+	width: 100%;
+}
+
+.real_estate_view > div {	
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0px 10px;
+}
+
+.real_estate_article {
+	display: flex;
+	padding-bottom: 120px;
+}
+.real_estate_content {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+}
+.real_estate_broker {
+	flex: 0 0 auto;
+	width: 360px;
+	position: relative;
+}
+
+.broker_status {
+	position: relative;	
+	border: 1px solid var(--color-lightgray);
+	width: 360px;
+	padding: 32px;
+	background: #fff;
+	box-shadow: var(--color-white);
+}
+
+.broker_profile {
+	display: flex;
+}
+
+.broker_profile > img {
+	height: 64px;
+	width: 64px;
+	border-radius: 50%;
+	
+	margin-right: 26px;
+}
+.broker_name {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.broker_info {
+	margin-top: 24px;
+	padding: 0 0 24px 0;
+	border-bottom: 1px solid var(--color-lightgary);
+	font-size: var(--middle-font);
+	line-height: 26px;
+	list-style: none;
+}
+.broker_info_list > div {
+	margin-bottom: 10px;
+}
+
+.broker_info_list > div > p {
+	font-size: var(--small-font);
+	line-height: 24px;
+	margin: 0;
+}
+
+.re_main_title {
+	margin-bottom: 14px;
+}
+
+.broker_info_list > div > p.re_title {
+	margin-bottom: 8px;
+	width: 100%;
+	font-weight: 700;
+}
+
+.broker_info_list > div > p.re_content {
+	max-width: 242px;
+}
+#star {
+	position: relative;
+	color: gold;
+	font-weight: bold;
+	margin-right: 5px;
+}
+#star:after{
+	content: "☆";
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: black;
+	transform: scale(1.2);
+}
+#rating {
+	font-size: var(--middle-font);
+}
+.re_btn_list {
+	display: flex;
+	justify-content: space-around;
+}
+.re_btn_list > button {
+	height: 50px;
+	width: 130px;
+}
+.rs {
+	width: 100%;
+}
+
+.price_info {
+	width: 780px;
+	position: relative;
+}
+.intro {
+	font-size: var(--large-font);
+	line-height: 36px;
+	letter-spacing: -0.5px;
+	margin-bottom: 32px;
+	font-weight: bold;
+}
+.price_bill_list,
+.infos_option_list {
+	width: 100%;
+}
+
+.price_bill_list > li,
+.infos_option_list > li {
+	display: flex;
+	padding: 16px 0px;
+}
+
+.list_title {
+	width: 160px;
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: bold;
+}
+
+.point_content {
+	margin-top: 4px;
+	color: rgb(101, 101, 101);
+}
+
+.etc_add {
+	border-top: 1px solid rgb(245, 245, 245);
+	margin-top: 16px;
+	padding-top: 16px;
+}
+.infos_view {
+	width: 780px;
+	padding-top: 120px;
+	position: relative;
+}
+.area {
+	display: flex;
+}
+.area > p {
+	margin-right: 5px;
+}
+
+.option_list,
+.safety_list {
+	width: 780px;
+	padding-top: 120px;
+	position: relative;
+}
+
+.option_views,
+.safety_views {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.option_item,
+.safety_item {
+	display: flex;
+	flex-direction: column;
+	-webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 16px;
+}
+.option_item > div,
+.safety_item > div {
+	display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 4px;
+    background-color: rgb(250, 250, 250);
+}
+.option_item > div > div,
+.safety_item > div > div {
+	width: 40px;
+    height: 40px;
+}
+.option_item > p
+.safety_item > o {
+	margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 24px;
+}
+.location {
+	width: 100%;
+}
+.location_map {
+	width: 780px;
+    padding-top: 120px;
+    position: relative;
+}
+.location_address > p {
+	margin-bottom: 24px;
+}
+
+.memo {
+	width: 100%;
+}
+
+.memo_box {
+	width: 780px;
+    padding-top: 120px;
+    position: relative;
+}
+.memo_content {
+	padding: 32px 24px;
+    background-color: rgb(250, 250, 250);
+}
+
+.report {
+	margin-top: 60px;
+	padding-top: 60px;
+	border-top: 1px solid var(--color-lightgray);
+}
+
+.report > button {
+	height: 60px;
+	width: 180px;
+}
+
+.hidden {
+	display: none;
+}
+#sildeCount {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+
+.like_btn {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+	margin-top: 15px;	
+	height: 100%;
+}
+
+.like_btn > button {
+	position: sticky;
+	top: 40px;
+	
+	border: 1px solid rgba(0,0,0,0.6);
+	border-radius: 5px;
+	outline: 0;
+	padding: 10px 20px;
+}
+
+.like_btn > button:hover {
+	background: rgba(255, 0, 0, 0.3);
+}
+
+.like_btn > button > span > i {
+	color: tomato;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
