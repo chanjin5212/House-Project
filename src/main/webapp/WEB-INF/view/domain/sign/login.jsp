@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
@@ -16,11 +16,19 @@ section {
 
 }
 
+section > h1{
+
+	text-align: center;
+	font-weight: bold;
+	margin-top: 100px;
+	color: var(--color-blue);
+}
+
 
 .login{
 	width: 500px;
 	height: 600px;
-	margin: 200px auto;
+	margin: 50px auto;
 	border: 1px solid rgb(245, 245, 245);
 	
 }
@@ -60,6 +68,14 @@ form {
 }
 
 
+.findbox{
+
+	display: flex;
+	justify-content: space-between;
+
+}
+
+
 .form-check {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -71,6 +87,38 @@ form {
 }
 
 
+.find-idpw{
+
+	display: flex;
+	
+}
+
+.find-idpw span {
+
+	margin-left: 8px;
+    margin-right: 8px;
+    width: 1px;
+    height: 18px;
+    background-color: rgb(223, 223, 223);
+
+}
+
+
+.find-idpw p{
+
+	cursor: pointer;
+
+}
+
+
+.find-idpw p,span{
+	
+	
+	font-size: var(--min-font);
+	margin-top: 17px;
+
+}
+
 
 .button.blue.loginbtn{
 	text-align: center;
@@ -81,6 +129,8 @@ form {
 	
 }
 
+
+
 </style>
 
 </head>
@@ -88,6 +138,17 @@ form {
 	<main>
       <%@include file="/WEB-INF/inc/header.jsp" %>
       <section>
+      
+      
+			<c:if test="${lv=='1'}">
+				<h1>일반 회원</h1>
+			</c:if>
+			
+			<c:if test="${lv=='2'}">
+				<h1>중개사 회원</h1>
+				<p style="text-align: center; margin-top: 20px;">중개사 계정으로 로그인하시면, 빠방 중개사 페이지로 이동합니다!</p>
+			</c:if>
+			
       		<div class="login">
       			
 		      		
@@ -99,7 +160,7 @@ form {
 		      		
 								<p class="label-text">아이디</p>
 									
-									<input type="text" name="id" class="form-control" placeholder="아이디 입력" required>
+									<input type="text" name="id" class="form-control" value="${dto.id}"placeholder="아이디 입력" required>
 							</label>
 								
 						</div>
@@ -116,11 +177,22 @@ form {
 							</label>
 						</div>
 						
-						<div class="form-check">
- 							<input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" >
- 							<span>로그인 상태 유지</span>
-						</div>
+						<div class="findbox">
 						
+							<div class="form-check">
+	 							<input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" >
+	 							<span>로그인 상태 유지</span>
+							</div>
+						
+							<div class="find-idpw">
+							
+								<p onclick="location.href='/house/domain/sign/findId'">아이디찾기</p>
+								<span></span>
+								<p onclick="location.href='/house/domain/sign/findPw'">비밀번호찾기</p>
+								
+							</div>
+						
+						</div>
 						
 							
 						<input type="submit" value="로그인" class="button blue loginbtn">
@@ -133,22 +205,10 @@ form {
       		
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+       
     </script>
 </body>
 </html>

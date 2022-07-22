@@ -32,7 +32,7 @@
 		</c:if>
 		
 		<c:if test="${empty auth}">
-		alert('failed');
+		alert('로그인 정보를 확인해주세요.');
 		history.back();
 		</c:if>
 	    
@@ -40,17 +40,7 @@
     
     
     
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+        
     </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
@@ -61,7 +61,12 @@ section > div.list > div {
       			<c:if test="${dto.contractCheck == '계약중'}">
       				<div class="list">
 		      			<div>
-			      			<div style="background-image:url(/house/asset/images/basic.jpeg); background-size: cover; width:200px; height: 200px;"><span class="badge badge-success">계약중</span></div>
+		      				<c:if test="${not empty dto.filename}">
+			      				<div style="background-image:url(/house/files/${dto.filename}); background-size: cover; width:200px; height: 200px;"><span class="badge badge-success">계약중</span></div>
+		      				</c:if>
+		      				<c:if test="${empty dto.filename}">
+			      				<div style="background-image:url(/house/asset/images/basic.jpeg); background-size: cover; width:200px; height: 200px;"><span class="badge badge-success">계약중</span></div>		      				
+		      				</c:if>
 			      			<div style="padding: 40px; width:550px; border-right: 1px solid var(--color-lightgray);">
 			      				<c:if test="${not empty dto.deposit}">
 					      			<span style="font-size: var(--large-font)">${dto.name} ${dto.deposit}/${dto.price}</span>		      				
@@ -73,7 +78,7 @@ section > div.list > div {
 				      			<div style="font-size: var(--small-font)"><span>관심등록:${dto.wish}</span></div>
 			      			</div>
 			      			<div style="display: flex; justify-content: center; width: 200px;">
-			      				<div style="margin: auto;"><button class="btn btn-outline-secondary">계약 취소하기</button></div>
+			      				<div style="margin: auto;"><button class="btn btn-outline-secondary" onclick="cancel(${dto.seq});">계약 취소하기</button></div>
 			      			</div>
 		      			</div>
 		      		</div>
@@ -81,7 +86,12 @@ section > div.list > div {
       			<c:if test="${dto.contractCheck == '판매중'}">
       				<div class="list">
 		      			<div>
-			      			<div style="background-color: gray; width:200px; height: 200px;"><span class="badge badge-danger">판매중</span></div>
+		      				<c:if test="${not empty dto.filename}">
+			      				<div style="background-image:url(/house/files/${dto.filename}); background-size: cover; width:200px; height: 200px;"><span class="badge badge-danger">판매중</span></div>
+		      				</c:if>
+		      				<c:if test="${empty dto.filename}">
+			      				<div style="background-image:url(/house/asset/images/basic.jpeg); background-size: cover; width:200px; height: 200px;"><span class="badge badge-danger">판매중</span></div>		      				
+		      				</c:if>
 			      			<div style="padding: 40px; width:550px; border-right: 1px solid var(--color-lightgray);">
 				      			<c:if test="${not empty dto.deposit}">
 					      			<span style="font-size: var(--large-font)">${dto.name} ${dto.deposit}/${dto.price}</span>		      				
@@ -94,7 +104,7 @@ section > div.list > div {
 			      			</div>
 			      			<div class="btns" style="display: flex; justify-content: center; width: 200px;">
 			      				<div style="margin: auto;">
-				      				<div style="margin-bottom: 10px;"><button type="button" class="btn btn-outline-secondary">삭제하기</button></div>
+				      				<div style="margin-bottom: 10px;"><button type="button" class="btn btn-outline-secondary" onclick="delRe(${dto.seq});">삭제하기</button></div>
 			      				</div>
 			      			</div>
 		      			</div>
@@ -105,23 +115,24 @@ section > div.list > div {
       		
       		
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
+    
+    	function delRe(seq) {
+    		if (confirm('삭제하시겠습니까?')) {
+    			location.href = "/house/brokerrealestate/brokerRealEstateDel?seq=" + seq;
+    		}
+    	}
+    
+    	function cancel(seq) {
+    		if (confirm('취소하시겠습니까?')) {
+    			location.href = "/house/brokerrealestate/brokerRealEstateCancel?seq=" + seq;
+    		}
+    	}
        
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+
+
     </script>
 </body>
 </html>

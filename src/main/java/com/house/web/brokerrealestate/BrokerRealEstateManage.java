@@ -23,9 +23,11 @@ public class BrokerRealEstateManage extends HttpServlet {
 		
 		String id = (String)session.getAttribute("auth");
 		
-		BrokerRealEstateAddDAO dao = new BrokerRealEstateAddDAO();
+		BrokerRealEstateDAO dao = new BrokerRealEstateDAO();
 		
-		ArrayList<BrokerRealEstateAddDTO> list = dao.getMyList(id);
+		ArrayList<BrokerRealEstateDTO> list = dao.getMyList(id);
+		
+
 		
 		String count = dao.getListCount(id);
 		

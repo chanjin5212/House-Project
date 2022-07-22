@@ -1,0 +1,344 @@
+/* 카카오 지도 맵 크기 */
+body{
+	overflow-x: scroll;
+}
+
+.map_main {
+	padding: 0;
+	margin: 0;
+}
+
+#goods_section {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	margin-top: -110px;
+	padding-top: 110px;
+	overflow: hidden;
+}
+
+.map_main,
+#map_area {
+	height: 100%;
+	width: 100%;
+}
+
+#map {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+/* header 밑 nav bar */
+#goods_section {
+	font-family: var(--content-font);
+}
+
+#goods_option_navbar {
+	display: flex;
+	padding: 15px 20px;
+	margin: 0px;
+	list-style: none;
+	border-bottom: 1px solid var(--color-lightgray);
+	
+}
+#goods_option_navbar > li {
+	margin-right: 50px;
+}
+
+#map_area {
+	position: relative;
+}
+#map_area > form {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	margin: 20px;
+}
+
+.map_search_input {	
+	background: white;
+	padding: 15px;
+	border: 1px solid var(--color-lightgray);
+}
+
+.map_search_input > div > input {
+	border: 1px solid var(--color-blue);
+	outline: none;
+}
+
+
+.map_search_input > span > button {
+	background: var(--color-blue);
+	border: 1px solid transparent;
+}
+.map_search_input > span > button > i {
+	color: white;
+}
+
+.map_search_input {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.map_search_input > div {
+	position: relative;
+}
+
+.map_search_input > div > i {
+	display: none;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	padding: 7px;
+	cursor: pointer; 
+}
+
+.result_wrap {
+	min-height: 100%;
+	position: relative;
+	top: 0;
+}
+.wrap_items {
+	height: 392px;
+	position: absolute;
+	display: flex;
+	flex-grow: 1;
+	background: white;
+	border: 1px solid var(--color-lightgray);
+}
+.wrap_items > div {
+	height: 100%;
+	min-width: 312px;
+	border-right: 1px solid var(--color-lightgray);
+}
+.wrap_items > div:last-child {
+	border-right: none;
+}
+
+.wrap_items > div > h1 {
+	position: relative;
+	font-size: var(--small-font);
+	font-weight: bold;
+	padding: 25px 25px 12px;
+	height: 55px;
+}
+
+.wrap_items > div > h1:after {
+	position: absolute;
+	left: 0;
+	margin: 9px 0;
+	content: "";
+	display: block;
+	width: 190px;
+	border-bottom: 3px solid var(--color-green);
+}
+
+.wrap_items > div > ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	/* overflow 조작 */
+	overflow-y: auto;
+	height: auto;
+	min-width: 311px;
+	position: absolute;
+	top: 55px;
+	bottom: 0;
+}
+
+.wrap_items > div > ul::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+.wrap_items > div > ul::-webkit-scrollbar-thumb {
+	max-height: 20px;
+    background-color: var(--color-blue);
+    border-radius: 8px;
+}
+
+.wrap_items > div > ul > li {
+	cursor: pointer;
+	padding: 8px 0 8px 30px;
+}
+.wrap_items > div > ul > li:hover {
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.08);
+}
+
+.hidden {
+	display: none;
+}
+
+.no_result {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* 사이드바 css */
+
+#map_area_goods {
+	position: relative;
+	display: flex;
+	height: 100%;
+}
+
+#map_area_goods > div {
+	position: relative;
+	display: flex;
+	height: 100%;
+}
+
+.map_option_select_box {
+	position: absolute;
+	width: 400px;
+	height: 100%;
+	left: -400px;
+	z-index: 6;
+	background-color: white; 
+	transition: 0.2s;
+	overflow-y: scroll;
+	overflow-x: hidden;  
+}
+
+.map_option_select_box > .map_option_taps {
+	display: flex;
+	width: 100%;
+	height: 35px;
+	cursor: pointer;
+}
+.map_option_select_box > .map_option_taps > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.map_area_goods_tab {
+	border-right: 1px solid var(--color-lightgray);
+}
+.map_area_filter_tab {
+	background-color: rgba(0,0,0,0.1);
+	border-bottom: 1px solid var(--color-lightgray);
+}
+
+#map_area_goods > div > button {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: -35px;
+	width: 35px;
+	height: 35px;
+	border: 1px solid var(--color-lightgray);
+	border-top: none;
+	border-radius: 5px 0 0 5px;
+}
+
+#map_area_goods > div > button:hover{
+	background-color: var(--color-lightgray);
+}
+
+.map_area_filter_option {
+	display: none;
+}
+
+.map_area_filter_option {
+	padding: 15px 7.5px;
+	
+}
+
+.filter_room_type {
+	margin-bottom: 20px;
+}
+.filter_charge_type {
+	margin-bottom: 20px;	
+}
+
+.area_goods {
+	display: flex;
+}
+
+.map_area_goods_list {
+	display: block;
+}
+
+.map_area_goods_wrap {
+	cursor: pointer;
+	-webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 16px 15px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid var(--color-lightgray);
+    user-select: none;
+}
+.area_goods_img {
+	flex: 0 0 auto;
+    width: 140px;
+    height: 168px;
+    min-height: 140px;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.area_goods_img > img {
+	width: 100%;
+	height: auto;
+}
+.area_goods_status {
+	-webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 0px;
+    height: 100%;
+    padding-left: 20px;
+}
+.area_goods_status > div {
+	width: 212px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+.area_goods_status > div > h1 {
+	color: rgb(34, 34, 34);
+	width: 212px;
+    font-size: 18px;
+    font-weight: 700;
+    height: 27px;
+    margin-bottom: 4px;
+    line-height: 27px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.area_goods_status > div > p {
+    width: 212px;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(34, 34, 34);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+

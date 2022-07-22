@@ -20,3 +20,6 @@
 /* footer */
 @import url("footer/footer.css");
 
+html, body {
+   height: 100%;
+}

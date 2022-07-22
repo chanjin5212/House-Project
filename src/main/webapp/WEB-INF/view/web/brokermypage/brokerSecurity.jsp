@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 #menu  a {
@@ -86,11 +86,13 @@ hr {
 	width: 1050px;
 	padding : 25px;
 	padding-left: 300px;
+	margin-bottom: 100px;
 }
 
 #content h1{
 	/* border: 1px solid black; */
 	font-size: var(--large-font); 
+	margin-left: 100px;
 	
 }
 
@@ -134,7 +136,7 @@ hr {
 	      				<li><div><a href="/house/web/brokermypage/brokerEditInfo">개인정보</a></div></li>
 	      				<li><div style="background-color: var(--color-gray);"><a href="/house/web/brokermypage/brokerSecurity">보안</a></div></li>
 	      				<li><div><a href="/house/web/brokermypage/brokerDealListView">거래 목록</a></div></li>
-	      				<li><div><a href="/house/web/brokermypage/brokerCounselListView">상담 내역</a></div></li>
+	      				<li><div><a href="/house/web/brokermypage/brokerCounselList">상담 내역</a></div></li>
 	      			</ul>
 	      		</div>
 	      		
@@ -148,27 +150,11 @@ hr {
 	      			
       		</div>
       </section>
-      <footer>
-      	
-      </footer>
+     <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     
-    
-    
-    
-    
-    $('.dropbtn').click(function(e) {
-        if($('.dropdown-content').css('display') == 'block') {
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-            $('.dropdown-content').css('display', 'none');
-        } else if($('.dropdown-content').css('display') == 'none') {
-            $('.dropdown-content').css('display', 'block');
-        	$('.dropbtn > i').remove();
-        	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-        }
-    });
+   
     </script>
 </body>
 </html>

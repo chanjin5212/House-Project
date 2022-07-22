@@ -18,7 +18,7 @@ public class Logout extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		//1.
+		
 		session.removeAttribute("auth");
 		session.removeAttribute("name");
 		session.removeAttribute("lv");

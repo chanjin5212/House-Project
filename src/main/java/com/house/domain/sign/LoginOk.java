@@ -24,6 +24,10 @@ public class LoginOk extends HttpServlet {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		
+		String lv = (String) session.getAttribute("lv");
+		
+	
+		
 		SignDTO dto = new SignDTO();
 		
 		dto.setId(id);
@@ -31,7 +35,21 @@ public class LoginOk extends HttpServlet {
 		
 		SignDAO dao = new SignDAO();
 		
-		SignDTO result = dao.login(dto);
+		SignDTO result = null;
+		
+		
+		
+		
+		if(lv.equals("1")) {
+			//회원 로그인
+			result = dao.login(dto);
+		}else if(lv.equals("2")) {
+			//중개사 로그인
+			result = dao.brokerLogin(dto);
+			
+		}
+		
+		
 		
 		
 		if(result != null) {
@@ -39,7 +57,7 @@ public class LoginOk extends HttpServlet {
 			session.setAttribute("auth", id);
 			
 			session.setAttribute("name", result.getName());
-			session.setAttribute("lv", result.getLv());
+			//session.setAttribute("lv", result.getLv());
 			
 			
 		}

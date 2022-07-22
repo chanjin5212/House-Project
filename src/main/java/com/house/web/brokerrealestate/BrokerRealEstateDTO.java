@@ -3,7 +3,7 @@ package com.house.web.brokerrealestate;
 import lombok.Data;
 
 @Data
-public class BrokerRealEstateAddDTO {
+public class BrokerRealEstateDTO {
 	
 	//기본 정보
 	private String seq;
@@ -93,4 +93,7 @@ public class BrokerRealEstateAddDTO {
 	private String name;
 	private String wish;
 
+	
+	//사진
+	private String filename;
 }

@@ -32,6 +32,7 @@ public class BrokerMainDAO {
 			ArrayList<BrokerMainDTO> list = new ArrayList<BrokerMainDTO>();
 			while (rs.next()) {
 				BrokerMainDTO dto = new BrokerMainDTO();
+				dto.setSeq(rs.getString("seq"));
 				dto.setId(rs.getString("id"));
 				dto.setTitle(rs.getString("title"));
 				dto.setRegdate(rs.getString("regdate"));

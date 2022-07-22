@@ -23,7 +23,7 @@ public class BrokerEditInfo extends HttpServlet {
 		//System.out.println(session.getAttribute("auth"));
 		String id = (String) session.getAttribute("auth");
 		
-		BrokerLoginInfoDAO dao = new BrokerLoginInfoDAO();
+		BrokerMyPageDAO dao = new BrokerMyPageDAO();
 		BrokerLoginInfoDTO dto = dao.getLogInfo(id);
 		
 		

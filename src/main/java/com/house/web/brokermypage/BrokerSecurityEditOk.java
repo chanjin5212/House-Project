@@ -29,7 +29,7 @@ public class BrokerSecurityEditOk extends HttpServlet {
 		System.out.println(checkpw);
 		
 		
-		BrokerLoginInfoDAO dao = new BrokerLoginInfoDAO();
+		BrokerMyPageDAO dao = new BrokerMyPageDAO();
 		BrokerLoginInfoDTO dto = new BrokerLoginInfoDTO();
 		
 		

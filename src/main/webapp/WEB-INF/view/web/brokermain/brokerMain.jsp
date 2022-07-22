@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빠방 중개사</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <%@include file="/WEB-INF/inc/asset.jsp" %>
 <style>
 
 section > div#addedit {
-	width: 500px;
+	width: 600px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -65,6 +65,29 @@ section > div#chart {
 	margin: 0 auto;
 }
 
+section > div {
+	width: 1000px;
+	margin: 0 auto;
+	display: flex;
+}
+
+section > div#check > span > a {
+	text-decoration: none;
+	color: black;
+}
+
+section > div#check > span > a:hover {
+	color: var(--color-blue);
+}
+
+section > div#board > table tr > td:nth-child(1) > a {
+	text-decoration: none;
+	color: black;
+}
+
+section > div#board > table tr > td:nth-child(1) > a:hover {
+	color: var(--color-blue);
+}
 
 </style>
 </head>
@@ -73,23 +96,21 @@ section > div#chart {
       <%@include file="/WEB-INF/inc/brokerHeader.jsp" %>
       <section>
       		<div id="addedit">
-      			<button id="fir" onclick="location.href='/house/brokerrealestate/brokerRealEstateAdd'"><i class="fa-solid fa-house-circle-check fa-5x"></i><br>매물등록</button>
-      			<button id="sec" onclick="location.href='/house/brokerrealestate/brokerRealEstateManage'"><i class="fa-solid fa-house-circle-exclamation fa-5x"></i><br>매물관리</button>
+      			<button id="fir" onclick="location.href='/house/brokerrealestate/brokerRealEstateAdd'"><i class="fa-solid fa-house-circle-check fa-5x" style="font-size: 150px;"></i><br>매물등록</button>
+      			<button id="sec" onclick="location.href='/house/brokerrealestate/brokerRealEstateManage'"><i class="fa-solid fa-house-circle-exclamation fa-5x" style="font-size: 150px;"></i><br>매물관리</button>
       		</div>
+      		<div><span style="font-size: var(--large-font);">후기 게시판 인기글&nbsp&nbsp<span style="font-size: var(--min-font);">일주일 단위</span></span></div>
+      		<div id="check" style="display: flex; justify-content: right;"><span><a href="/house/reviewboard/userReviewBoardView">더보기</a></span></div>
       		<div id="board">
       			<table class="table">
-      				<tr>
-      					<th>후기 게시판 인기글</th>
-      					<th colspan="2">더보기</th>
-      				</tr>
       				<tr>
       					<th>제목</th>
       					<th>작성자</th>
       					<th>날짜</th>
       				</tr>
-      				<c:forEach items="${list}" var="ldto">
+      				<c:forEach items="${list}" var="ldto" begin="0" end="4">
       				<tr>
-      					<td>${ldto.title}</td>
+      					<td><a href="/house/reviewboard/userReviewBoardDetail?seq=${ldto.seq}">${ldto.title}</a></td>
       					<td>${ldto.id}</td>
       					<td>${ldto.regdate}</td>
       				</tr>
@@ -102,16 +123,14 @@ section > div#chart {
 			</div>
 
       </section>
-      <footer>
-      	
-      </footer>
+      <%@include file="/WEB-INF/inc/footer.jsp" %>
     </main>
     <script>
     
     var context = document
     .getElementById('myChart')
     .getContext('2d');
-var myChart = new Chart(context, {
+	var myChart = new Chart(context, {
     type: 'bar', // 차트의 형태
     data: { // 차트에 들어갈 데이터
         labels: [
@@ -123,7 +142,7 @@ var myChart = new Chart(context, {
                 label: '전체 거래량', //차트 제목
                 fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                 data: [ 
-                    ${dto.sales},${dto.jeonse},${dto.monthly},50 //x축 label에 대응되는 데이터 값
+                	102, 150, 170,50 //x축 label에 대응되는 데이터 값
                 ],
                 backgroundColor: [
                     //색상
@@ -169,19 +188,7 @@ var myChart = new Chart(context, {
     }
 });
    
-    
-    
-        $('.dropbtn').click(function(e) {
-            if($('.dropdown-content').css('display') == 'block') {
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
-                $('.dropdown-content').css('display', 'none');
-            } else if($('.dropdown-content').css('display') == 'none') {
-                $('.dropdown-content').css('display', 'block');
-            	$('.dropbtn > i').remove();
-            	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
-            }
-        });
+
     </script>
 </body>
 </html>

@@ -10,11 +10,11 @@
             style="width: 125px"
             onclick="location.href='/house/brokermain/brokerMain';"
           />
-          <nav>
+          <nav id="broker">
             <ul>
               <li><a href="/house/brokermain/brokerMain">홈</a></li>
-              <li><a href="">후기 게시판</a></li>
-              <li><a href="">알림</a></li>
+              <li><a href="/house/reviewboard/userReviewBoardView">후기 게시판</a></li>
+              <li><a href="/house/web/brokeralarm/brokerContractRequest">알림</a></li>
             </ul>
           </nav>
         </div>
@@ -22,8 +22,8 @@
         
 	        <c:if test="${empty auth || lv=='1'}">	
 			<div>
-		        <button class="button blue">
-		          회원가입
+		        <button class="button blue" onclick="location.href='/house/domain/sign/selectRegisterUser'">
+		            회원가입
 		        </button>
 		        <button class="button blue" onclick="location.href='/house/domain/sign/login'">로그인</button>
 	      	</div>
@@ -35,13 +35,26 @@
 					<span>${name}님</span> <i class="fa-solid fa-caret-down"></i>
 				</button>
 				<div class="dropdown-content">
-					<a href="#">마이페이지</a> <a href="/house/domain/sign/logout">로그아웃</a>
+					<a href="/house/web/brokermypage/brokerEditInfo">마이페이지</a> <a href="/house/domain/sign/logout">로그아웃</a>
 				</div>
 			</div>
 			</c:if>
         
 </header>
 
+<script>
+$('.dropbtn').click(function(e) {
+    if($('.dropdown-content').css('display') == 'block') {
+    	$('.dropbtn > i').remove();
+    	$('.dropbtn').append('<i class="fa-solid fa-caret-down"></i>');
+        $('.dropdown-content').css('display', 'none');
+    } else if($('.dropdown-content').css('display') == 'none') {
+        $('.dropdown-content').css('display', 'block');
+    	$('.dropbtn > i').remove();
+    	$('.dropbtn').append('<i class="fa-solid fa-caret-up"></i>');
+    }
+});
+</script>
 
 
 
