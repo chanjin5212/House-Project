@@ -51,6 +51,21 @@ github-181717.svg?&style=flat&logo=GitHub&logoColor=white"/>
 -----------------
 
 ### 📺구동 화면
+#### 메인페이지
+![녹화_2022_07_24_13_57_42_291](https://user-images.githubusercontent.com/97499271/180632880-8a2e9836-1c74-4ce4-8f15-e34a12813163.gif)
+
+#### 이메일 인증
+![녹화_2022_07_24_14_05_07_800](https://user-images.githubusercontent.com/97499271/180633044-a5667815-cec3-4506-8cc1-c451445b07f1.gif)
+
+#### 회원가입
+![회원 가입](https://user-images.githubusercontent.com/97499271/180633111-bfc03199-49e5-44fe-9354-9b8e283b74f1.gif)
+
+#### 매물 상세보기
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97499271/180633255-6c7740bc-a8f1-4e9d-a64c-fc84b89323fd.gif)
+
+#### 후기 게시판
+![후기 게시판](https://user-images.githubusercontent.com/97499271/180633498-446b7e28-6818-4cf3-b51c-71047b0fbdee.gif)
+
 
 -------------------
 
