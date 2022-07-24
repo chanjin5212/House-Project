@@ -15,8 +15,7 @@ Servlet/JSP 기반의 웹사이트로 부동산 매물을 등록할 수 있고, 
 
 
 ### 개발환경
-<img alt="" src ="https://img.shields.io/badge/windows-0078D6.svg?&style=flat&logo=windows&logoColor=white"/> <img alt="" src ="https://img.shields.io/badge/VSCode-007ACC.svg?&style=flat&logo=Visual Studio Code&logoColor=white"/> <img alt="" src ="https://img.shields.io/badge/IntelliJ-000000.svg?&style=flat&logo=IntelliJ IDEA&logoColor=white"/> <img alt="" src ="https://img.shields.io/badge/
-github-181717.svg?&style=flat&logo=GitHub&logoColor=white"/>
+<img alt="" src ="https://img.shields.io/badge/windows-0078D6.svg?&style=flat&logo=windows&logoColor=white"/> <img alt="" src ="https://img.shields.io/badge/VSCode-007ACC.svg?&style=flat&logo=Visual Studio Code&logoColor=white"/> <img alt="" src ="https://img.shields.io/badge/Eclipse-2C2255.svg?&style=flat&logo=Eclipse IDE&logoColor=white"/> <img alt="" src ="https://img.shields.io/badge/github-181717.svg?&style=flat&logo=GitHub&logoColor=white"/>
 
 
 -----------------------
@@ -65,6 +64,9 @@ github-181717.svg?&style=flat&logo=GitHub&logoColor=white"/>
 
 #### 후기 게시판
 ![후기 게시판](https://user-images.githubusercontent.com/97499271/180633498-446b7e28-6818-4cf3-b51c-71047b0fbdee.gif)
+
+#### 계약 과정
+![계약 과정](https://user-images.githubusercontent.com/97499271/180633699-87a21abd-4e5b-4cb5-a205-7a4c1a2b2b1a.gif)
 
 
 -------------------
