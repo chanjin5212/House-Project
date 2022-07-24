@@ -68,6 +68,9 @@ Servlet/JSP 기반의 웹사이트로 부동산 매물을 등록할 수 있고, 
 #### 계약 과정
 ![계약 과정](https://user-images.githubusercontent.com/97499271/180633699-87a21abd-4e5b-4cb5-a205-7a4c1a2b2b1a.gif)
 
+#### 매물 등록,관리
+![매물등록, 관리](https://user-images.githubusercontent.com/97499271/180634083-c16e13c0-602a-4fac-bb8f-e746c5755dda.gif)
+
 
 -------------------
 
